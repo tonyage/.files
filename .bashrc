@@ -3,7 +3,7 @@ export MYVIMRC="$HOME/.file/.vimrc"
 export VIMINIT="source $MYVIMRC"
 
 if [[ "$OSTYPE" == "linux-gnu" ]];
-then														# check if on linux set colors or macOS set colors
+then											# check if on linux set colors or macOS set colors
 	alias ls='ls --color=auto'
 	alias grep='grep --color=auto'
 else
