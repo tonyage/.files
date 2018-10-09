@@ -6,7 +6,7 @@ then
 	mkdir -p ~/.local/share/fonts
 	cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
 else
-	brew cask install zsh 
+	brew install zsh 
 	git clone https://github.com/artofrawr/powerline-fonts.git ~/Documents/powerline-fonts 
 fi
 
