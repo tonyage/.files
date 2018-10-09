@@ -17,7 +17,13 @@ chsh -s /bin/zsh
 git submodule init
 git submodule update
 
+./symlink_rc.sh 
+
+cd ~/.file/.vim/bundle/youcompleteme 
+git submodule update --init --recursive --progress
+python3 install.py --clang-completer
+
+printf "youcompleteme submodule updated and installed\n"
 printf "If you're on Linux, set terminal font to patched font!!\n"
 printf "If you're on macOS remember to install the patched SF Mono font its stored in Documents!!\n"
-./symlink_rc.sh
 
