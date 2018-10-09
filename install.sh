@@ -14,12 +14,8 @@ export ZSH="$HOME/.file/oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 
-# Installs oh-my-zsh plugins
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.file/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/chrissicool/zsh-256color ~/.file/oh-my-zsh/custom/plugins/zsh-256color
-
-# Install powerlevel9k
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.file/oh-my-zsh/custom/themes/powerlevel9k
+git submodule init
+git submodule update
 
 printf "If you're on Linux, set terminal font to patched font!!\n"
 printf "If you're on macOS remember to install the patched SF Mono font its stored in Documents!!\n"
