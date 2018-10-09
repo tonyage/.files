@@ -1,7 +1,6 @@
 rm $HOME/.zshrc
 rm $HOME/.vimrc
 rm $HOME/.bashrc
-rm $HOME/.zshrc.pre-oh-my-zsh
 
 rm -rf $HOME/.vim
 
