@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # oh-my-zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.file/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/chrissicool/zsh-256color
