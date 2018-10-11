@@ -1,14 +1,15 @@
 execute pathogen#infect()
-let mapleader="."
+let mapleader=","
 filetype plugin indent on
 
-syntax enable
+syntax enable 
 set nocompatible
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-nnoremap .s :nohlsearch<CR>
+set autochdir
+nnoremap ,/ :nohl<CR>
 
 set ruler
 set number
@@ -21,6 +22,7 @@ set wildmode=list:longest
 set encoding=utf-8
 set tabstop=4
 set softtabstop=4
+set autoindent
 set backspace=indent,eol,start
 
 " list errors and warnings for current file
@@ -88,4 +90,4 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 						
 " NERDTree
-map <F3> :NERDTreeToggle<CR>
+map <leader>r :NERDTreeToggle<CR>
