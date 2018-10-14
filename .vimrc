@@ -7,10 +7,16 @@ set nocompatible
 set incsearch
 set hlsearch
 set ignorecase
-set smartcase
-set autochdir
-nnoremap ,/ :nohl<CR>
+set smartcase 
+nnoremap <leader>/ :nohl<CR>
 
+set autochdir
+set noswapfile
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+set wrap
 set ruler
 set number
 set showcmd
@@ -22,7 +28,9 @@ set wildmode=list:longest
 set encoding=utf-8
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 set autoindent
+set smartindent
 set backspace=indent,eol,start
 
 " list errors and warnings for current file
@@ -45,9 +53,16 @@ set background=dark
 colorscheme solarized
 
 " vim-airline
-let g:airline#extensions#tabline#enabled = 1  
+let g:airline#extensions#tabline#enabled=1  
 let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#fnamemod=1
+let g:airline#extensions#tabline#buffer_idx_mode=1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -87,7 +102,9 @@ set foldlevel=99
 
 " youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-						
+let g:ycm_autoclose_preview_window_after_insertion=1
+autocmd FileType c nnoremap gd :YcmCompleter GoTo<CR>
+autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<CR>
+
 " NERDTree
 map <leader>r :NERDTreeToggle<CR>
