@@ -17,12 +17,10 @@ tabs 4
 alias wut='cat ~/.bashrc'						# helpful
 alias ll='ls -lah'								# long list shows all permissions and hidden files
 alias la='ls -ah'								# list all hidden files human readable
-alias .='cd ../'								# go back 1 directory level
-alias ..='cd ../../'							# go back 2 directory levels
-alias ...='cd ../../../'						# go back 3 directory levels
 alias ..='cd ../'								# go back 1 directory level
 alias ...='cd ../../'							# go back 2 directory levels
 alias ....='cd ../../../'						# go back 3 directory levels
+alias .....='cd ../../../../'
 alias vedit='vim ~/.vimrc'						# edit .vimrc
 alias bedit='vim ~/.bashrc'						# edit .bashrc
 alias bsource='source ~/.bashrc'				# source .bashrc

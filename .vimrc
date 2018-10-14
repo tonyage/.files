@@ -1,5 +1,5 @@
 execute pathogen#infect()
-let mapleader="."
+let mapleader=","
 filetype plugin indent on
 
 syntax enable
@@ -8,7 +8,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-nnoremap .s :nohlsearch<CR>
+nnoremap ,/ :nohlsearch<CR>
 
 set ruler
 set number

@@ -35,6 +35,7 @@ alias la='ls -ah'                                # list all hidden files human r
 alias ..='cd ../'                                # go back 1 directory level
 alias ...='cd ../../'                            # go back 2 directory levels
 alias ....='cd ../../../'                        # go back 3 directory levels
+alias .....='cd ../../../../'
 alias vedit='vim ~/.vimrc'                       # edit .vimrc
 alias zedit='vim ~/.zshrc'						 # edit .bashrc
 alias zsource='source ~/.zshrc'					 # source .bashrc
