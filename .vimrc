@@ -11,7 +11,6 @@ set smartcase
 nnoremap <leader>/ :nohl<CR>
 
 set autochdir
-set noswapfile
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -108,3 +107,11 @@ autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<CR>
 
 " NERDTree
 map <leader>r :NERDTreeToggle<CR>
+
+" NERDCommenter
+let g:NERDSpaceDelims=1			" Add spaces after comment delimters 
+let g:NERDCompactSexyComs=1		" Use compact syntax for prettifed multi-line comments
+let g:NERDDefaultAlign='left'	" Comments ignore code indentation
+let g:NERDCommentEmptyLines=1	
+let g:NERDTrimTrailingWhitespace=1 
+let g:NERDToggleCheckAllLines=1
