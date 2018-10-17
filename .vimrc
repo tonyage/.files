@@ -1,9 +1,11 @@
 execute pathogen#infect()
 let mapleader=","
-filetype plugin indent on
 
+filetype plugin indent on
 syntax enable 
 set nocompatible
+
+set path+=**
 set incsearch
 set hlsearch
 set ignorecase
