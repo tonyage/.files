@@ -1,11 +1,10 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "linux-gnu" ]];
-then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	sudo apt install zsh	
 	mkdir -p ~/.local/share/fonts
 	cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
-else
+elif [[ "$(uname)" == "Darwin" ]]; then 
 	brew install zsh 
 	git clone https://github.com/artofrawr/powerline-fonts.git ~/Documents/powerline-fonts 
 fi
@@ -19,11 +18,16 @@ git submodule update
 
 ./symlink_rc.sh 
 
+cd ~/.file/.vim
+mkdir backup swap undo
+printf "creating backup directory ~/.file/.vim/backup"
+printf "creating swap directory ~/.file/.vim/swap"
+printf "creating undo directory ~/.file/.vim/undo"
+
 cd ~/.file/.vim/bundle/youcompleteme 
-git submodule update --init --recursive --progress
+git submodule update --init --recursive 
 python3 install.py --clang-completer
 
 printf "youcompleteme submodule updated and installed\n"
 printf "If you're on Linux, set terminal font to patched font!!\n"
 printf "If you're on macOS remember to install the patched SF Mono font its stored in Documents!!\n"
-
