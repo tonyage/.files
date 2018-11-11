@@ -1,4 +1,4 @@
-#Getting Started
+# Getting Started
 
 1. Run the command `./startup.sh` if on Linux. This can fail just init and update git submodules.
 2. Then run the command `./install.sh`
@@ -7,7 +7,7 @@
 5. You will also need to update the submodule for the `youcompleteme` plugin with `git submodule update --init--recursive`
 6. Lastly source `.vimrc` and `.zshrc`
 
-#Bash powerline
+# Bash powerline
 
 1. `pip install --user powerline-status`
 2. keep an eye on Python version and update the paths in bashrc accordingly
