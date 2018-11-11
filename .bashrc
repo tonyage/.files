@@ -38,3 +38,9 @@ function mkcd() {								# makes directory and enters it
 function cdls() {								# changes directory and lists contents 
 	cd "$@" && ls			
 }
+
+# powerline 
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $HOME/.file/.config/powerline/bindings/bash/powerline.sh
