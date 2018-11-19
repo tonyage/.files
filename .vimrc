@@ -5,6 +5,7 @@ filetype plugin indent on
 syntax enable 
 set nocompatible
 
+set updatetime=100
 set path+=**
 set incsearch
 set hlsearch
@@ -108,6 +109,19 @@ autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<CR>
 
 " NERDTree
 map <leader>r :NERDTreeToggle<CR>
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDCommenter
 let g:NERDSpaceDelims=1			" Add spaces after comment delimters 
