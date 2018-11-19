@@ -20,14 +20,14 @@ git submodule update
 
 cd ~/.file/.vim
 mkdir backup swap undo
-printf "creating backup directory ~/.file/.vim/backup"
-printf "creating swap directory ~/.file/.vim/swap"
-printf "creating undo directory ~/.file/.vim/undo"
+echo "creating backup directory ~/.file/.vim/backup"
+echo "creating swap directory ~/.file/.vim/swap"
+echo "creating undo directory ~/.file/.vim/undo"
 
 cd ~/.file/.vim/bundle/youcompleteme 
 git submodule update --init --recursive 
 python3 install.py --clang-completer
 
-printf "youcompleteme submodule updated and installed\n"
-printf "If you're on Linux, set terminal font to patched font!!\n"
-printf "If you're on macOS remember to install the patched SF Mono font its stored in Documents!!\n"
+echo "youcompleteme submodule updated and installed\n"
+echo "If you're on Linux, set terminal font to patched font!!\n"
+echo "If you're on macOS remember to install the patched SF Mono font its stored in Documents!!\n"
