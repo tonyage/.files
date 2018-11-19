@@ -43,4 +43,4 @@ function cdls() {								# changes directory and lists contents
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. $HOME/.file/.config/powerline/bindings/bash/powerline.sh
+source /Users/tdo/perl5/perlbrew/etc/bashrc

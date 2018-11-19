@@ -60,8 +60,9 @@ function cdll() {
 # POWERLINE9K STUFF GOES HERE
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
+POWERLEVEL9K_TIME_12HR=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status history time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status time)
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
 POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
 POWERLEVEL9K_OS_ICON_FOREGROUND='069'
@@ -74,3 +75,7 @@ POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  %m.%d}"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER="…"
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_left"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="/usr/local/sbin:$PATH"

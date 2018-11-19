@@ -1,6 +1,0 @@
-[user]
-	name = Tony Do
-	email = tonyttdo@bitbucket.org
-
-[alias]
-	vis = !gitk --all
