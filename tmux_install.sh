@@ -1,0 +1,1 @@
+tic -x tmux.terminfo
