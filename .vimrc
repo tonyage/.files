@@ -43,9 +43,7 @@ nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
 
 " syntastic 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
@@ -58,9 +56,17 @@ let g:solarized_termtrans=1
 set background=dark
 colorscheme solarized
 
+" syntax highlighting font style 
+highlight Comment cterm=italic
+highlight Constant cterm=italic
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8f="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
 " vim-airline
 let g:airline#extensions#tabline#enabled=1  
-let g:airline_theme='solarized'
+let g:airline_theme='atomic'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#fnamemod=1
 let g:airline#extensions#tabline#buffer_idx_mode=1
