@@ -1,4 +1,5 @@
 execute pathogen#infect()
+execute pathogen#helptags()
 let mapleader=","
 
 filetype plugin indent on
@@ -11,7 +12,6 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase 
-nnoremap <leader>/ :nohl<CR>
 
 set autochdir
 set backupdir=~/.vim/backup//
@@ -38,9 +38,13 @@ set backspace=indent,eol,start
 " list errors and warnings for current file
 nmap <leader>e :Errors<CR>
 
-" keybinds
+" normal mode keybinds
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
+nnoremap <leader>/ :nohl<CR>
+
+" insert mode keybinds
+imap <F12> <C-W>
 
 " syntastic 
 set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
@@ -60,15 +64,19 @@ colorscheme solarized
 highlight Comment cterm=italic
 highlight Constant cterm=italic
 
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8f="\<Esc>[48;2;%lu;%lu;%lum"
+"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8f="\<Esc>[48;2;%lu;%lu;%lum"
 
 " vim-airline
-let g:airline#extensions#tabline#enabled=1  
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#syntastic#enabled=1
 let g:airline_theme='atomic'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#fnamemod=1
+let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#buffer_idx_mode=1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -102,10 +110,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-" enable folding
-set foldmethod=indent
-set foldlevel=99
-
 " youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
@@ -125,7 +129,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
-    \ }
+	\ }
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDCommenter
@@ -135,3 +139,6 @@ let g:NERDDefaultAlign='left'	" Comments ignore code indentation
 let g:NERDCommentEmptyLines=1	
 let g:NERDTrimTrailingWhitespace=1 
 let g:NERDToggleCheckAllLines=1
+
+" indent guide
+let g:indent_guides_enable_on_vim_startup=1
