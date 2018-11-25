@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
 	git
-	zsh-256color
+changing zshrc edit alias to reference version controlled rc file instead of symlink
 	zsh-syntax-highlighting
 )
 
