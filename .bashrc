@@ -12,6 +12,8 @@ else
 	alias out='tee ~/Desktop/termOut.txt'		# pipe content to output file on desktop
 fi
 
+shopt -s checkwinsize
+
 tabs 4
 # bindings
 alias wut='cat ~/.bashrc'						# helpful
@@ -21,8 +23,8 @@ alias ..='cd ../'								# go back 1 directory level
 alias ...='cd ../../'							# go back 2 directory levels
 alias ....='cd ../../../'						# go back 3 directory levels
 alias .....='cd ../../../../'
-alias vedit='vim ~/.vimrc'						# edit .vimrc
-alias bedit='vim ~/.bashrc'						# edit .bashrc
+alias vedit='vim ~/.file/.vimrc'				# edit .vimrc
+alias bedit='vim ~/.file/.bashrc'				# edit .bashrc
 alias bsource='source ~/.bashrc'				# source .bashrc
 alias df='df -h'								# human readable disk
 alias rip='rm -rf "$1"'
@@ -43,4 +45,3 @@ function cdls() {								# changes directory and lists contents
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-source /Users/tdo/perl5/perlbrew/etc/bashrc
