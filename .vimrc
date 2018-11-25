@@ -142,3 +142,10 @@ let g:NERDToggleCheckAllLines=1
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
+
+" ctrl-p
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
+	let g:ctrlp_user_command= 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_use_caching=0
+endif 
