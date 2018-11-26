@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/markdown-preview.vim"]
 	path = .vim/bundle/markdown-preview.vim
 	url = https://github.com/iamcco/markdown-preview.vim.git
+[submodule ".vim/bundle/neomake"]
+	path = .vim/bundle/neomake
+	url = https://github.com/neomake/neomake.git
