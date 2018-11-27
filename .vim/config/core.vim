@@ -8,16 +8,11 @@ set nocompatible
 
 if has('nvim')
 	syntax on
-	set termguicolors
-	let g:onedark_terminal_italics=1
-	hi Comment cterm=italic
-	hi Constant cterm=italic
-	colorscheme onedark
+	if has('termguicolors')
+		set termguicolors
+	endif 
 	"let g:enable_ycm_at_startup=1
 endif
-
-set background=dark
-colorscheme solarized 
 
 set updatetime=100
 set path+=**

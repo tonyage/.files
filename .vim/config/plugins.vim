@@ -7,8 +7,7 @@ let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=0
 
 if has('nvim')
-	set termguicolors
-	let g:onedark_terminal_italics=1
+	" let g:onedark_terminal_italics=1
 	colorscheme brogrammer 
 
 	" neovim
@@ -21,13 +20,13 @@ if has('nvim')
 	" :Neomake! - project marker
 	" :lwindow / :lopen
 	" :lprev / :lnext
-	
 	let g:airline_theme='onedark'
 else 
 	" solarized
+	set termguicolors 
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans=1
-	colorscheme solarized
+	colorscheme brogrammer
 	let g:airline_theme='atomic'
 endif
 
