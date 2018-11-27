@@ -135,6 +135,8 @@
 " environment.
 
 " Terminals that support italics
+set background=dark
+
 let s:terms_italic=[
             \"rxvt",
             \"gnome-terminal"

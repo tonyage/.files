@@ -9,7 +9,7 @@ let g:syntastic_enable_signs=0
 if has('nvim')
 	set termguicolors
 	let g:onedark_terminal_italics=1
-	colorscheme onedark 
+	colorscheme brogrammer 
 
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
@@ -27,7 +27,6 @@ else
 	" solarized
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans=1
-	set background=dark
 	colorscheme solarized
 	let g:airline_theme='atomic'
 endif
