@@ -20,6 +20,7 @@ source $ZSH/oh-my-zsh.sh
 if [ "$(uname -s)" = Linux  ]; 
 then 
 	alias grep='grep --color=auto'
+	export TERM="xterm-256color"
 else	
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									 # opens current file/directory in Finder
