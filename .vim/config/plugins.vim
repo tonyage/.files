@@ -7,11 +7,11 @@ let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=0
 
 if has('nvim')
-	" let g:onedark_terminal_italics=1
-	colorscheme brogrammer 
-
+	syntax on 
+	colo brogrammer
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
+	let g:syntastic_check_on_wq=0
 	call neomake#configure#automake('nrwi',500)
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
@@ -22,8 +22,11 @@ if has('nvim')
 	" :lprev / :lnext
 	let g:airline_theme='onedark'
 else 
+	if has('termguicolors')
+		set termguicolors
+	endif
+	
 	" solarized
-	set termguicolors 
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans=1
 	colorscheme brogrammer
@@ -116,4 +119,10 @@ if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
 	let g:ctrlp_user_command= 'ag %s -l --nocolor -g ""'
 	let g:ctrlp_use_caching=0
-endif 
+endif
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_c_checkers=['make']
+let g:syntastic_python_checkers=['python','pylama']
+

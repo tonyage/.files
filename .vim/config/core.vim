@@ -7,10 +7,9 @@ syntax enable
 set nocompatible
 
 if has('nvim')
-	syntax on
 	if has('termguicolors')
 		set termguicolors
-	endif 
+	endif
 	"let g:enable_ycm_at_startup=1
 endif
 
