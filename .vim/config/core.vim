@@ -27,6 +27,7 @@ set undodir=~/.vim/undo//
 
 set wrap
 set ruler
+set hidden
 set number
 set showcmd
 set wildmenu

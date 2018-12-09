@@ -10,8 +10,16 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
+	if [ "$(uname -s)" = Darwin ];
+	then 
+		osx
+	fi
 	git
-changing zshrc edit alias to reference version controlled rc file instead of symlink
+	gradle
+	pep8
+	pip
+	screen
+	web-search
 	zsh-syntax-highlighting
 )
 

@@ -29,8 +29,8 @@ else
 	" solarized
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans=1
-	colorscheme brogrammer
-	let g:airline_theme='atomic'
+	colorscheme molokai 
+	let g:airline_theme='onedark'
 endif
 
 " syntax highlighting font style 
@@ -126,3 +126,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_c_checkers=['make']
 let g:syntastic_python_checkers=['python','pylama']
 
+" vim-fish
+compiler fish
+setlocal textwidth=79
