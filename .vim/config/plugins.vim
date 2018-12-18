@@ -22,9 +22,9 @@ if has('nvim')
 	" :lprev / :lnext
 	let g:airline_theme='onedark'
 else 
-	if has('termguicolors')
-		set termguicolors
-	endif
+	"	if has('termguicolors')
+	"	set termguicolors
+	" endif
 	
 	" solarized
 	let g:solarized_termcolors=256

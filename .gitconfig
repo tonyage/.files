@@ -1,0 +1,19 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Tony Do
+	email = tdo@kopismobile.com
+[format]
+	pretty = "%H %ci %ae %d %s"
+[color]
+	ui = auto
+[alias]
+	vis = !gitk --all
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = <tdo@kopismobile.com>
+[merge]
+	tool = kdiff3
+[merge "tool"]
+	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3

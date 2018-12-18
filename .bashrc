@@ -1,7 +1,8 @@
 #!/bin/bash
 export MYVIMRC="$HOME/.file/.vimrc"
 export VIMINIT="source $MYVIMRC"
-
+export PATH="/usr/local/bin:$PATH"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
 if [[ "$OSTYPE" == "linux-gnu" ]];
 then											# check if on linux set colors or macOS set colors
 	alias ls='ls --color=auto'
@@ -24,6 +25,8 @@ alias ...='cd ../../'							# go back 2 directory levels
 alias ....='cd ../../../'						# go back 3 directory levels
 alias .....='cd ../../../../'
 alias vedit='vim ~/.file/.vimrc'				# edit .vimrc
+alias pedit='vim ~/.file/.vim/config/plugins.vim'
+alias cedit='vim ~/.file/.vim/config/core.vim'
 alias bedit='vim ~/.file/.bashrc'				# edit .bashrc
 alias bsource='source ~/.bashrc'				# source .bashrc
 alias df='df -h'								# human readable disk
