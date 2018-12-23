@@ -125,7 +125,3 @@ endif
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_c_checkers=['make']
 let g:syntastic_python_checkers=['python','pylama']
-
-" vim-fish
-compiler fish
-setlocal textwidth=79
