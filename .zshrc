@@ -44,6 +44,7 @@ plugins=(
 	tmux
 	web-search
 	zsh-256color
+	zsh-autopair
 	zsh-autosuggestions
 	zsh-syntax-highlighting 
 )

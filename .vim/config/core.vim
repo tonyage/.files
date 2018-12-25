@@ -45,6 +45,8 @@ set backspace=indent,eol,start
 
 " list errors and warnings for current file
 nmap <leader>e :Errors<CR>
+nmap <S-Return> O<Esc>
+nmap <Return> o<Esc>
 
 " normal mode keybinds
 nnoremap <C-e> 10<C-e>

@@ -7,6 +7,9 @@
 	ui = auto
 [alias]
 	vis = !gitk --all
+	
+	s = status -s 
+	sb = status -sb
 [merge]
 	tool = kdiff3
 [merge "tool"]
