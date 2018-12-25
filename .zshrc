@@ -36,6 +36,10 @@ plugins=(
 	if [ "$(uname -s)" = Darwin ]; then 
 		osx
 	fi
+	aterminal
+	brew
+	colored-man-pages
+	docker
 	git
 	gradle
 	pep8
