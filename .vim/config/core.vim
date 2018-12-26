@@ -22,8 +22,10 @@ set smartcase
 
 set autochdir
 set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
+set swapfile!
 set undodir=~/.vim/undo//
+
+set list listchars=tab:\|\ 
 
 set wrap
 set ruler
@@ -53,5 +55,6 @@ nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
 nnoremap <leader>/ :nohl<CR>
 
-" insert mode keybinds
-imap <F12> <C-W>
+" visual mode keybinds
+vnoremap > >gv
+vnoremap < <gv

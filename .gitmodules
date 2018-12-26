@@ -43,3 +43,12 @@
 [submodule ".vim/bundle/indentLine"]
 	path = .vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git

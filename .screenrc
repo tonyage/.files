@@ -1,0 +1,4 @@
+term xterm-256color
+maptimeout 10
+
+termcapinfo xterm* ti@:ti@

@@ -6,9 +6,19 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=0
 
-if has('nvim')
-	syntax on 
-	colo brogrammer
+syntax on 
+
+if has('nvim') 
+	colo space-vim-dark
+
+	" enables transparent background; disable for conventional spacemacs theme
+	if $TERM_PROGRAM =~ 'iTerm'
+		hi Normal ctermbg=NONE guibg=NONE
+		hi LineNr ctermbg=NONE guibg=NONE
+		hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+	
+
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
 	let g:syntastic_check_on_wq=0
@@ -19,26 +29,29 @@ if has('nvim')
 	" :Neomake - file marker
 	" :Neomake! - project marker
 	" :lwindow / :lopen
-	" :lprev / :lnext
+	" :lprev / :lnext 
+	let g:airline_theme='violet'
+else
+	if has("termguicolors")
+		set termguicolors
+	endif
+
+	if (has("autocmd") && !has("gui_running"))
+		augroup colors
+			autocmd!
+			let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
+			autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
+		augroup END
+	endif
+
+	colorscheme onedark
 	let g:airline_theme='onedark'
-else 
-	"	if has('termguicolors')
-	"	set termguicolors
-	" endif
-	
-	" solarized
-	let g:solarized_termcolors=256
-	let g:solarized_termtrans=1
-	colorscheme molokai 
-	let g:airline_theme='onedark'
+	let g:onedark_termcolors=256
 endif
 
 " syntax highlighting font style 
-highlight Comment cterm=italic
-highlight Constant cterm=italic
-
-"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8f="\<Esc>[48;2;%lu;%lu;%lum"
+hi Comment cterm=italic
+hi String cterm=italic gui=italic
 
 " vim-airline
 let g:airline#extensions#tabline#enabled=1
@@ -112,16 +125,19 @@ let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1 
 let g:NERDToggleCheckAllLines=1
 
-set list lcs=tab:\|\ 
-
 " ctrl-p
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
 	let g:ctrlp_user_command= 'ag %s -l --nocolor -g ""'
 	let g:ctrlp_use_caching=0
 endif
+let g:ctrlp_show_hidden=1
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list=1
 let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['python','pylama']
+let g:syntastic_python_checkers=['python', 'pylama']
+
+" Tagbar
+nmap <leader>t :TagbarToggle<CR>
+autocmd VimEnter * nested :TagbarOpen

@@ -37,6 +37,7 @@ plugins=(
 		osx
 	fi
 	aterminal
+	autopep8
 	brew
 	colored-man-pages
 	docker
@@ -44,6 +45,7 @@ plugins=(
 	gradle
 	pep8
 	pip
+	python
 	screen
 	tmux
 	web-search
@@ -75,9 +77,9 @@ alias ..='cd ../'														 # go back 1 directory level
 alias ...='cd ../../'													 # go back 2 directory levels
 alias ....='cd ../../../'												 # go back 3 directory levels
 alias .....='cd ../../../../'
-alias vedit='vim ~/.file/.vimrc'										 # edit .vimrc
-alias cedit='vim ~/.file/.vim/config/core.vim'							 # edit core.vim
-alias pedit='vim ~/.file/.vim/config/plugins.vim'						 # edit plugins.vim
+alias vedit='nvim ~/.file/.vimrc'										 # edit .vimrc
+alias cedit='nvim ~/.file/.vim/config/core.vim'							 # edit core.vim
+alias pedit='nvim ~/.file/.vim/config/plugins.vim'						 # edit plugins.vim
 alias zedit='vim ~/.file/.zshrc'										 # edit .bashrc
 alias zsource='source ~/.zshrc'											 # source .bashrc
 alias df='df -h'														 # human readable disk
