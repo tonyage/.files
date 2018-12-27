@@ -93,16 +93,18 @@ alias finder='open -a Finder ./'										 # opens current file/directory in Fin
 alias out='tee ~/Desktop/termOut.txt'									 # pipe content to output file on desktop
 
 # quality of life
-function mkcd() {														 # makes directory and enters it
+mkcd() {														 # makes directory and enters it
 	mkdir -p "$@" && cd "$@"
 }
-function cdls() {														 # changes directory and lists contents 
+cdls() {														 # changes directory and lists contents 
 	cd "$@" && ls           
 }
-function cdll() {
+cdll() {
 	cd "$@" && ll
 }
+
 for file in ~/.file/shell-config/*.zsh; do
 	. $file 
 done
+
 export PATH="/usr/local/sbin:$PATH"
