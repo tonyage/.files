@@ -34,6 +34,7 @@ set number
 set showcmd
 set wildmenu
 set showmatch
+set linebreak
 set cursorline
 set virtualedit=block
 set wildmode=list:longest,full 
@@ -47,6 +48,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set backspace=indent,eol,start
+set pastetoggle=<F9>
 
 " Folding
 set foldmethod=syntax

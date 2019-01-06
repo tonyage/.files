@@ -1,11 +1,3 @@
-" syntastic 
-set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_enable_signs=0
-
 syntax on 
 
 if has('nvim') 
@@ -149,9 +141,15 @@ endif
 let g:ctrlp_show_hidden=1
 
 " Syntastic
+set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['python', 'pylama']
+let g:syntastic_python_checkers=['python', 'pylama', 'pylint']
+let g:syntastic_aggregate_errors=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_signs=0
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -160,3 +158,6 @@ autocmd VimEnter * nested :TagbarOpen
 " Tabular
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
