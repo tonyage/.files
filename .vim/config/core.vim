@@ -13,6 +13,7 @@ if has('nvim')
 	"let g:enable_ycm_at_startup=1
 endif
 
+" Search stuff
 set updatetime=100
 set path+=**
 set incsearch
@@ -20,12 +21,11 @@ set hlsearch
 set ignorecase
 set smartcase 
 
+" vim directories
 set autochdir
 set backupdir=~/.vim/backup//
 set swapfile!
 set undodir=~/.vim/undo//
-
-set list listchars=tab:\|\ 
 
 set wrap
 set ruler
@@ -35,8 +35,11 @@ set showcmd
 set wildmenu
 set showmatch
 set cursorline
-set wildmode=list:longest 
+set virtualedit=block
+set wildmode=list:longest,full 
 
+" indents/formats
+set list listchars=tab:\|\ 
 set encoding=utf-8
 set tabstop=4
 set softtabstop=4
@@ -45,16 +48,6 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 
-" list errors and warnings for current file
-nmap <leader>e :Errors<CR>
-nmap <S-Return> O<Esc>
-nmap <Return> o<Esc>
-
-" normal mode keybinds
-nnoremap <C-e> 10<C-e>
-nnoremap <C-y> 10<C-y>
-nnoremap <leader>/ :nohl<CR>
-
-" visual mode keybinds
-vnoremap > >gv
-vnoremap < <gv
+" Folding
+set foldmethod=syntax
+set foldlevelstart=99

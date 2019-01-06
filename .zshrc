@@ -62,41 +62,43 @@ if [ "$(uname -s)" = Linux  ]; then
 	export TERM="xterm-256color"
 else	
 	alias ls='ls -G'
-	alias finder='open -a Finder ./'									 # opens current file/directory in Finder
-	alias out='tee ~/Desktop/termOut.txt'								 # pipe content to output file on desktop
+	alias finder='open -a Finder ./'									# opens current file/directory in Finder
+	alias out='tee ~/Desktop/termOut.txt'								# pipe content to output file on desktop
 fi
 
 tabs 4
 
 # bindings
 alias tree='tree -CA'
-alias wut='cat ~/.zshrc'												 # helpful
-alias ll='ls -lah'														 # long list shows all permissions and hidden files
-alias la='ls -ah'														 # list all hidden files human readable
-alias ..='cd ../'														 # go back 1 directory level
-alias ...='cd ../../'													 # go back 2 directory levels
-alias ....='cd ../../../'												 # go back 3 directory levels
+alias wut='cat ~/.zshrc'												# helpful
+alias ll='ls -lah'														# long list shows all permissions and hidden files
+alias la='ls -ah'														# list all hidden files human readable
+alias ltr='ls -lhtr'													# long list by time ascending
+alias lsr='ls -lhSr'													# long list by size ascending
+alias ..='cd ../'														# go back 1 directory level
+alias ...='cd ../../'													# go back 2 directory levels
+alias ....='cd ../../../'												# go back 3 directory levels
 alias .....='cd ../../../../'
-alias vedit='nvim ~/.file/.vimrc'										 # edit .vimrc
-alias cedit='nvim ~/.file/.vim/config/core.vim'							 # edit core.vim
-alias pedit='nvim ~/.file/.vim/config/plugins.vim'						 # edit plugins.vim
-alias zedit='vim ~/.file/.zshrc'										 # edit .bashrc
-alias zsource='source ~/.zshrc'											 # source .bashrc
-alias df='df -h'														 # human readable disk
+alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
+alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
+alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
+alias zedit='vim ~/.file/.zshrc'										# edit .bashrc
+alias zsource='source ~/.zshrc'											# source .bashrc
+alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
 
 # macOS specific
-alias finder='open -a Finder ./'										 # opens current file/directory in Finder
-alias out='tee ~/Desktop/termOut.txt'									 # pipe content to output file on desktop
+alias finder='open -a Finder ./'										# opens current file/directory in Finder
+alias out='tee ~/Desktop/termOut.txt'									# pipe content to output file on desktop
 
 # quality of life
-mkcd() {														 # makes directory and enters it
+mkcd() {																# makes directory and enters it
 	mkdir -p "$@" && cd "$@"
 }
-cdls() {														 # changes directory and lists contents 
+cdls() {																# changes directory and lists contents 
 	cd "$@" && ls           
 }
 cdll() {

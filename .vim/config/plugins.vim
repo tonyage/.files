@@ -22,7 +22,9 @@ if has('nvim')
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
 	let g:syntastic_check_on_wq=0
+	
 	call neomake#configure#automake('nrwi',500)
+	" call neomake#configure#automake('w')
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
 	let g:neomake_python_enabled_markers=['python', 'pylama']
@@ -34,6 +36,8 @@ if has('nvim')
 else
 	if has("termguicolors")
 		set termguicolors
+		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	endif
 
 	if (has("autocmd") && !has("gui_running"))
@@ -95,6 +99,17 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+nmap <F5> <Plug>(JavaComplete-Imports-AddMissing)
+imap <F5> <Plug>(JavaComplete-Imports-AddMissing)
+
+nmap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
+
 " youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
@@ -141,3 +156,7 @@ let g:syntastic_python_checkers=['python', 'pylama']
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 autocmd VimEnter * nested :TagbarOpen
+
+" Tabular
+nmap <leader>a= :Tab /=<CR>
+vmap <leader>a= :Tab /=<CR>
