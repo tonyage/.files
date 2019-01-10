@@ -1,9 +1,16 @@
+# Look for local zshrc -- throw OS/machine specfic stuff there
 if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi 
 
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Python
+eval "$(pyenv init -)"
 
 #  Path to vim files
 export MYVIMRC="$HOME/.vimrc"
