@@ -1,16 +1,21 @@
 # This is Git's per-user configuration file.
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.gitconfig_local 
+
 [format]
 	pretty = "%H %ci %ae %d %s"
+
 [color]
 	ui = auto
+
 [alias]
 	vis = !gitk --all
 	
 	s = status -s 
 	sb = status -sb
+
 [merge]
 	tool = kdiff3
+
 [merge "tool"]
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3

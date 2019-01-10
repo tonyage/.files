@@ -13,4 +13,6 @@ ln -s $HOME/.file/.vimrc $HOME/.vimrc
 ln -s $HOME/.file/.bashrc $HOME/.bashrc
 ln -s $HOME/.file/.ideavimrc $HOME/.ideavimrc
 ln -s $HOME/.file/.tmux.conf $HOME/.tmux.conf
-ln -s $HOME/.file/.config/powerline $HOME/.config/powerline 
+ln -s $HOME/.file/.config/powerline $HOME/.config/powerline
+ln -s $HOME/.file/.vim $HOME/.config/nvim
+ln -s $HOME/.file/.gitconfig $HOME/.gitconfig

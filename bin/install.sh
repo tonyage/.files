@@ -19,9 +19,8 @@ git submodule update
 ./symlink_rc.sh 
 
 cd ~/.file/.vim
-mkdir backup swap undo
+mkdir backup undo
 echo "creating backup directory ~/.file/.vim/backup"
-echo "creating swap directory ~/.file/.vim/swap"
 echo "creating undo directory ~/.file/.vim/undo"
 
 cd ~/.file/.vim/bundle/youcompleteme 

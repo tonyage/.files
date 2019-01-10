@@ -1,3 +1,7 @@
+if [ -f ~/.zshrc_local ]; then
+	source ~/.zshrc_local
+fi 
+
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
 
@@ -17,7 +21,7 @@ COMPLETION_WAITING_DOTS="true"
 
 POWERLEVEL9K_TIME_12HR=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
 POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
 POWERLEVEL9K_OS_ICON_FOREGROUND='069'
