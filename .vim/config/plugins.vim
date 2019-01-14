@@ -24,7 +24,7 @@ if has('nvim')
 	" :Neomake! - project marker
 	" :lwindow / :lopen
 	" :lprev / :lnext 
-	let g:airline_theme='violet'
+	let g:airline_theme='base16_spacemacs'
 else
 	if has("termguicolors")
 		set termguicolors

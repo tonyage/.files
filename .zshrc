@@ -6,8 +6,12 @@ fi
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
 
+# locale settings
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Vagrant default provider
+export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # Python
 eval "$(pyenv init -)"
@@ -59,6 +63,7 @@ plugins=(
 	python
 	screen
 	tmux
+	vagrant
 	web-search
 	zsh-256color
 	zsh-autopair
@@ -121,3 +126,4 @@ for file in ~/.file/shell-config/*.zsh; do
 done
 
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
