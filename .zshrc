@@ -1,5 +1,6 @@
 # Look for local zshrc -- throw OS/machine specfic stuff there
 if [ -f ~/.zshrc_local ]; then
+	echo "Sourcing local zshrc (if any)"
 	source ~/.zshrc_local
 fi 
 
@@ -8,9 +9,6 @@ export ZSH="$HOME/.file/oh-my-zsh"
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
-# Python
-eval "$(pyenv init -)"
 
 #  Path to vim files
 export MYVIMRC="$HOME/.vimrc"
@@ -59,6 +57,7 @@ plugins=(
 	python
 	screen
 	tmux
+	vagrant
 	web-search
 	zsh-256color
 	zsh-autopair
@@ -72,6 +71,8 @@ if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
 	export TERM="xterm-256color"
 else	
+	# Python
+	eval "$(pyenv init -)"
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
 	alias out='tee ~/Desktop/termOut.txt'								# pipe content to output file on desktop
@@ -117,7 +118,7 @@ cdll() {
 }
 
 for file in ~/.file/shell-config/*.zsh; do
-	. $file 
+	source $file 
 done
 
 export PATH="/usr/local/sbin:$PATH"
