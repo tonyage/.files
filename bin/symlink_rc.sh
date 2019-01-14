@@ -7,6 +7,7 @@ rm $HOME/.config/nvim
 
 rm -rf $HOME/.vim
 rm -rf $HOME/.config/powerline 
+mkdir $HOME/.config
 
 ln -s $HOME/.file/.vim $HOME/.vim
 ln -s $HOME/.file/.vim $HOME/.config/nvim

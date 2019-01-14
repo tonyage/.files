@@ -1,8 +1,3 @@
-# Look for local zshrc -- throw OS/machine specfic stuff there
-if [ -f ~/.zshrc_local ]; then
-	source ~/.zshrc_local
-fi 
-
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
 
@@ -20,8 +15,6 @@ eval "$(pyenv init -)"
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
 
-# make gradle work
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
 
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
@@ -77,6 +70,12 @@ if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
 	export TERM="xterm-256color"
 else	
+	# Python
+	eval "$(pyenv init -)"
+	
+	# make gradle work
+	export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
+	
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
 	alias out='tee ~/Desktop/termOut.txt'								# pipe content to output file on desktop
@@ -122,8 +121,14 @@ cdll() {
 }
 
 for file in ~/.file/shell-config/*.zsh; do
-	. $file 
+	source $file 
 done
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
+
+# Look for local zshrc -- throw OS/machine specfic stuff there
+if [ -f ~/.zshrc_local ]; then
+	echo "Sourcing local zshrc (if any)"
+	source ~/.zshrc_local
+fi 
