@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./font_install.sh
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	sudo apt install zsh	
 	mkdir -p ~/.local/share/fonts
@@ -17,6 +19,7 @@ git submodule init
 git submodule update
 
 ./symlink_rc.sh 
+./zsh_plugins.sh
 
 cd ~/.file/.vim
 mkdir backup undo
