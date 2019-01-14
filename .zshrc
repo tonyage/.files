@@ -1,9 +1,3 @@
-# Look for local zshrc -- throw OS/machine specfic stuff there
-if [ -f ~/.zshrc_local ]; then
-	echo "Sourcing local zshrc (if any)"
-	source ~/.zshrc_local
-fi 
-
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
 
@@ -14,8 +8,6 @@ export LC_ALL=en_US.UTF-8
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
 
-# make gradle work
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
 
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
@@ -73,6 +65,10 @@ if [ "$(uname -s)" = Linux  ]; then
 else	
 	# Python
 	eval "$(pyenv init -)"
+	
+	# make gradle work
+	export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
+	
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
 	alias out='tee ~/Desktop/termOut.txt'								# pipe content to output file on desktop
@@ -122,3 +118,9 @@ for file in ~/.file/shell-config/*.zsh; do
 done
 
 export PATH="/usr/local/sbin:$PATH"
+
+# Look for local zshrc -- throw OS/machine specfic stuff there
+if [ -f ~/.zshrc_local ]; then
+	echo "Sourcing local zshrc (if any)"
+	source ~/.zshrc_local
+fi 
