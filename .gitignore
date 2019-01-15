@@ -1,4 +1,6 @@
 ### macOS ###
 .DS_Store
 
+### vagrant ###
+.vagrant
 
