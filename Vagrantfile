@@ -52,10 +52,7 @@ apt-get -qy upgrade
 ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 # dotfile installation
-cd
-git clone http://github.com/tonyage/.file.git
-cd $HOME/.file/bin
-. install.sh
+git clone http://github.com/tonyage/.file.git /home/vagrant/.file
 
 touch ${MARKER}
 
