@@ -1,12 +1,11 @@
 Vagrant.configure("2") do |config|
-	config.vm.box = "ubuntu/xenial64"
-	config.vm.define "nttv-buildroot"
-	config.ssh.forward_agent = true
-
+	config.vm.box = "bento/ubuntu-16.04"
+	config.vm.define "vagrant-linux"
+		
 	config.vm.provider :virtualbox do |v, override|
 		v.memory = 1024 * 8
 		v.cpus = 6
-		v.name = "xenial-buildroot"
+		v.name = "xenial"
 
 		required_plugins = %w( vagrant-vbguest )
 		required_plugins.each do |plugin|
@@ -14,7 +13,7 @@ Vagrant.configure("2") do |config|
 		end
 	end
 	
-	config.vm.provider :virtualbox do |v|
+	config.vm.provider "virtualbox" do |v|
 		v.customize ["modifyvm", :id, "--usb", "on"]
 		v.customize ["modifyvm", :id, "--usbehci", "on"]
 	end
@@ -49,6 +48,8 @@ apt-get -qy autoremove
 apt-get -qy clean
 
 apt-get -qy upgrade
+
+ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 touch ${MARKER}
 
