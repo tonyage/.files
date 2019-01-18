@@ -40,7 +40,7 @@ add-apt-repository ppa:neovim-ppa/stable
 apt-get update
 
 apt-get install -qy bc binutils build-essential bzip2 bzr \
-	cmake cpio curl cvs g++ gcc git libncurses5-dev libncursesw5-dev \
+	cmake cpio curl cvs exuberant-ctags g++ gcc git libncurses5-dev libncursesw5-dev \
 	mercurial neovim python python-dev python3-dev \
 	rsync silversearcher-ag subversion unzip vim wget
 
