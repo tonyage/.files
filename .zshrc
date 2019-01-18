@@ -8,9 +8,6 @@ export LC_ALL=en_US.UTF-8
 # Vagrant default provider
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
-# Python
-eval "$(pyenv init -)"
-
 #  Path to vim files
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
@@ -70,9 +67,6 @@ if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
 	export TERM="xterm-256color"
 else	
-	# Python
-	eval "$(pyenv init -)"
-	
 	# make gradle work
 	export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
 	
