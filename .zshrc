@@ -72,7 +72,6 @@ else
 	
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
-	alias out='tee ~/Desktop/termOut.txt'								# pipe content to output file on desktop
 fi
 
 tabs 4
@@ -117,9 +116,6 @@ cdll() {
 for file in ~/.file/shell-config/*.zsh; do
 	source $file 
 done
-
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 # Look for local zshrc -- throw OS/machine specfic stuff there
 if [ -f ~/.zshrc_local ]; then
