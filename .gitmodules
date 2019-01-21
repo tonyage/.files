@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/vim-multiple-cursors"]
 	path = .vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule ".vim/bundle/vim-pony"]
+	path = .vim/bundle/vim-pony
+	url = https://github.com/jmcomets/vim-pony.git

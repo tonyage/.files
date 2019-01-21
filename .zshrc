@@ -119,6 +119,6 @@ done
 
 # Look for local zshrc -- throw OS/machine specfic stuff there
 if [ -f ~/.zshrc_local ]; then
-	echo "Sourcing local zshrc (if any)"
+	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
 fi 
