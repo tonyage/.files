@@ -34,18 +34,12 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/markdown-preview.vim"]
-	path = .vim/bundle/markdown-preview.vim
-	url = https://github.com/iamcco/markdown-preview.vim.git
 [submodule ".vim/bundle/neomake"]
 	path = .vim/bundle/neomake
 	url = https://github.com/neomake/neomake.git
 [submodule ".vim/bundle/indentLine"]
 	path = .vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule ".vim/bundle/vim-abolish"]
 	path = .vim/bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
@@ -58,3 +52,15 @@
 [submodule ".vim/bundle/vim-javacomplete2"]
 	path = .vim/bundle/vim-javacomplete2
 	url = https://github.com/artur-shaik/vim-javacomplete2.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/bundle/django-plus.vim"]
+	path = .vim/bundle/django-plus.vim
+	url = https://github.com/tweekmonster/django-plus.vim.git
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
