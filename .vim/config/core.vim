@@ -49,6 +49,7 @@ set autoindent
 set smartindent
 set backspace=indent,eol,start
 set pastetoggle=<F9>
+set clipboard+=unnamedplus
 
 " Folding
 set foldmethod=syntax

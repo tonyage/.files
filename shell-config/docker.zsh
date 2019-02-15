@@ -37,7 +37,7 @@ drip() { docker rm $(docker ps -a -q); }
 alias dripf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove all images
-drmi() { docker rmi $(docker images -q); }
+drmi() { docker rmi -f $(docker images -q); }
 
 # Dockerfile build, e.g., $dbu tcnksm/test 
 dbu() { docker build -t=$1 .; }

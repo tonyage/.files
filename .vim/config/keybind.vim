@@ -9,3 +9,7 @@ nnoremap <leader>/ :nohl<CR>
 " visual mode keybinds
 vnoremap > >gv
 vnoremap < <gv
+
+" copy-paste
+noremap <Leader>c "*y
+noremap <Leader>v "*p
