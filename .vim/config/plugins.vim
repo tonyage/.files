@@ -91,6 +91,10 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" vim-markdown
+let g:mkdp_auto_start=1
+
+
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
