@@ -1,12 +1,15 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-	sudo apt-get install -qy zsh	
+
+if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+	sudo apt-get install -qy neovim vim zsh curl tmux
 	mkdir -p ~/.local/share/fonts
-	cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+	
+elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
+	sudo pacman -S --noconfirm neovim vim zsh curl tmux
+
 elif [[ "$(uname)" == "Darwin" ]]; then 
-	brew install zsh 
-	git clone https://github.com/artofrawr/powerline-fonts.git ~/Documents/powerline-fonts 
+	brew install zsh curl tmux 
 fi
 
 export ZSH="$HOME/.file/oh-my-zsh"
@@ -16,20 +19,6 @@ chsh -s /bin/zsh
 
 git submodule init
 git submodule update
-
-if [ ! -f $HOME/.vimrc &&! -f $HOME/.zshrc && ! -f $HOME/.bashrc ]; then
-	ln -s $HOME/.file/.vimrc $HOME/.vimrc
-	ln -s $HOME/.file/.zshrc $HOME/.zshrc
-	ln -s $HOME/.file/.bashrc $HOME/.bashrc
-	ln -s $HOME/.file/.gitconfig $HOME/.gitconfig
-fi
-
-if [ ! -d $HOME/.vim && ! -d $HOME/.config ]; then
-	ln -s $HOME/.file/.vim $HOME/.vim
-	ln -s $HOME/.file/.vim $HOME/.config/nvim
-	ln -s $HOME/.file/.config/powerline $HOME/.config/powerline
-fi
-
 
 cd ~/.file/.vim
 mkdir backup undo
