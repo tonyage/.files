@@ -5,6 +5,10 @@ dotfiles=(.vim .vimrc .zshrc .gitconfig)
 
 mkdir ~/.config > /dev/null 2>&1
 
+for r in "${dotfiles[@]}"; do
+	rm -rf $HOME/$r
+done
+
 for d in "${dotfiles[@]}"; do
 	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 	if [ $d == ${dotfiles[0]} ]; then 
