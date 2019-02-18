@@ -1,1 +1,1 @@
-/Users/tdo/.file/.vim
+/home/tdo/.file/.vim
