@@ -10,6 +10,7 @@ elif [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 export ZSH="$HOME/.file/oh-my-zsh"
+rm -rf $HOME/.file/oh-my-zsh
 echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 
