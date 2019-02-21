@@ -1,14 +1,18 @@
 #!/bin/bash
 
 DIR="$HOME/.file"
-dotfiles=($DIR/.vim $DIR/.vimrc $DIR/.zshrc $DIR/.gitconfig)
+dotfiles=(.vim .vimrc .zshrc .gitconfig)
 
 mkdir ~/.config > /dev/null 2>&1
 
+for r in "${dotfiles[@]}"; do
+	rm -rf $HOME/$r
+done
+
 for d in "${dotfiles[@]}"; do
-	ln -s $d ~/$d > /dev/null 2>&1
+	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 	if [ $d == ${dotfiles[0]} ]; then 
-		ln -s $d ~/.config/nvim 2>&1
+		ln -s $DIR/$d ~/.config/nvim 2>&1
 	fi
 done
 
