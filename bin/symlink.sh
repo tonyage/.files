@@ -12,7 +12,7 @@ done
 for d in "${dotfiles[@]}"; do
 	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 	if [ $d == ${dotfiles[0]} ]; then 
-		ln -s $DIR/$d ~/.config/nvim 2>&1
+		ln -s $DIR/$d ~/.config/nvim > /dev/null 2>&1
 	fi
 done
 
