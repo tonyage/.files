@@ -31,6 +31,8 @@ POWERLEVEL9K_USER_FOREGROUND='153'
 POWERLEVEL9K_USER_BACKGROUND='195'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
+POWERLEVEL9K_TIME_FOREGROUND='black'
+POWERLEVEL9K_TIME_BACKGROUND='231'
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  %m.%d}"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -59,6 +61,7 @@ plugins=(
 	zsh-autopair
 	zsh-autosuggestions
 	zsh-syntax-highlighting 
+	history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,6 +104,9 @@ alias ENDCOMMENT='fi'
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
 alias out='tee ~/Desktop/termOut.txt'									# pipe content to output file on desktop
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # quality of life
 mkcd() {																# makes directory and enters it

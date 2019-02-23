@@ -21,14 +21,14 @@ symcheck() {
 	file=$1
 	if [ -L $file ]; then
 		if [ -e $file ]; then
-			echo "$file symlink is functional"
+			echo "${file##*/} symlink is functional"
 		else
-			echo "$file link broken"
+			echo "${file##*/} link broken"
 		fi
 	elif [ -e $file ]; then
 		echo "Not a valid symlink"
 	else 
-		echo "$file is missing"
+		echo "${file##*/} is missing"
 	fi
 }
 
