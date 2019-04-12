@@ -40,10 +40,6 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 plugins=(
-	if [ "$(uname -s)" = Darwin ]; then 
-		osx
-	fi
-	aterminal
 	autopep8
 	brew
 	colored-man-pages

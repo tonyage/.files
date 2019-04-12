@@ -4,11 +4,9 @@ if has('nvim')
 	colo space-vim-dark
 
 	" enables transparent background; disable for conventional spacemacs theme
-	if $TERM_PROGRAM =~ 'iTerm'
-		hi Normal ctermbg=NONE guibg=NONE
-		hi LineNr ctermbg=NONE guibg=NONE
-		hi SignColumn ctermbg=NONE guibg=NONE
-	endif
+	hi Normal ctermbg=NONE guibg=NONE
+	hi LineNr ctermbg=NONE guibg=NONE
+	hi SignColumn ctermbg=NONE guibg=NONE
 	
 
 	" neovim
