@@ -48,3 +48,5 @@ function cdls() {								# changes directory and lists contents
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

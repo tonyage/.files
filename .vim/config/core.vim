@@ -20,6 +20,8 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase 
+set tags=tags;/
+set rtp+=/usr/local/opt/fzf
 
 " vim directories
 set autochdir
@@ -38,6 +40,9 @@ set linebreak
 set cursorline
 set virtualedit=block
 set wildmode=list:longest,full 
+
+set lazyredraw
+set regexpengine=1
 
 " indents/formats
 set list listchars=tab:\|\ 

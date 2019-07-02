@@ -11,20 +11,23 @@ if has('nvim')
 	endif
 	
 
-	" neovim
+   " neovim
 	let g:syntastic_mode_map={'mode':'passive'}
 	let g:syntastic_check_on_wq=0
-	
-	call neomake#configure#automake('nrwi',500)
-	" call neomake#configure#automake('w')
+	"let g:neomake_python_pep8_exe='python3'
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
-	let g:neomake_python_enabled_markers=['python', 'pylama']
+	let g:neomake_python_enabled_markers=['pylint', 'python3']
+
+	call neomake#configure#automake('nrwi',500)
 	" :Neomake - file marker
 	" :Neomake! - project marker
 	" :lwindow / :lopen
 	" :lprev / :lnext 
-	let g:airline_theme='base16_spacemacs'
+	let g:airline_theme='onedark'
+
+	" neovim keybinds
+"	tnoremap <Esc> <C-\><C-n>
 else
 	if has("termguicolors")
 		set termguicolors
@@ -32,17 +35,17 @@ else
 		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	endif
 
-	if (has("autocmd") && !has("gui_running"))
-		augroup colors
-			autocmd!
-			let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
-			autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
-		augroup END
-	endif
+	"if (has("autocmd") && !has("gui_running"))
+	"	augroup colors
+	"		autocmd!
+	"		let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
+	"		autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
+	"	augroup END
+	"endif
 
-	colorscheme onedark
-	let g:airline_theme='onedark'
-	let g:onedark_termcolors=256
+	colorscheme molokai
+	"let :airline_theme='onedark'
+	"let g:onedark_termcolors=256
 endif
 
 " syntax highlighting font style 
@@ -93,7 +96,6 @@ let g:airline_symbols.linenr = ''
 
 " vim-markdown
 let g:mkdp_auto_start=1
-
 
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -152,20 +154,21 @@ let g:ctrlp_show_hidden=1
 set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=3
 let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['python', 'pylama', 'pylint']
+let g:syntastic_python_checkers=['python3', 'pylama', 'pylint', 'pep8']
 let g:syntastic_aggregate_errors=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=0
 
+" rainbow
+let g:rainbow_active=1
+
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
-autocmd VimEnter * nested :TagbarOpen
+"autocmd VimEnter * nested :TagbarOpen
 
 " Tabular
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>

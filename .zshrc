@@ -8,13 +8,19 @@ export LC_ALL=en_US.UTF-8
 # Vagrant default provider
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
-#  Path to vim files
+# Path to vim files
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
 
+# Path to go source
+export GOPATH="$HOME/Code/go"
+export GOBIN="$GOPATH/bin"
 
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
+
+# ctags
+alias ctags="/usr/local/bin/ctags"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -40,16 +46,13 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 plugins=(
-	if [ "$(uname -s)" = Darwin ]; then 
-		osx
-	fi
-	aterminal
 	autopep8
 	brew
 	colored-man-pages
 	docker
 	git
 	gradle
+	osx
 	pep8
 	pip
 	python
@@ -63,6 +66,8 @@ plugins=(
 	zsh-syntax-highlighting 
 	history-substring-search
 )
+
+export PATH="$GOBIN:/usr/local/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,10 +98,11 @@ alias .....='cd ../../../../'
 alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
-alias zedit='vim ~/.file/.zshrc'										# edit .bashrc
+alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
+alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
@@ -128,3 +134,5 @@ if [ -f ~/.zshrc_local ]; then
 	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
 fi 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

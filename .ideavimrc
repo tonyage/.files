@@ -1,3 +1,9 @@
 if filereadable(glob('~/.file/.vimrc'))
 	source ~/.file/.vimrc
 endif
+
+" Commands: ys, cs, ds, S
+set vim-surround
+
+" Commands: <A-n>, <A-x>, <A-p>, g<A-n>
+set vim-multiple-cursors
