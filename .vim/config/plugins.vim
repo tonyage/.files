@@ -1,6 +1,6 @@
-syntax on 
+syntax on
 
-if has('nvim') 
+if has('nvim')
 	colo space-vim-dark
 
 	" enables transparent background; disable for conventional spacemacs theme
@@ -9,25 +9,27 @@ if has('nvim')
 		hi LineNr ctermbg=NONE guibg=NONE
 		hi SignColumn ctermbg=NONE guibg=NONE
 	endif
-	
 
-   " neovim
+
+	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
 	let g:syntastic_check_on_wq=0
 	"let g:neomake_python_pep8_exe='python3'
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
-	let g:neomake_python_enabled_markers=['pylint', 'python3']
+	let g:neomake_python_enabled_markers=['python3']
 
 	call neomake#configure#automake('nrwi',500)
 	" :Neomake - file marker
 	" :Neomake! - project marker
 	" :lwindow / :lopen
-	" :lprev / :lnext 
+	" :lprev / :lnext
 	let g:airline_theme='onedark'
+	let g:loaded_python_provider=1
+	let g:python3_host_prog='/usr/local/bin/python3.7'
 
 	" neovim keybinds
-"	tnoremap <Esc> <C-\><C-n>
+	"tnoremap <Esc> <C-\><C-n>
 else
 	if has("termguicolors")
 		set termguicolors
@@ -43,12 +45,12 @@ else
 	"	augroup END
 	"endif
 
-	colorscheme molokai
-	"let :airline_theme='onedark'
-	"let g:onedark_termcolors=256
+	colorscheme badwolf
+	let g:airline_theme='badwolf'
+	let g:onedark_termcolors=256
 endif
 
-" syntax highlighting font style 
+" syntax highlighting font style
 hi Comment cterm=italic
 hi String cterm=italic gui=italic
 
@@ -119,27 +121,27 @@ autocmd FileType c nnoremap gd :YcmCompleter GoTo<CR>
 autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<CR>
 
 " NERDTree
-map <leader>r :NERDTreeToggle<CR>
+map <leader>q :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-	\ }
+			\ "Modified"  : "✹",
+			\ "Staged"    : "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"   : "➜",
+			\ "Unmerged"  : "═",
+			\ "Deleted"   : "✖",
+			\ "Dirty"     : "✗",
+			\ "Clean"     : "✔︎",
+			\ 'Ignored'   : '☒',
+			\ "Unknown"   : "?"
+			\ }
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDCommenter
-let g:NERDSpaceDelims=1			" Add spaces after comment delimters 
+let g:NERDSpaceDelims=1			" Add spaces after comment delimters
 let g:NERDCompactSexyComs=1		" Use compact syntax for prettifed multi-line comments
 let g:NERDDefaultAlign='left'	" Comments ignore code indentation
-let g:NERDCommentEmptyLines=1	
-let g:NERDTrimTrailingWhitespace=1 
+let g:NERDCommentEmptyLines=1
+let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
 
 " ctrl-p
@@ -151,12 +153,11 @@ endif
 let g:ctrlp_show_hidden=1
 
 " Syntastic
-set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=3
 let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['python3', 'pylama', 'pylint', 'pep8']
+let g:syntastic_python_checkers=['pep8']
 let g:syntastic_aggregate_errors=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
@@ -172,3 +173,13 @@ nmap <leader>t :TagbarToggle<CR>
 " Tabular
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
+
+set statusline^=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}
+
+call plug#begin('~/.file/.vim/bundle')
+
+	Plug 'Shougo/neco-vim'
+	Plug 'neoclide/coc-neco'
+	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+call plug#end()

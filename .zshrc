@@ -16,6 +16,15 @@ export VIMINIT="source $MYVIMRC"
 export GOPATH="$HOME/Code/go"
 export GOBIN="$GOPATH/bin"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$HOME/Code/flutter/bin:$PATH
+export flutterRoot=$HOME/Code/flutter
+export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
+
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
@@ -136,3 +145,5 @@ if [ -f ~/.zshrc_local ]; then
 fi 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
