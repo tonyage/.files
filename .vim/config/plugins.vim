@@ -8,6 +8,8 @@ if has('nvim')
 	hi LineNr ctermbg=NONE guibg=NONE
 	hi SignColumn ctermbg=NONE guibg=NONE
 	
+	let g:python3_host_prog='/usr/bin/python3.7'
+	let g:python_host_prog='/usr/bin/python2.7'
 
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
@@ -38,7 +40,7 @@ else
 		augroup END
 	endif
 
-	colorscheme onedark
+	colo onedark
 	let g:airline_theme='onedark'
 	let g:onedark_termcolors=256
 endif
@@ -104,16 +106,6 @@ imap <F5> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 
-" youcompleteme
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
-autocmd FileType c nnoremap gd :YcmCompleter GoTo<CR>
-autocmd FileType cpp nnoremap gd :YcmCompleter GoTo<CR>
-
 " NERDTree
 map <leader>r :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
@@ -147,7 +139,7 @@ endif
 let g:ctrlp_show_hidden=1
 
 " Syntastic
-set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()}
+set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_c_checkers=['make']
@@ -167,3 +159,12 @@ vmap <leader>a= :Tab /=<CR>
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
+
+call plug#begin('~/.file/.vim/bundle')
+
+	Plug 'Shougo/neco-vim'
+	Plug 'neoclide/coc-neco'
+	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+call plug#end()

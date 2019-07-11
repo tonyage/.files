@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/vim-airline-themes"]
 	path = .vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule ".vim/bundle/youcompleteme"]
-	path = .vim/bundle/youcompleteme
-	url = https://github.com/valloric/youcompleteme.git
 [submodule ".vim/bundle/auto-pairs"]
 	path = .vim/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
@@ -55,9 +52,18 @@
 [submodule ".vim/bundle/vim-commentary"]
 	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/bundle/django-plus.vim"]
-	path = .vim/bundle/django-plus.vim
-	url = https://github.com/tweekmonster/django-plus.vim.git
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule ".vim/bundle/coc.nvim"]
+	path = .vim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule ".vim/bundle/coc-neco"]
+	path = .vim/bundle/coc-neco
+	url = https://github.com/neoclide/coc-neco.git
+[submodule ".vim/bundle/coc-neco"]
+	path = .vim/bundle/coc-neco
+	url = https://github.com/neoclide/coc-neco.git
+[submodule ".vim/bundle/semshi"]
+	path = .vim/bundle/semshi
+	url = https://github.com/numirias/semshi.git
