@@ -8,6 +8,7 @@ if has('nvim')
 	hi LineNr ctermbg=NONE guibg=NONE
 	hi SignColumn ctermbg=NONE guibg=NONE
 	
+	let g:loaded_python_provider=1
 	let g:python3_host_prog='/usr/bin/python3.7'
 	let g:python_host_prog='/usr/bin/python2.7'
 
@@ -159,6 +160,9 @@ vmap <leader>a= :Tab /=<CR>
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
+
+" rainbow
+let g:rainbow_active=1
 
 call plug#begin('~/.file/.vim/bundle')
 

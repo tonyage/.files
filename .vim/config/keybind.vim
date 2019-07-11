@@ -14,6 +14,9 @@ vnoremap < <gv
 noremap <Leader>c "*y
 noremap <Leader>v "*p
 
+" vim-autoformat
+noremap <F3> :AutoFormat<CR>
+
 " coc tab mappting
 " if pop up menu is visible, select first item list otherwise check for
 " backspace and re-open autocomplete list, else if item is expandable or
@@ -37,3 +40,7 @@ imap <C-j> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next='<TAB>'
 let g:coc_snippet_prev='<S-TAB>'
 
+" semshi
+nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <TAB> :Semshi goto name next<CR>
+nmap <silent> <S-TAB> :Semshi goto name prev<CR>
