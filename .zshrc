@@ -21,7 +21,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
 
 POWERLEVEL9K_TIME_12HR=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user dir_writable dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
 POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
@@ -89,7 +89,7 @@ alias .....='cd ../../../../'
 alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
-alias zedit='vim ~/.file/.zshrc'										# edit .bashrc
+alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'

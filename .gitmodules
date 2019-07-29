@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/semshi"]
 	path = .vim/bundle/semshi
 	url = https://github.com/numirias/semshi.git
+[submodule "vim-autoformat"]
+	path = vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git

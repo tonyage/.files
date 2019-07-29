@@ -20,12 +20,12 @@ if has('nvim')
 	" call neomake#configure#automake('w')
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
-	let g:neomake_python_enabled_markers=['python', 'pylama']
+	let g:neomake_python_enabled_markers=['python3', 'flake8']
 	" :Neomake - file marker
 	" :Neomake! - project marker
 	" :lwindow / :lopen
 	" :lprev / :lnext 
-	let g:airline_theme='base16_spacemacs'
+	let g:airline_theme='onedark'
 else
 	if has("termguicolors")
 		set termguicolors
@@ -144,15 +144,25 @@ set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusli
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['python', 'pylama', 'pylint']
+let g:syntastic_python_checkers=['python3']
 let g:syntastic_aggregate_errors=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_enable_signs=0
 
+function Py2()
+	let g:syntastic_python_python_exec='/usr/bin/python2.7'
+endfunction
+
+function Py3()
+	let g:syntastic_python_python_exec='/usr/bin/python3.7'
+endfunction
+
+call Py3()
+
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
-autocmd VimEnter * nested :TagbarOpen
+"autocmd VimEnter * nested :TagbarOpen
 
 " Tabular
 nmap <leader>a= :Tab /=<CR>
@@ -170,5 +180,6 @@ call plug#begin('~/.file/.vim/bundle')
 	Plug 'neoclide/coc-neco'
 	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+	Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
