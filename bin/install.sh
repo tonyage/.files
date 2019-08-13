@@ -6,7 +6,11 @@ input=${ans,}
 if [[ "$input" == "zsh" ]]; then
 	if [[ "$(uname)" == "Linux" ]]; then
 		if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-			sudo apt-get install -qy zsh curl tmux
+			sudo apt-get install -qy zsh curl tmux software-properties-commons
+			sudo add-apt-repository ppa:neovim-ppa/stable
+			sudo apt-get update
+			sudo apt-get uinstall -qy neovim
+			sudo apt-get install python3-dev python3-pip
 			mkdir -p ~/.local/share/fonts
 		elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
 			sudo pacman -S --noconfirm zsh curl tmux
@@ -97,17 +101,4 @@ fi
 	printf "creating backup directory ~/.file/.vim/backup\n"
 	printf "creating undo directory ~/.file/.vim/undo\n"
 
-	cd bundle/youcompleteme
-
-	MARKER="$HOME/.file/.vim/bundle/youcompleteme/ycm_setup_marker"
-
-	if [ -f ${MARKER} ]; then
-		exit 0
-	fi
-
-	git submodule update --init --recursive 
-	python3 install.py --clang-completer
-	printf "youcompleteme submodule updated and installed.\n"
-
-	touch ${MARKER}
 	popd > /dev/null

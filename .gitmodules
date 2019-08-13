@@ -76,6 +76,9 @@
 [submodule ".vim/bundle/vim-flake8"]
 	path = .vim/bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
-[submodule "coc-neco"]
-	path = coc-neco
+[submodule "./vim/bundle/coc-neco"]
+	path = .vim/bundle/coc-neco
 	url = https://github.com/neoclide/coc-neco.git
+[submodule "./vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode.git
