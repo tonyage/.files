@@ -79,3 +79,6 @@
 [submodule ".vim/vim-fish"]
 	path = .vim/vim-fish
 	url = https://github.com/dag/vim-fish.git
+[submodule "neco-vim"]
+	path = neco-vim
+	url = https://github.com/Shougo/neco-vim.git
