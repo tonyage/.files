@@ -17,19 +17,22 @@ noremap <Leader>v "*p
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
 
-" coc tab mappting
+" coc tab mapping
 " if pop up menu is visible, select first item list otherwise check for
 " backspace and re-open autocomplete list, else if item is expandable or
 " jumpable send rpc request to generate snippet and jump to it else refresh
 " list
+"inoremap <silent><expr> <TAB>
+"			\ pumvisible() ? coc#_select_confirm():
+"			\ <SID>check_back_space() ? "\<TAB>" :
+"			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"			\ coc#refresh()
+"
 inoremap <silent><expr> <TAB>
-			\ pumvisible() ? coc#_select_confirm():
+			\ pumvisible() ? "\<C-n>":
 			\ <SID>check_back_space() ? "\<TAB>" :
-			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 			\ coc#refresh()
 
-inoremap <silent><expr> <S-TAB>
-			\pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 function! s:check_back_space() abort
 	let col = col('.') - 1

@@ -25,8 +25,9 @@ if has('nvim')
 	" :lwindow / :lopen
 	" :lprev / :lnext
 	let g:airline_theme='onedark'
-	let g:loaded_python_provider=1
-	let g:python3_host_prog='/usr/local/bin/python3.7'
+
+	let g:python_host_prog='/Users/tdo/.pyenv/versions/py2nvim/bin/python'
+	let g:python3_host_prog='/Users/tdo/.pyenv/versions/py3nvim/bin/python3'
 
 	" neovim keybinds
 	"tnoremap <Esc> <C-\><C-n>
@@ -164,7 +165,11 @@ nmap <leader>t :TagbarToggle<CR>
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
 
-set statusline^=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}
+" vim-autoformat
+let g:formatter_yapf_style = 'google'
+
+"set statusline^=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}%{get(b:, 'coc_current_fucntion', '')}
+set statusline^=%{SyntasticStatuslineFlag()},%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
 
 call plug#begin('~/.file/.vim/bundle')
 

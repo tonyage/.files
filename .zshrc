@@ -16,10 +16,18 @@ export VIMINIT="source $MYVIMRC"
 export GOPATH="$HOME/Code/go"
 export GOBIN="$GOPATH/bin"
 
+# pyenv conf
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH=$HOME/Code/flutter/bin:$PATH
-export flutterRoot=$HOME/Code/flutter
-export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
+export PATH="$HOME/Code/flutter/bin:$PATH"
+export flutterRoot="$HOME/Code/flutter"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
@@ -36,7 +44,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
 
 POWERLEVEL9K_TIME_12HR=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user dir_writable dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
 POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
@@ -115,6 +123,10 @@ alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
+
+# pyenv
+alias pyenv2='pyenv activate py2nvim'
+alias pyenv3='pyenv activate py3nvim'
 
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
