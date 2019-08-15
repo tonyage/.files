@@ -93,6 +93,7 @@ alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
+alias pyenv3='pyenv activate pynvim3'
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
@@ -124,3 +125,7 @@ if [ -f ~/.zshrc_local ]; then
 	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
 fi 
+
+export PATH="/home/tdo/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
