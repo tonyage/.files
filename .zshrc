@@ -119,7 +119,11 @@ alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
+<<<<<<< HEAD
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
+=======
+alias pyenv3='pyenv activate pynvim3'
+>>>>>>> 6c8611ab1533fe6abf581225c10dc27bc5859f10
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
@@ -159,3 +163,6 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/home/tdo/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
