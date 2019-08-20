@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
 	config.vm.provider :virtualbox do |v, override|
 		v.memory = 1024 * 8
 		v.cpus = 6
-		v.name = "xenial-vagrant"
+		v.name = "bionic-vagrant"
 
 		required_plugins = %w( vagrant-vbguest vagrant-disksize )
 		_retry = false
@@ -37,8 +37,6 @@ if [ -f '${MARKER}' ]; then
 	exit 0
 fi
 
-dpkg --add-architecture i386
-
 ############################################################
 #
 # neovim installation
@@ -58,7 +56,7 @@ apt-get update
 
 apt-get install -qy bc binutils build-essential bzip2 bzr \
 	cmake cpio curl cvs exuberant-ctags g++ gcc git libncurses5-dev libncursesw5-dev \
-	mercurial neovim python python-dev python3-dev \
+	mercurial neovim python python-dev python3-dev python-pip python3-pip \
 	rsync silversearcher-ag subversion tree unzip vim wget
 
 ############################################################
@@ -73,7 +71,7 @@ apt-get install -qy autoconf bison flex texinfo gawk gcj-jdk \
 apt-get -qy autoremove
 apt-get -qy clean
 
-apt-get -qy upgrade
+DEBIAN_FRONTEND= apt-get -qyo Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 
 ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
 
@@ -83,7 +81,7 @@ ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
 #
 ############################################################
 
-echo "POWERLEVEL9K_CUSTOM_OS_ICON="\"echo -n '\'\uf30c''\""
+echo "POWERLEVEL9K_CUSTOM_OS_ICON="\"echo -n ''\'\\uf30c''\'\""
         \nPOWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND='069'
         \nPOWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND='231'
 		\nPOWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon root_indicator user dir_writable dir vcs)" > /home/vagrant/.zshrc_local

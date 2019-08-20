@@ -55,30 +55,27 @@
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/coc.nvim"]
-	path = .vim/bundle/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-[submodule ".vim/bundle/coc-neco"]
-	path = .vim/bundle/coc-neco
-	url = https://github.com/neoclide/coc-neco.git
+[submodule ".vim/bundle/vim-go"]
+	path = .vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/bundle/vim-fish"]
+	path = .vim/bundle/vim-fish
+	url = https://github.com/dag/vim-fish.git
 [submodule ".vim/bundle/python-mode"]
 	path = .vim/bundle/python-mode
 	url = https://github.com/python-mode/python-mode
-[submodule ".vim/bundle/semshi"]
-	path = .vim/bundle/semshi
-	url = https://github.com/numirias/semshi.git
-[submodule "vim-autoformat"]
-	path = vim-autoformat
+[submodule ".vim/bundle/coc.nvim"]
+	path = .vim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule ".vim/bundle/vim-autoformat"]
+	path = .vim/bundle/vim-autoformat
 	url = https://github.com/Chiel92/vim-autoformat.git
-[submodule ".vim/bundle/coc-neco"]
+[submodule ".vim/bundle/vim-flake8"]
+	path = .vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
+[submodule "./vim/bundle/coc-neco"]
 	path = .vim/bundle/coc-neco
 	url = https://github.com/neoclide/coc-neco.git
-[submodule ".vim/vim-go"]
-	path = .vim/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/vim-fish"]
-	path = .vim/vim-fish
-	url = https://github.com/dag/vim-fish.git
-[submodule "neco-vim"]
-	path = neco-vim
-	url = https://github.com/Shougo/neco-vim.git
+[submodule "./vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode.git

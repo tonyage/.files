@@ -1,6 +1,6 @@
-syntax on 
+syntax on
 
-if has('nvim') 
+if has('nvim')
 	colo space-vim-dark
 
 	" enables transparent background; disable for conventional spacemacs theme
@@ -15,9 +15,7 @@ if has('nvim')
 	" neovim
 	let g:syntastic_mode_map={'mode':'passive'}
 	let g:syntastic_check_on_wq=0
-	
-	call neomake#configure#automake('nrwi',500)
-	" call neomake#configure#automake('w')
+	"let g:neomake_python_pep8_exe='python3'
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
 	let g:neomake_python_enabled_markers=['python3', 'flake8']
@@ -26,6 +24,20 @@ if has('nvim')
 	" :lwindow / :lopen
 	" :lprev / :lnext 
 	let g:airline_theme='onedark'
+	let g:neomake_python_enabled_markers=['python3']
+
+	call neomake#configure#automake('nrwi',500)
+	" :Neomake - file marker
+	" :Neomake! - project marker
+	" :lwindow / :lopen
+	" :lprev / :lnext
+	let g:airline_theme='onedark'
+
+	let g:python_host_prog='/Users/tdo/.pyenv/versions/py2nvim/bin/python'
+	let g:python3_host_prog='/Users/tdo/.pyenv/versions/py3nvim/bin/python3'
+
+	" neovim keybinds
+	"tnoremap <Esc> <C-\><C-n>
 else
 	if has("termguicolors")
 		set termguicolors
@@ -33,20 +45,20 @@ else
 		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	endif
 
-	if (has("autocmd") && !has("gui_running"))
-		augroup colors
-			autocmd!
-			let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
-			autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
-		augroup END
-	endif
+	"if (has("autocmd") && !has("gui_running"))
+	"	augroup colors
+	"		autocmd!
+	"		let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
+	"		autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
+	"	augroup END
+	"endif
 
 	colo onedark
 	let g:airline_theme='onedark'
 	let g:onedark_termcolors=256
 endif
 
-" syntax highlighting font style 
+" syntax highlighting font style
 hi Comment cterm=italic
 hi String cterm=italic gui=italic
 
@@ -95,7 +107,6 @@ let g:airline_symbols.linenr = ''
 " vim-markdown
 let g:mkdp_auto_start=1
 
-
 " javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
@@ -108,27 +119,27 @@ nmap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " NERDTree
-map <leader>r :NERDTreeToggle<CR>
+map <leader>q :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-	\ }
+			\ "Modified"  : "✹",
+			\ "Staged"    : "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"   : "➜",
+			\ "Unmerged"  : "═",
+			\ "Deleted"   : "✖",
+			\ "Dirty"     : "✗",
+			\ "Clean"     : "✔︎",
+			\ 'Ignored'   : '☒',
+			\ "Unknown"   : "?"
+			\ }
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDCommenter
-let g:NERDSpaceDelims=1			" Add spaces after comment delimters 
+let g:NERDSpaceDelims=1			" Add spaces after comment delimters
 let g:NERDCompactSexyComs=1		" Use compact syntax for prettifed multi-line comments
 let g:NERDDefaultAlign='left'	" Comments ignore code indentation
-let g:NERDCommentEmptyLines=1	
-let g:NERDTrimTrailingWhitespace=1 
+let g:NERDCommentEmptyLines=1
+let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
 
 " ctrl-p
@@ -143,8 +154,10 @@ let g:ctrlp_show_hidden=1
 set statusline+=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=3
 let g:syntastic_c_checkers=['make']
 let g:syntastic_python_checkers=['python3']
+let g:syntastic_python_checkers=['pep8']
 let g:syntastic_aggregate_errors=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
@@ -160,6 +173,9 @@ endfunction
 
 call Py3()
 
+" rainbow
+let g:rainbow_active=1
+
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 "autocmd VimEnter * nested :TagbarOpen
@@ -168,11 +184,11 @@ nmap <leader>t :TagbarToggle<CR>
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
 
-noremap <Up> <NOP>
-noremap <Down> <NOP>
+" vim-autoformat
+let g:formatter_yapf_style = 'google'
 
-" rainbow
-let g:rainbow_active=1
+"set statusline^=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}%{get(b:, 'coc_current_fucntion', '')}
+set statusline^=%{SyntasticStatuslineFlag()},%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
 
 call plug#begin('~/.file/.vim/bundle')
 

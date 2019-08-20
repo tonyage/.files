@@ -8,13 +8,36 @@ export LC_ALL=en_US.UTF-8
 # Vagrant default provider
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
-#  Path to vim files
+# Path to vim files
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
 
+# Path to go source
+export GOPATH="$HOME/Code/go"
+export GOBIN="$GOPATH/bin"
+
+# pyenv conf
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
+export PATH="$HOME/Code/flutter/bin:$PATH"
+export flutterRoot="$HOME/Code/flutter"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
 
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
+
+# ctags
+alias ctags="/usr/local/bin/ctags"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -46,6 +69,7 @@ plugins=(
 	docker
 	git
 	gradle
+	osx
 	pep8
 	pip
 	python
@@ -59,6 +83,8 @@ plugins=(
 	zsh-syntax-highlighting 
 	history-substring-search
 )
+
+export PATH="$GOBIN:/usr/local/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,9 +119,14 @@ alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
+alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
+
+# pyenv
+alias pyenv2='pyenv activate py2nvim'
+alias pyenv3='pyenv activate py3nvim'
 
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
@@ -124,3 +155,7 @@ if [ -f ~/.zshrc_local ]; then
 	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
 fi 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

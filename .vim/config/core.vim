@@ -17,6 +17,8 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase 
+set tags=tags;/
+set rtp+=/usr/local/opt/fzf
 
 " vim directories
 set autochdir
@@ -36,6 +38,9 @@ set cursorline
 set virtualedit=block
 set wildmode=list:longest,full 
 
+set lazyredraw
+set regexpengine=1
+
 " indents/formats
 set list listchars=tab:\|\ 
 set encoding=utf-8
@@ -47,6 +52,8 @@ set smartindent
 set backspace=indent,eol,start
 set pastetoggle=<F9>
 set clipboard+=unnamedplus
+set cmdheight=2
+set shortmess+=c
 
 " Folding
 set foldmethod=syntax

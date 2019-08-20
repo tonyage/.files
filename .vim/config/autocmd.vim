@@ -13,4 +13,4 @@ augroup END
 
 " pretty print json
 autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
-autocmd FileType json syntax match Comment +\/\/./$+
+autocmd FileType json syntax match Comment +\/\/.\+$+
