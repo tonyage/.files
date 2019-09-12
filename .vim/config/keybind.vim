@@ -1,10 +1,10 @@
 """" normal mode keybinds
 nmap <leader>e :Errors<CR>	" list errors
+nnoremap <leader>/ :nohl<CR>
 
 " moving around
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
-nnoremap <leader>/ :nohl<CR>
 
 " visual mode keybinds
 vnoremap > >gv
@@ -14,8 +14,16 @@ vnoremap < <gv
 noremap <Leader>c "*y
 noremap <Leader>v "*p
 
+" pane navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
+
+cmap w!! w !sudo tee %
 
 " coc tab mapping
 " if pop up menu is visible, select first item list otherwise check for
@@ -33,6 +41,8 @@ inoremap <silent><expr> <TAB>
 			\ <SID>check_back_space() ? "\<TAB>" :
 			\ coc#refresh()
 
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>u <Plug>(coc-references)
 
 function! s:check_back_space() abort
 	let col = col('.') - 1

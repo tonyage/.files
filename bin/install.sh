@@ -15,8 +15,8 @@ if [[ "$input" == "zsh" ]]; then
 		elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
 			sudo pacman -S --noconfirm zsh curl tmux
 		fi
-	elif [[ "$(uname)" == "Darwin" ]]; then 
-		if [ ! -f "$(which brew)" ]; then 
+	elif [[ "$(uname)" == "Darwin" ]]; then
+		if [ ! -f "$(which brew)" ]; then
 			brew install zsh curl tmux
 		fi
 	fi
@@ -29,16 +29,16 @@ if [[ "$input" == "zsh" ]]; then
 	fi
 
 
-	################################################################################
-	#
-	# oh-my-zsh plugins
-	#
-	################################################################################
+################################################################################
+#
+# oh-my-zsh plugins
+#
+################################################################################
 
-	urls=("https://github.com/zsh-users/zsh-syntax-highlighting.git" 
-			"https://github.com/chrissicool/zsh-256color" 
-			"https://github.com/zsh-users/zsh-autosuggestions" 
-			"https://github.com/hlissner/zsh-autopair" 
+	urls=("https://github.com/zsh-users/zsh-syntax-highlighting.git"
+			"https://github.com/chrissicool/zsh-256color"
+			"https://github.com/zsh-users/zsh-autosuggestions"
+			"https://github.com/hlissner/zsh-autopair"
 			"https://github.com/zsh-users/zsh-history-substring-search.git"
 			"https://github.com/bhilburn/powerlevel9k.git")
 
@@ -52,7 +52,7 @@ if [[ "$input" == "zsh" ]]; then
 			git clone $url
 			printf "${url##*/} is installed\n"
 			if [ $url == ${urls[5]} ]; then
-				pushd $ZSH/custom/themes 
+				pushd $ZSH/custom/themes
 				git clone $url
 				printf "${url##*/} is installed\n"
 				popd
@@ -69,25 +69,25 @@ elif [[ "$input" == "fish" ]]; then
 			sudo apt-get update
 			sudo apt-get install -qy fish tmux
 			mkdir -p ~/.local/share/fonts
-	elif [[ "$(uname)" == "Darwin" ]]; then 
-		if [ ! -f "$(which brew)" ]; then 
+	elif [[ "$(uname)" == "Darwin" ]]; then
+		if [ ! -f "$(which brew)" ]; then
 			brew install fish curl tmux
 		fi
 	fi
 
 	export FISH="$HOME/.file/oh-my-fish"
 
-	if [ ! -d "$FISH" ]; then 
+	if [ ! -d "$FISH" ]; then
 		echo 'y' | curl -L https://get.oh-my.fish | fish
 		echo /usr/local/bin/fish | sudo tee -a /etc/shells
 		chsh -s /usr/local/bin/fish
 fi
 
-	################################################################################
-	#
-	# (neo)vim plugins
-	#
-	################################################################################
+################################################################################
+#
+# (neo)vim plugins
+#
+################################################################################
 	git submodule init
 	git submodule update
 

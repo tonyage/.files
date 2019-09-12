@@ -12,9 +12,6 @@ if has('nvim')
 
 
 	" neovim
-	let g:syntastic_mode_map={'mode':'passive'}
-	let g:syntastic_check_on_wq=0
-	"let g:neomake_python_pep8_exe='python3'
 	let g:neomake_open_list=2
 	let g:neomake_list_height=10
 	let g:neomake_python_enabled_markers=['python3']
@@ -51,11 +48,14 @@ else
 	let g:onedark_termcolors=256
 endif
 
+let g:indentLine_char = '|'
+
 " syntax highlighting font style
 hi Comment cterm=italic
 hi String cterm=italic gui=italic
 
 " vim-airline
+let g:airline_extensions = ['branch', 'hunks', 'coc']
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline_powerline_fonts=1
@@ -112,7 +112,8 @@ nmap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F6> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " NERDTree
-map <leader>q :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeIndicatorMapCustom = {
 			\ "Modified"  : "✹",
 			\ "Staged"    : "✚",
@@ -125,6 +126,7 @@ let g:NERDTreeIndicatorMapCustom = {
 			\ 'Ignored'   : '☒',
 			\ "Unknown"   : "?"
 			\ }
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDCommenter
@@ -132,8 +134,12 @@ let g:NERDSpaceDelims=1			" Add spaces after comment delimters
 let g:NERDCompactSexyComs=1		" Use compact syntax for prettifed multi-line comments
 let g:NERDDefaultAlign='left'	" Comments ignore code indentation
 let g:NERDCommentEmptyLines=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1       " Remove help text from NERDTree
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDToggleCheckAllLines=1
+let g:NERDTreeStatusline=''
+let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
 
 " ctrl-p
 if executable('ag')
@@ -142,17 +148,6 @@ if executable('ag')
 	let g:ctrlp_use_caching=0
 endif
 let g:ctrlp_show_hidden=1
-
-" Syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=3
-let g:syntastic_c_checkers=['make']
-let g:syntastic_python_checkers=['pep8']
-let g:syntastic_aggregate_errors=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_enable_signs=0
 
 " rainbow
 let g:rainbow_active=1
@@ -165,17 +160,37 @@ nmap <leader>t :TagbarToggle<CR>
 nmap <leader>a= :Tab /=<CR>
 vmap <leader>a= :Tab /=<CR>
 
+" vim-better-whitespace
+nmap <leader>s :StripWhitespace<CR>
+let g:show_spaces_that_precede_tabs=1
+let g:better_whitespace_skip_empty_lines=1
+
 " vim-autoformat
 let g:formatter_yapf_style = 'google'
 
-"set statusline^=%#warningmsg#,%{SyntasticStatuslineFlag()},%*,%{FugitiveStatusline()},%{coc#status()}%{get(b:, 'coc_current_fucntion', '')}
 set statusline^=%{SyntasticStatuslineFlag()},%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
+
+" vim-devicons
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+" echodoc
+let g:echodoc#enable_at_startup=1
 
 call plug#begin('~/.file/.vim/bundle')
 
 	Plug 'Shougo/neco-vim'
+	Plug 'Shougo/echodoc.vim'
+
 	Plug 'neoclide/coc-neco'
 	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'easymotion/vim-easymotion'
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'ryanoasis/vim-devicons'
 
 call plug#end()

@@ -3,14 +3,13 @@ execute pathogen#helptags()
 let mapleader=","
 
 filetype plugin indent on
-syntax enable 
+syntax enable
 set nocompatible
 
 if has('nvim')
 	if has('termguicolors')
 		set termguicolors
 	endif
-	"let g:enable_ycm_at_startup=1
 endif
 
 " Search stuff
@@ -19,7 +18,7 @@ set path+=**
 set incsearch
 set hlsearch
 set ignorecase
-set smartcase 
+set smartcase
 set tags=tags;/
 set rtp+=/usr/local/opt/fzf
 
@@ -39,14 +38,15 @@ set showmatch
 set linebreak
 set cursorline
 set virtualedit=block
-set wildmode=list:longest,full 
+set wildmode=list:longest,full
 
 set lazyredraw
 set regexpengine=1
 
 " indents/formats
-set list listchars=tab:\|\ 
+set list listchars=tab:\|\
 set encoding=utf-8
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -55,7 +55,7 @@ set smartindent
 set backspace=indent,eol,start
 set pastetoggle=<F9>
 set clipboard+=unnamedplus
-set cmdheight=2
+set cmdheight=1
 set shortmess+=c
 
 " Folding
