@@ -21,10 +21,12 @@ set ignorecase
 set smartcase
 set tags=tags;/
 set rtp+=/usr/local/opt/fzf
+set wildmenu
+set wildmode=list:longest,full
 
 " vim directories
 set autochdir
-set backupdir=~/.vim/backup//
+set nobackup
 set swapfile!
 set undodir=~/.vim/undo//
 
@@ -33,29 +35,32 @@ set ruler
 set hidden
 set number
 set showcmd
-set wildmenu
 set showmatch
 set linebreak
 set cursorline
+set cursorcolumn
 set virtualedit=block
-set wildmode=list:longest,full
+
+set scrolljump=5
+set scrolloff=3
 
 set lazyredraw
 set regexpengine=1
 
 " indents/formats
-set list listchars=tab:\|\
+set list listchars=tab:\|\ ,trail:*,extends:#,nbsp:.
 set encoding=utf-8
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
+set signcolumn=yes
 set smartindent
 set backspace=indent,eol,start
 set pastetoggle=<F9>
 set clipboard+=unnamedplus
-set cmdheight=1
+set cmdheight=2
 set shortmess+=c
 
 " Folding

@@ -116,6 +116,7 @@ alias .....='cd ../../../../'
 alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
+alias kedit='nvim ~/.file/.vim/config/keybind.vim'
 alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
@@ -148,7 +149,7 @@ cdll() {
 	cd "$@" && ll
 }
 
-for file in ~/.file/shell-config/*.zsh; do
+for file in ~/.file/zsh_config/*.zsh; do
 	source $file
 done
 
@@ -164,4 +165,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

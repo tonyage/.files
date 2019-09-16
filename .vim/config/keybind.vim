@@ -25,6 +25,8 @@ noremap <F3> :Autoformat<CR>
 
 cmap w!! w !sudo tee %
 
+nnoremap <silent> <space>c :<C-u>CocList diagnostics<CR>
+
 " coc tab mapping
 " if pop up menu is visible, select first item list otherwise check for
 " backspace and re-open autocomplete list, else if item is expandable or
