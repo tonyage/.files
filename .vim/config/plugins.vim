@@ -1,4 +1,5 @@
 syntax on
+syntax enable
 
 if has('nvim')
 	let g:airline_theme='onedark'
@@ -34,6 +35,12 @@ else
 	let g:airline_theme='badwolf'
 	let g:onedark_termcolors=256
 endif
+
+" ale
+let b:ale_fixers = {
+    \ 'javascript': ['prettier', 'eslint'],
+    \ 'python': ['pylint']
+    \ }
 
 " syntax highlighting font style
 hi Comment cterm=italic

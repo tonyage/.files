@@ -117,6 +117,7 @@ alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
 alias kedit='nvim ~/.file/.vim/config/keybind.vim'
+alias aedit='nvim ~/.file/.vim/config/autocmd.vim'
 alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk

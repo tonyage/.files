@@ -23,5 +23,8 @@ augroup END
 
 " pretty print json
 autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
-
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" yaml
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
