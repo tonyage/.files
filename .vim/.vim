@@ -1,1 +1,0 @@
-/home/tdo/.file/.vim
