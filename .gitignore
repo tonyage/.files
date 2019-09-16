@@ -4,6 +4,13 @@
 ### vagrant ###
 .vagrant
 
+### vim-plugins ###
+.vim/bundle/
+.vim/.netrwhist
+.vim/sessions/
+
+### oh-my-zsh ###
+oh-my-zsh/
 
 # Created by https://www.gitignore.io/api/tags,python
 # Edit at https://www.gitignore.io/?templates=tags,python
