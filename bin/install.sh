@@ -88,17 +88,11 @@ fi
 # (neo)vim plugins
 #
 ################################################################################
-	git submodule init
-	git submodule update
-
 	printf "Installing symlinks...\n"
 	/bin/bash symlink.sh
 	printf "Remember to set your patched font.\n"
 
 	pushd $HOME/.file/.vim > /dev/null
-
-	mkdir backup undo > /dev/null 2>&1
-	printf "creating backup directory ~/.file/.vim/backup\n"
-	printf "creating undo directory ~/.file/.vim/undo\n"
+    printf "PlugInstall plugins"
 
 	popd > /dev/null
