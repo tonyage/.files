@@ -3,7 +3,8 @@ syntax enable
 
 if has('nvim')
 	let g:airline_theme='onedark'
-	colo space-vim-dark
+	" colo space-vim-dark
+    colo onedark
     hi Comment guifg=#5C6370 ctermfg=59
 
 	" enables transparent background; disable for conventional spacemacs theme
@@ -23,13 +24,15 @@ else
 		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	endif
 
-	" if (has("autocmd") && !has("gui_running"))
-	" 	augroup colors
-	" 		autocmd!
-	" 		let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
-	" 		autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
-	" 	augroup END
-	" endif
+    " onedark dark background
+	if (has("autocmd") && !has("gui_running"))
+        let g:onedark_terminal_italics = 1
+        augroup colors
+            autocmd!
+            let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
+            autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
+        augroup END
+	endif
 
 	colo Monokai
 	let g:airline_theme='badwolf'
@@ -91,8 +94,8 @@ let g:airline_symbols.linenr = ''
 let g:mkdp_auto_start=1
 
 " NERDTree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>f :NERDTreeFind<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-f> :NERDTreeFind<CR>
 let g:NERDTreeIndicatorMapCustom = {
 	\ "Modified"  : "✹",
 	\ "Staged"    : "✚",
@@ -133,9 +136,6 @@ nmap <leader>s :StripWhitespace<CR>
 let g:show_spaces_that_precede_tabs=1
 let g:better_whitespace_skip_empty_lines=1
 
-" vim-autoformat
-let g:formatter_yapf_style = 'google'
-
 set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
 
 " vim-devicons
@@ -143,8 +143,29 @@ if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
 
+function SemshiDark()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=215 guifg=#E5C07B
+    hi semshiImported        ctermfg=214 guifg=#E5C07B cterm=bold gui=bold
+    hi semshiParameter       ctermfg=75  guifg=#61AFEF cterm=italic gui=italic
+    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#c678dd
+    hi semshiBuiltin         ctermfg=207 guifg=#c678dd
+    hi semshiAttribute       ctermfg=49  guifg=#56B6C2
+    hi semshiSelf            ctermfg=249 guifg=#E5C07B cterm=bold gui=bold
+    hi semshiUnresolved      ctermfg=226 guifg=#D19A66 cterm=underline gui=underline
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#be5046
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#be5046
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#be5046
+    sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+autocmd FileType python call SemshiDark()
+autocmd ColorScheme * call SemshiDark()
+
+
 " echodoc
 let g:echodoc#enable_at_startup=1
+" let g:semshi#active=0
 
 call plug#begin('~/.file/.vim/bundle')
 
@@ -161,6 +182,7 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-surround'
 
+    Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
     Plug 'airblade/vim-gitgutter'
     Plug 'fatih/vim-go'
@@ -175,6 +197,7 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'plasticboy/vim-markdown'
     Plug 'kien/ctrlp.vim'
+    Plug 'joshdick/onedark.vim'
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'

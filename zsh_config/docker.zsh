@@ -47,7 +47,7 @@ alias dnuke="dripf && drmi && dspf && drmv"
 dbu() { docker build -t=$1 .; }
 
 # Show all alias related docker
-alias dalias="sed -n 55,71p $HOME/.file/shell-config/docker.zsh"
+alias dalias="sed -n 55,71p $HOME/.file/zsh_config/docker.zsh"
 
 # Bash into running container
 dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
@@ -64,7 +64,7 @@ BEGINCOMMENT
 	drip  = "docker rm $*$(docker ps -aq)"   # remove all containers
 	dripf = "docker stop $(docker ps -aq) && docker rm $(docker ps -aq)" # stop and remove all containers
 	drmi  = "docker rmi $*$(docker images -q)" # remove all images
-	dspf  = "docker system prune -f" 
+	dspf  = "docker system prune -f"
 	drmv  = "docker volume rm $(docker volume ls -q)"
 	dnuke = "desperation"
 	dbu   = "docker build -t = $1 ." # Dockerfile build - $dbu <buildname>

@@ -41,7 +41,7 @@ alias ctags="/usr/local/bin/ctags"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS=false
 
 POWERLEVEL9K_TIME_12HR=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir_writable dir vcs)
@@ -138,6 +138,12 @@ alias out='tee ~/Desktop/termOut.txt'									# pipe content to output file on d
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
 
 # quality of life
 mkcd() {																# makes directory and enters it

@@ -38,11 +38,7 @@ set showcmd
 set showmatch
 set linebreak
 set cursorline
-set cursorcolumn
 set virtualedit=block
-
-set scrolljump=5
-set scrolloff=3
 
 set lazyredraw
 set regexpengine=1
@@ -50,6 +46,7 @@ set regexpengine=1
 " indents/formats
 set list listchars=tab:\|\ ,trail:*,extends:#,nbsp:.
 set encoding=utf-8
+set splitright
 set expandtab
 set tabstop=4
 set softtabstop=4

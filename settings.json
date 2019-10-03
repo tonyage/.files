@@ -1,0 +1,71 @@
+{
+    "better-comments.multilineComments": true,
+    "vim.leader": ",",
+    "vim.enableNeovim": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        { 
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "m"],
+            "commands": ["bookmarks.toggle"]
+        },
+        { 
+            "before": ["<leader>", "b"],
+            "commands": ["bookmarks.list"]
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#388E3C",
+        "list.activeSelectionForeground": "#388E3C",
+        "list.inactiveSelectionForeground": "#388E3C",
+        "list.highlightForeground": "#388E3C",
+        "scrollbarSlider.activeBackground": "#388E3C50",
+        "editorSuggestWidget.highlightForeground": "#388E3C",
+        "textLink.foreground": "#388E3C",
+        "progressBar.background": "#388E3C",
+        "pickerGroup.foreground": "#388E3C",
+        "tab.activeBorder": "#388E3C",
+        "notificationLink.foreground": "#388E3C",
+        "editorWidget.resizeBorder": "#388E3C",
+        "editorWidget.border": "#388E3C",
+        "settings.modifiedItemIndicator": "#388E3C",
+        "settings.modifiedItemForeground":  "#2979FF",
+        "settings.headerForeground": "#388E3C",
+        "panelTitle.activeBorder": "#388E3C",
+        "breadcrumb.activeSelectionForeground": "#388E3C",
+        "menu.selectionForeground": "#388E3C",
+        "menubar.selectionForeground": "#388E3C",
+        "terminal.background": "#1b1b1d",
+        "editor.findMatchBorder": "#388E3C",
+        "selection.background": "#FEFEFE",
+        "editor.background": "#1b1b1d",
+        "sideBar.background": "#1b1b1d"
+    },
+    "materialTheme.autoApplyIcons": true,
+    "materialTheme.accent": "Breaking Bad",
+    "terminal.integrated.fontFamily": "MesloLGL Nerd Font",
+    "python.pythonPath": "/usr/local/bin/python3",
+    "cmake.configureOnOpen": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "dart.checkForSdkUpdates": false,
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "One Dark Pro Bold",
+    "better-comments.highlightPlainText": true,
+    "editor.minimap.enabled": false,
+    "python.jediEnabled": false,
+    "workbench.settings.editor": "json",
+    "files.maxMemoryForLargeFilesMB": 8192
+}

@@ -334,13 +334,13 @@ call s:hi('pythonClass'           , 207 , '' , 'bold' , 'bold')
 call s:hi('pythonParameters'      , 147 , '' , 'none' , 'none')
 call s:hi('pythonParam'           , 108 , '' , 'none' , 'none')
 call s:hi('pythonBrackets'        , 183 , '' , 'none' , 'none')
-call s:hi('pythonClassParameters' , 111 , '' , 'none' , 'none')
+call s:hi('pythonClassParameters' , 207 , '' , 'none' , 'none')
 call s:hi('pythonBuiltinType'     , 68  , '' , 'none' , 'none')
 call s:hi('pythonBuiltinObj'      , 71  , '' , 'bold' , 'bold')
 call s:hi('pythonBuiltinFunc'     , 169 , '' , 'bold' , 'bold')
 call s:hi('pythonOperator'        , 68  , '' , 'bold' , 'bold')
 call s:hi('pythonInclude'         , 68  , '' , 'bold' , 'bold')
-call s:hi('pythonSelf'            , 68  , '' , 'bold' , 'bold')
+call s:hi('pythonSelf'            , 30  , '' , 'bold' , 'bold')
 call s:hi('pythonStatement'       , 68  , '' , 'bold' , 'bold')
 call s:hi('pythonDottedName'      , 169 , '' , 'bold' , 'bold')
 call s:hi('pythonDecorator'       , 169 , '' , 'bold' , 'bold')
@@ -353,7 +353,7 @@ call s:hi('pythonSpaceError'      , 196 , '' , 'none' , 'none')
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
-hi link ALEErrorSign    Error
+hi link ALEErrorSign    Errjr
 hi link ALEWarningSign  Warning
 
 " vim-easymotion
