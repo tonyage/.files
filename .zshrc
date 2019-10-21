@@ -172,4 +172,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"

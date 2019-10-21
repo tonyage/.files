@@ -33,6 +33,7 @@ set undodir=~/.vim/undo//
 set wrap
 set ruler
 set hidden
+set mouse=nv
 set number
 set showcmd
 set showmatch
