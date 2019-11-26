@@ -1,4 +1,4 @@
-"""" normal mode keybinds
+" normal mode keybinds
 nmap <leader>e :Errors<CR>	" list errors
 nnoremap <leader>/ :nohl<CR>
 nnoremap <leader>z :vsplit<Space>
@@ -7,8 +7,6 @@ nnoremap <leader>x :split<Space>
 " moving around
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
-nnoremap <silent> <tab>    :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " visual mode keybinds
 vnoremap > >gv

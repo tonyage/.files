@@ -3,8 +3,8 @@ syntax enable
 
 if has('nvim')
 	let g:airline_theme='onedark'
-	colo space-vim-dark
-    " colo onedark
+	" colo space-vim-dark
+    colo onedark
     hi Comment guifg=#5C6370 ctermfg=59
 
 	" enables transparent background; disable for conventional spacemacs theme
@@ -34,9 +34,8 @@ else
         augroup END
 	endif
 
-	colo Monokai
-	let g:airline_theme='badwolf'
-	let g:onedark_termcolors=256
+	colo onedark
+	let g:airline_theme='onedark'
 endif
 
 " ale
@@ -44,6 +43,9 @@ let b:ale_fixers = {
     \ 'javascript': ['prettier', 'eslint'],
     \ 'python': ['pylint']
     \ }
+
+" vim-markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 " syntax highlighting font style
 hi Comment cterm=italic
@@ -162,10 +164,27 @@ endfunction
 autocmd FileType python call SemshiDark()
 autocmd ColorScheme * call SemshiDark()
 
+" better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 " echodoc
 let g:echodoc#enable_at_startup=1
-" let g:semshi#active=0
+let g:semshi#active=1
+
+" gitlab
+let g:fugitive_gitlab_domains = ['https://git.kopismobile.org']
+
+" vim-markdown-composer
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
 
 call plug#begin('~/.file/.vim/bundle')
 
@@ -181,7 +200,16 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-markdown'
+    Plug 'tpope/vim-vividchalk'
+    Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-rhubarb'
+    Plug 'tpope/vim-eunuch'
 
+    Plug 'glts/vim-radical'
+    Plug 'glts/vim-magnum'
+
+    Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
     Plug 'airblade/vim-gitgutter'
@@ -190,14 +218,14 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'dense-analysis/ale'
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'easymotion/vim-easymotion'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'ryanoasis/vim-devicons'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'plasticboy/vim-markdown'
     Plug 'kien/ctrlp.vim'
     Plug 'joshdick/onedark.vim'
+    Plug 'lervag/vimtex'
+    Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'

@@ -15,6 +15,7 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 
 augroup vagrant
 	au!

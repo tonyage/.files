@@ -45,7 +45,7 @@ set lazyredraw
 set regexpengine=1
 
 " indents/formats
-set list listchars=tab:\|\ ,trail:*,extends:#,nbsp:.
+set list listchars=tab:\|\ ,extends:#,nbsp:.
 set encoding=utf-8
 set splitright
 set expandtab
