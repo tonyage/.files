@@ -119,18 +119,11 @@ alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
-<<<<<<< HEAD
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
-=======
 alias pyenv3='pyenv activate pynvim3'
->>>>>>> 6c8611ab1533fe6abf581225c10dc27bc5859f10
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
-
-# pyenv
-alias pyenv2='pyenv activate py2nvim'
-alias pyenv3='pyenv activate py3nvim'
 
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
@@ -161,6 +154,10 @@ if [ -f ~/.zshrc_local ]; then
 fi 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+	source "${VIRTUAL_ENV}/bin/activate"
+fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/home/tdo/.pyenv/bin:$PATH"
