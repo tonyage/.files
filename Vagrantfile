@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
 		v.customize ["modifyvm", :id, "--usbehci", "on"]
 	end
 
-	config.vm.provision 'shell', 
+	config.vm.provision 'shell',
 		privileged: true,
 		inline: $script
 end

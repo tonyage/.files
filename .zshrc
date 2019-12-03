@@ -41,7 +41,7 @@ alias ctags="/usr/local/bin/ctags"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS=false
 
 POWERLEVEL9K_TIME_12HR=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir_writable dir vcs)
@@ -80,7 +80,7 @@ plugins=(
 	zsh-256color
 	zsh-autopair
 	zsh-autosuggestions
-	zsh-syntax-highlighting 
+	zsh-syntax-highlighting
 	history-substring-search
 )
 
@@ -88,13 +88,13 @@ export PATH="$GOBIN:/usr/local/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
-if [ "$(uname -s)" = Linux  ]; then 
+if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
 	export TERM="xterm-256color"
-else	
+else
 	# make gradle work
 	export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
-	
+
 	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
 fi
@@ -104,8 +104,9 @@ tabs 4
 # bindings
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
-alias ll='ls -lah'														# long list shows all permissions and hidden files
-alias la='ls -ah'														# list all hidden files human readable
+alias ls='colorls --sd'													# ls
+alias ll='colorls -lA --sd'												# long list shows all permissions and hidden files
+alias tl='colorls --tree'
 alias ltr='ls -lhtr'													# long list by time ascending
 alias lsr='ls -lhSr'													# long list by size ascending
 alias ..='cd ../'														# go back 1 directory level
@@ -115,15 +116,22 @@ alias .....='cd ../../../../'
 alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
+alias kedit='nvim ~/.file/.vim/config/keybind.vim'
+alias aedit='nvim ~/.file/.vim/config/autocmd.vim'
 alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias pyenv3='pyenv activate pynvim3'
+alias vi='nvim'															# rebind
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
+
+# pyenv
+alias pyenv2='pyenv activate py2nvim'
+alias pyenv3='pyenv activate py3nvim'
 
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
@@ -132,19 +140,25 @@ alias out='tee ~/Desktop/termOut.txt'									# pipe content to output file on d
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
 # quality of life
 mkcd() {																# makes directory and enters it
 	mkdir -p "$@" && cd "$@"
 }
-cdls() {																# changes directory and lists contents 
-	cd "$@" && ls           
+cdls() {																# changes directory and lists contents
+	cd "$@" && ls
 }
 cdll() {
 	cd "$@" && ll
 }
 
-for file in ~/.file/shell-config/*.zsh; do
-	source $file 
+for file in ~/.file/zsh_config/*.zsh; do
+	source $file
 done
 
 # Look for local zshrc -- throw OS/machine specfic stuff there
@@ -152,8 +166,6 @@ if [ -f ~/.zshrc_local ]; then
 	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
 fi 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 	source "${VIRTUAL_ENV}/bin/activate"
@@ -163,3 +175,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/home/tdo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $(dirname $(gem which colorls))/tab_complete.sh
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
