@@ -74,7 +74,6 @@ plugins=(
 	pip
 	python
 	screen
-	tmux
 	vagrant
 	web-search
 	zsh-256color
@@ -104,7 +103,9 @@ tabs 4
 # bindings
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
-alias ll='ls -lah'
+alias ls='colorls --sd'
+alias ll='colorls -lA --sd'
+alias tl='colorls --tree'
 alias ltr='ls -lhtr'													# long list by time ascending
 alias lsr='ls -lhSr'													# long list by size ascending
 alias ..='cd ../'														# go back 1 directory level
@@ -169,8 +170,6 @@ if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 	source "${VIRTUAL_ENV}/bin/activate"
 fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/home/tdo/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -180,4 +179,4 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"

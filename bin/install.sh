@@ -6,11 +6,11 @@ input=${ans,}
 if [[ "$input" == "zsh" ]]; then
 	if [[ "$(uname)" == "Linux" ]]; then
 		if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-			sudo apt-get install -qy zsh curl tmux software-properties-commons
+			sudo apt-get install -qy zsh curl tmux
 			sudo add-apt-repository ppa:neovim-ppa/stable
 			sudo apt-get update
-			sudo apt-get uinstall -qy neovim
-			sudo apt-get install python3-dev python3-pip
+			sudo apt-get install -qy neovim python3-dev python3-pip \
+                python-pip libffi-dev tree
 			mkdir -p ~/.local/share/fonts
 		elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
 			sudo pacman -S --noconfirm zsh curl tmux
@@ -25,42 +25,8 @@ if [[ "$input" == "zsh" ]]; then
 
 	if [ ! -d "$ZSH" ]; then
 		echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-		chsh -s /bin/zsh
+		sudo chsh -s /bin/zsh
 	fi
-
-
-	################################################################################
-	#
-	# oh-my-zsh plugins
-	#
-	################################################################################
-
-	urls=("https://github.com/zsh-users/zsh-syntax-highlighting.git"
-			"https://github.com/chrissicool/zsh-256color"
-			"https://github.com/zsh-users/zsh-autosuggestions"
-			"https://github.com/hlissner/zsh-autopair"
-			"https://github.com/zsh-users/zsh-history-substring-search.git"
-			"https://github.com/bhilburn/powerlevel9k.git")
-
-	pushd $ZSH/custom/plugins > /dev/null
-
-	printf "Installing zsh plugins...\n"
-	plugins="$ZSH/custom/plugins"
-
-	if [ -d "$plugins" ]; then
-		for url in "${urls[@]}"; do
-			git clone $url
-			printf "${url##*/} is installed\n"
-			if [ $url == ${urls[5]} ]; then
-				pushd $ZSH/custom/themes
-				git clone $url
-				printf "${url##*/} is installed\n"
-				popd
-			fi
-		done
-	fi
-
-	popd > /dev/null
 
 elif [[ "$input" == "fish" ]]; then
 	if [[ "$(uname)" == "Linux" ]]; then
@@ -88,11 +54,6 @@ fi
 # (neo)vim plugins
 #
 ################################################################################
-	printf "Installing symlinks...\n"
-	/bin/bash symlink.sh
-	printf "Remember to set your patched font.\n"
-
-	pushd $HOME/.file/.vim > /dev/null
-    printf "PlugInstall plugins"
-
-	popd > /dev/null
+printf "Installing symlinks...\n"
+/bin/bash symlink.sh
+printf "Remember to set your patched font.\n"

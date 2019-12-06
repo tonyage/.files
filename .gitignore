@@ -5,7 +5,7 @@
 .vagrant
 
 ### vim-plugins ###
-.vim/bundle/
+.vim/bundle/*
 .vim/colors/
 .vim/.netrwhist
 .vim/sessions/

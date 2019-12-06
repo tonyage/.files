@@ -3,8 +3,8 @@ syntax enable
 
 if has('nvim')
 	let g:airline_theme='onedark'
-	colo space-vim-dark
-    " colo onedark
+	" colo space-vim-dark
+    colo onedark
     hi Comment guifg=#5C6370 ctermfg=59
 
 	" enables transparent background; disable for conventional spacemacs theme
