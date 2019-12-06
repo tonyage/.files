@@ -104,9 +104,7 @@ tabs 4
 # bindings
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
-alias ls='colorls --sd'													# ls
-alias ll='colorls -lA --sd'												# long list shows all permissions and hidden files
-alias tl='colorls --tree'
+alias ll='ls -lah'
 alias ltr='ls -lhtr'													# long list by time ascending
 alias lsr='ls -lhSr'													# long list by size ascending
 alias ..='cd ../'														# go back 1 directory level
@@ -129,9 +127,9 @@ alias vi='nvim'															# rebind
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
 
-# pyenv
-alias pyenv2='pyenv activate py2nvim'
-alias pyenv3='pyenv activate py3nvim'
+# # pyenv
+# alias pyenv2='pyenv activate py2nvim'
+# alias pyenv3='pyenv activate py3nvim'
 
 # macOS specific
 alias finder='open -a Finder ./'										# opens current file/directory in Finder
@@ -165,7 +163,7 @@ done
 if [ -f ~/.zshrc_local ]; then
 	echo "Sourcing local zshrc"
 	source ~/.zshrc_local
-fi 
+fi
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 	source "${VIRTUAL_ENV}/bin/activate"

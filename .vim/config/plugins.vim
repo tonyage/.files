@@ -3,19 +3,17 @@ syntax enable
 
 if has('nvim')
 	let g:airline_theme='onedark'
-	" colo space-vim-dark
-    colo onedark
+	colo space-vim-dark
+    " colo onedark
     hi Comment guifg=#5C6370 ctermfg=59
 
 	" enables transparent background; disable for conventional spacemacs theme
-	if $TERM_PROGRAM =~ 'iTerm'
-		hi Normal ctermbg=NONE guibg=NONE
-		hi LineNr ctermbg=NONE guibg=NONE
-		hi SignColumn ctermbg=NONE guibg=NONE
-	endif
+    hi Normal ctermbg=NONE guibg=NONE
+    hi LineNr ctermbg=NONE guibg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
 
-	let g:python_host_prog='/Users/tdo/.pyenv/versions/py2nvim/bin/python'
-	let g:python3_host_prog='/Users/tdo/.pyenv/versions/py3nvim/bin/python3'
+	let g:python_host_prog='/home/tdo/.pyenv/versions/pynvim2/bin/python'
+	let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
 
 else
 	if has("termguicolors")
