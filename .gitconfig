@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [include]
-	path = ~/.gitconfig_local 
+	path = ~/.gitconfig_local
 [format]
 	pretty = "%H %ci %ae %d %s"
 [color]
@@ -8,14 +8,16 @@
 [alias]
 	vis = !gitk --all
 	
-	s = status -s 
+	s = status -s
 	sb = status -sb
 [merge]
 	tool = kdiff3
 [merge "tool"]
-	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+	path = /bin/kdiff3
 [user]
 	name = Tony Do
 	email = tdo@kopismobile.com
 [core]
 	editor = nvim
+[credential]
+	helper = store
