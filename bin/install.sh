@@ -26,6 +26,7 @@ if [[ "$input" == "zsh" ]]; then
 	if [ ! -d "$ZSH" ]; then
 		echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 		sudo chsh -s /bin/zsh
+        export SHELL=/bin/zsh
 	fi
 
 elif [[ "$input" == "fish" ]]; then
@@ -47,13 +48,10 @@ elif [[ "$input" == "fish" ]]; then
 		echo 'y' | curl -L https://get.oh-my.fish | fish
 		echo /usr/local/bin/fish | sudo tee -a /etc/shells
 		chsh -s /usr/local/bin/fish
+        export SHELL=/usr/local/bin/fish
 fi
 
-################################################################################
-#
-# (neo)vim plugins
-#
-################################################################################
 printf "Installing symlinks...\n"
-/bin/bash symlink.sh
+/bin/bash ./symlink.sh
+/bin/bash ./plugin.sh
 printf "Remember to set your patched font.\n"

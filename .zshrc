@@ -18,26 +18,12 @@ export GOBIN="$GOPATH/bin"
 
 # pyenv conf
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-fi
-
-export PATH="$HOME/Code/flutter/bin:$PATH"
+# flutter
 export flutterRoot="$HOME/Code/flutter"
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
 
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
-
-# ctags
-alias ctags="/usr/local/bin/ctags"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -103,9 +89,16 @@ tabs 4
 # bindings
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
-alias ls='colorls --sd'
-alias ll='colorls -lA --sd'
-alias tl='colorls --tree'
+
+if [ ! -f $(which colorls) ]; then
+    alias ls='colorls --sd'
+    alias ll='colorls -lA --sd'
+    alias tl='colorls --tree'
+else
+    alias ls='ls -aH'
+    alias ll='ls -laH'
+fi
+
 alias ltr='ls -lhtr'													# long list by time ascending
 alias lsr='ls -lhSr'													# long list by size ascending
 alias ..='cd ../'														# go back 1 directory level
@@ -122,19 +115,12 @@ alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
 alias rip='rm -rf "$1"'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
-alias pyenv3='pyenv activate pynvim3'
+
 alias vi='nvim'															# rebind
+alias pyenv3='pyenv activate pynvim3'
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
-
-# # pyenv
-# alias pyenv2='pyenv activate py2nvim'
-# alias pyenv3='pyenv activate py3nvim'
-
-# macOS specific
-alias finder='open -a Finder ./'										# opens current file/directory in Finder
-alias out='tee ~/Desktop/termOut.txt'									# pipe content to output file on desktop
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -144,17 +130,6 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
-
-# quality of life
-mkcd() {																# makes directory and enters it
-	mkdir -p "$@" && cd "$@"
-}
-cdls() {																# changes directory and lists contents
-	cd "$@" && ls
-}
-cdll() {
-	cd "$@" && ll
-}
 
 for file in ~/.file/zsh_config/*.zsh; do
 	source $file
@@ -166,17 +141,15 @@ if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi
 
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 	source "${VIRTUAL_ENV}/bin/activate"
 fi
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
