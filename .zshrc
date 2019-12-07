@@ -1,5 +1,4 @@
-#  Path to oh-my-zsh installation
-export ZSH="$HOME/.file/oh-my-zsh"
+#  Path to oh-my-zsh installation export ZSH="$HOME/.file/oh-my-zsh"
 
 # locale settings
 export LANG=en_US.UTF-8
@@ -90,10 +89,10 @@ tabs 4
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
 
-if [ ! -f $(which colorls) ]; then
-    alias ls='colorls --sd'
-    alias ll='colorls -lA --sd'
-    alias tl='colorls --tree'
+if [ -f $(which colorls) ]; then
+    alias ls='colorls --sd --gs'
+    alias ll='colorls -lA --sd --gs'
+    alias tl='colorls -t'
 else
     alias ls='ls -aH'
     alias ll='ls -laH'
