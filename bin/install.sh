@@ -12,6 +12,7 @@ if [[ "$input" == "zsh" ]]; then
 			sudo apt-get install -qy neovim python3-dev python3-pip \
                 python-pip libffi-dev tree
 			mkdir -p ~/.local/share/fonts
+            curl https://pyvenv.run | bash
 		elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
 			sudo pacman -S --noconfirm zsh curl tmux
 		fi
@@ -27,6 +28,7 @@ if [[ "$input" == "zsh" ]]; then
 		echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 		sudo chsh -s /bin/zsh
         export SHELL=/bin/zsh
+        exec $SHELL
 	fi
 
 elif [[ "$input" == "fish" ]]; then

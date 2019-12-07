@@ -1,5 +1,6 @@
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
+export ZSH_COMPDUMP="/tmp/zcompdump-$USER"
 
 # locale settings
 export LANG=en_US.UTF-8
@@ -25,12 +26,13 @@ export flutterRoot="$HOME/Code/flutter"
 # powerlevel9k stuff goes here
 alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS=false
 
+POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
 POWERLEVEL9K_TIME_12HR=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir_writable dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
 POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
@@ -143,7 +145,7 @@ if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
+if [ -f $(which pyenv) ]; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
