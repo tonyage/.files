@@ -1,4 +1,5 @@
-#  Path to oh-my-zsh installation export ZSH="$HOME/.file/oh-my-zsh"
+#  Path to oh-my-zsh installation
+export ZSH="$HOME/.file/oh-my-zsh"
 
 # locale settings
 export LANG=en_US.UTF-8
@@ -46,6 +47,8 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u0000'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\u0000'
 
 plugins=(
 	autopep8
