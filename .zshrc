@@ -73,8 +73,6 @@ plugins=(
 	history-substring-search
 )
 
-export PATH="$GOBIN:/usr/local/sbin:$PATH"
-
 source $ZSH/oh-my-zsh.sh
 
 if [ "$(uname -s)" = Linux  ]; then
@@ -117,8 +115,9 @@ alias aedit='nvim ~/.file/.vim/config/autocmd.vim'
 alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias df='df -h'														# human readable disk
-alias rip='rm -rf "$1"'
+alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
+alias open='xdg-open'
 
 alias vi='nvim'															# rebind
 alias pyenv3='pyenv activate pynvim3'
@@ -145,9 +144,9 @@ if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi
 
-if [ -f $(which pyenv) ]; then
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
+if [  "$(command -v pyenv)" = "pyenv" ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
@@ -156,4 +155,5 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
+
+export PATH="$GOBIN:/usr/local/sbin:$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"

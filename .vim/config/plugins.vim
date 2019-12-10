@@ -184,6 +184,10 @@ function! BuildComposer(info)
   endif
 endfunction
 
+" colorizer
+let g:colorizer_syntax=1
+let g:colorizer_auto_filetype='css,html,vim,yaml,yml,xml'
+
 call plug#begin('~/.file/.vim/bundle')
 
 	Plug 'Shougo/neco-vim'
@@ -208,6 +212,7 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'glts/vim-magnum'
 
     Plug 'shumphrey/fugitive-gitlab.vim'
+    Plug 'chrisbra/Colorizer'
     Plug 'scrooloose/nerdtree'
     Plug 'godlygeek/tabular'
     Plug 'airblade/vim-gitgutter'
