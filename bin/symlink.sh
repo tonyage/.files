@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$HOME/.file"
-dotfiles=(.vim .vimrc .zshrc .gitconfig)
+dotfiles=(.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
 
 mkdir ~/.config > /dev/null 2>&1
 
@@ -32,7 +32,7 @@ symcheck() {
 	fi
 }
 
-file=(~/.vim ~/.vimrc ~/.zshrc ~/.gitconfig ~/.config/nvim)
+file=(~/.vim ~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags ~/.config/nvim)
 for f in "${file[@]}"; do
 	symcheck $f
 done

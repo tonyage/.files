@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #  Path to oh-my-zsh installation
 export ZSH="$HOME/.file/oh-my-zsh"
 export ZSH_COMPDUMP="/tmp/zcompdump-$USER"
@@ -29,45 +36,33 @@ alias pl9kcs='for code ({000..255}) print -P -- "$code: %F{$code}This is how you
 COMPLETION_WAITING_DOTS=false
 
 POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel9k/powerlevel9k"
-
-POWERLEVEL9K_TIME_12HR=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator user virtualenv dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time time)
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
-POWERLEVEL9K_DIR_HOME_BACKGROUND='075'
-POWERLEVEL9K_OS_ICON_FOREGROUND='069'
-POWERLEVEL9K_OS_ICON_BACKGROUND='231'
-POWERLEVEL9K_USER_FOREGROUND='153'
-POWERLEVEL9K_USER_BACKGROUND='195'
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
-POWERLEVEL9K_TIME_FOREGROUND='black'
-POWERLEVEL9K_TIME_BACKGROUND='231'
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  %m.%d}"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u0000'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\u0000'
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-	autopep8
 	brew
+    cargo
 	colored-man-pages
 	docker
-	git
+    docker-compose
+    django
+    flutter
+    fzf
+    golang
+    gnu-utils
 	gradle
-	osx
-	pep8
+    rust
 	pip
+    pyenv
+    pylint
 	python
 	screen
+    systemd
 	vagrant
-	web-search
+    ubuntu
+    yarn
 	zsh-256color
 	zsh-autopair
+    zsh-interactive-cd
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	history-substring-search
@@ -78,11 +73,10 @@ source $ZSH/oh-my-zsh.sh
 if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
 	export TERM="xterm-256color"
+    export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-amd64'
 else
 	# make gradle work
 	export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home'
-
-	alias ls='ls -G'
 	alias finder='open -a Finder ./'									# opens current file/directory in Finder
 fi
 
@@ -92,10 +86,10 @@ tabs 4
 alias tree='tree -CA'
 alias wut='cat ~/.zshrc'												# helpful
 
-if [ -f $(which colorls) ]; then
-    alias ls='colorls --sd --gs'
-    alias ll='colorls -lA --sd --gs'
-    alias tl='colorls -t'
+if [ -f $(which exa) ]; then
+    alias ls='exa'
+    alias ll='exa -lah --git --group-directories-first'
+    alias tree='exa -T'
 else
     alias ls='ls -aH'
     alias ll='ls -laH'
@@ -113,14 +107,17 @@ alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
 alias kedit='nvim ~/.file/.vim/config/keybind.vim'
 alias aedit='nvim ~/.file/.vim/config/autocmd.vim'
 alias zedit='nvim ~/.file/.zshrc'										# edit .bashrc
+alias p10edit='nvim ~/.p10k.zsh'
+alias psource='source ~/.p10k.zsh'
 alias zsource='source ~/.zshrc'											# source .bashrc
-alias df='df -h'														# human readable disk
 alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias open='xdg-open'
-
+# alias colors='for i in {0..255}; do print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
 alias vi='nvim'															# rebind
-alias pyenv3='pyenv activate pynvim3'
+
+alias pyenv37='pyenv activate pynvim3'
+alias pyenv38='pyenv activate pynvim38'
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
@@ -144,16 +141,17 @@ if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi
 
-if [  "$(command -v pyenv)" = "pyenv" ]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 	source "${VIRTUAL_ENV}/bin/activate"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source $(dirname $(gem which colorls))/tab_complete.sh
 
-export PATH="$GOBIN:/usr/local/sbin:$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.pyenv/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
+if [ "$(uname -s)" = Linux  ]; then
+    export PATH="/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+else
+    export PATH="/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

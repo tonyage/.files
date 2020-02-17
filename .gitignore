@@ -9,6 +9,7 @@
 .vim/colors/
 .vim/.netrwhist
 .vim/sessions/
+.vim/init.vim
 
 ### oh-my-zsh ###
 oh-my-zsh/

@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 
 read -p "Would you like to use zsh or fish? " ans
 input=${ans,}
@@ -6,11 +6,10 @@ input=${ans,}
 if [[ "$input" == "zsh" ]]; then
 	if [[ "$(uname)" == "Linux" ]]; then
 		if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-			sudo apt-get install -qy zsh curl tmux
 			sudo add-apt-repository ppa:neovim-ppa/stable
 			sudo apt-get update
 			sudo apt-get install -qy neovim python3-dev python3-pip \
-                python-pip libffi-dev tree
+                python-pip libffi-dev tree zsh curl tmux tree
 			mkdir -p ~/.local/share/fonts
             curl https://pyvenv.run | bash
 		elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
@@ -35,7 +34,8 @@ elif [[ "$input" == "fish" ]]; then
 		if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
 			sudo apt-add-repository ppa:fish-shell/release-3
 			sudo apt-get update
-			sudo apt-get install -qy fish tmux
+			sudo apt-get install -qy neovim python3-dev python3-pip \
+                python-pip libffi-dev tree fish curl tmux tree
 			mkdir -p ~/.local/share/fonts
 	elif [[ "$(uname)" == "Darwin" ]]; then
 		if [ ! -f "$(which brew)" ]; then
@@ -50,6 +50,10 @@ elif [[ "$input" == "fish" ]]; then
 		echo /usr/local/bin/fish | sudo tee -a /etc/shells
 		chsh -s /usr/local/bin/fish
         export SHELL=/usr/local/bin/fish
+
+else
+    echo "Choose either zsh or fish, exiting..."
+    exit 1
 fi
 
 printf "Installing symlinks...\n"
