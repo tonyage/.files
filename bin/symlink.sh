@@ -10,11 +10,17 @@ for r in "${dotfiles[@]}"; do
 done
 
 for d in "${dotfiles[@]}"; do
-	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 	if [ $d == ${dotfiles[0]} ]; then
-		ln -s $DIR/$d ~/.config/nvim > /dev/null 2>&1
+        ln -s $DIR/$d ~/.config/nvim > /dev/null 2>&1
+        ln -s $DIR/init.vim ~/.config/nvim/init.vim > /dev/null 2>&1
 	fi
+	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 done
+
+# TODO: find out why .vim gets symlinked on itself
+if [ -e $DIR/.vim/.vim ]; then
+    unlink $DIR/.vim/.vim
+fi
 
 # function to test symlink quality
 symcheck() {
@@ -32,7 +38,7 @@ symcheck() {
 	fi
 }
 
-file=(~/.vim ~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags ~/.config/nvim)
+file=(~/.vim ~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags ~/.config/nvim ~/.config/nvim/init.vim)
 for f in "${file[@]}"; do
 	symcheck $f
 done
