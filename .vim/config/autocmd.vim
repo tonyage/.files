@@ -29,6 +29,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+" rust
+autocmd BufReadPost *.rs setlocal filetype=rust
+
 augroup VCenterCursor
   au!
   au BufEnter,WinEnter,WinNew,VimResized *,*.*

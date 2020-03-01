@@ -1,5 +1,3 @@
-execute pathogen#infect()
-execute pathogen#helptags()
 let mapleader=","
 
 filetype plugin indent on

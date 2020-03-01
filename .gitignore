@@ -4,12 +4,16 @@
 ### vagrant ###
 .vagrant
 
+### ohmyzsh ###
+./oh-my-zsh/
+
 ### vim-plugins ###
 .vim/bundle/*
 .vim/colors/
 .vim/.netrwhist
 .vim/sessions/
 .vim/init.vim
+.vim/autoload/onedark.vim
 
 ### oh-my-zsh ###
 oh-my-zsh/

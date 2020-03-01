@@ -16,6 +16,6 @@ popd > /dev/null
 
 pushd $ZSH/custom/themes > /dev/null
 
-git clone --depth=1 "https://github.com/romkatv/powerlevel10k.git"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git
 
 popd > /dev/null

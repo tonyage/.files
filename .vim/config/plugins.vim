@@ -2,38 +2,18 @@ syntax on
 syntax enable
 
 if has('nvim')
-	let g:airline_theme='onedark'
-	" colo space-vim-dark
+    let g:airline_theme='onedark'
+    " colo space-vim-dark
+    " let g:neodark#background = '#1a1a1a'
+    " colo neodark
     colo onedark
-    hi Comment guifg=#5C6370 ctermfg=59
+    let g:onedark_terminal_italics = 1
+    
+    " syntax highlighting font style
+    hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
+    hi String cterm=italic gui=italic
 
-	" enables transparent background; disable for conventional spacemacs theme
-    hi Normal ctermbg=NONE guibg=NONE
-    hi LineNr ctermbg=NONE guibg=NONE
-    hi SignColumn ctermbg=NONE guibg=NONE
-
-	let g:python_host_prog='/home/tdo/.pyenv/versions/pynvim2/bin/python'
-	let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
-
-else
-	if has("termguicolors")
-		set termguicolors
-		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	endif
-
-    " onedark dark background
-	if (has("autocmd") && !has("gui_running"))
-        let g:onedark_terminal_italics = 1
-        augroup colors
-            autocmd!
-            let s:background = {"gui": "#202020", "cterm": "235", "cterm16": "0"}
-            autocmd ColorScheme * call onedark#set_highlight("Normal", {"bg": s:background })
-        augroup END
-	endif
-
-	colo onedark
-	let g:airline_theme='onedark'
+    let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
 endif
 
 " ale
@@ -45,9 +25,20 @@ let b:ale_fixers = {
 " vim-markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
-" syntax highlighting font style
-hi Comment cterm=italic
-hi String cterm=italic gui=italic
+" vim-go
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_types = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 
 " vim-airline
 let g:airline#extensions#tabline#enabled=1
@@ -117,9 +108,9 @@ let g:NERDTreeStatusline=''
 let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
 
 " ctrl-p
-if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor
-	let g:ctrlp_user_command= 'ag %s -l --nocolor -g ""'
+if executable('rg')
+	set grepprg=rg\ --color=never
+	let g:ctrlp_user_command= 'rg %s --files --color=never --glob ""'
 	let g:ctrlp_use_caching=0
 endif
 let g:ctrlp_show_hidden=1
@@ -188,13 +179,14 @@ endfunction
 let g:colorizer_syntax=1
 let g:colorizer_auto_filetype='css,html,vim,yaml,yml,xml'
 
+let g:loaded_clipboard_provider = 1
 call plug#begin('~/.file/.vim/bundle')
 
-	Plug 'Shougo/neco-vim'
-	Plug 'Shougo/echodoc.vim'
+    Plug 'Shougo/neco-vim'
+    Plug 'Shougo/echodoc.vim'
 
-	Plug 'neoclide/coc-neco'
-	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc-neco'
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
@@ -219,16 +211,19 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'fatih/vim-go'
     Plug 'luochen1990/rainbow'
     Plug 'dense-analysis/ale'
-	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'ntpeters/vim-better-whitespace'
-	Plug 'ryanoasis/vim-devicons'
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ntpeters/vim-better-whitespace'
+    Plug 'ryanoasis/vim-devicons'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'kien/ctrlp.vim'
-    Plug 'joshdick/onedark.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'lervag/vimtex'
     Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+    Plug 'Glench/Vim-Jinja2-Syntax'
+
+    Plug 'joshdick/onedark.vim'
+    Plug 'KeitaNakamura/neodark.vim'
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'

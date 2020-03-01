@@ -19,6 +19,7 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 # Path to vim files
 export MYVIMRC="$HOME/.vimrc"
 export VIMINIT="source $MYVIMRC"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Path to go source
 export GOPATH="$HOME/Code/go"
@@ -62,7 +63,6 @@ plugins=(
     yarn
 	zsh-256color
 	zsh-autopair
-    zsh-interactive-cd
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	history-substring-search
@@ -102,6 +102,7 @@ alias ...='cd ../../'													# go back 2 directory levels
 alias ....='cd ../../../'												# go back 3 directory levels
 alias .....='cd ../../../../'
 alias vedit='nvim ~/.file/.vimrc'										# edit .vimrc
+alias nedit='nvim ~/.file/init.vim'
 alias cedit='nvim ~/.file/.vim/config/core.vim'							# edit core.vim
 alias pedit='nvim ~/.file/.vim/config/plugins.vim'						# edit plugins.vim
 alias kedit='nvim ~/.file/.vim/config/keybind.vim'
@@ -114,7 +115,7 @@ alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias open='xdg-open'
 # alias colors='for i in {0..255}; do print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
-alias vi='nvim'															# rebind
+# alias vi='nvim'															# rebind
 
 alias pyenv37='pyenv activate pynvim3'
 alias pyenv38='pyenv activate pynvim38'
@@ -136,14 +137,9 @@ for file in ~/.file/zsh_config/*.zsh; do
 done
 
 # Look for local zshrc -- throw OS/machine specfic stuff there
-if [ -f ~/.zshrc_local ]; then
-	echo "Sourcing local zshrc"
-	source ~/.zshrc_local
-fi
+[ -f ~/.zshrc_local ] && {echo "Sourcing local zshrc"; source ~/.zshrc_local;}
 
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-	source "${VIRTUAL_ENV}/bin/activate"
-fi
+[[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]] && source "${VIRTUAL_ENV}/bin/activate"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

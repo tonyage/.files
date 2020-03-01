@@ -1,5 +1,4 @@
 " normal mode keybinds
-nmap <leader>e :Errors<CR>	" list errors
 nnoremap <leader>/ :nohl<CR>
 nnoremap <leader>z :vsplit<Space>
 nnoremap <leader>x :split<Space>
@@ -65,3 +64,9 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" rust
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>

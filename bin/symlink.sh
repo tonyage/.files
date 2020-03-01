@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR="$HOME/.file"
+CONF_DIR="$HOME/.config/nvim"
 dotfiles=(.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
 
 mkdir ~/.config > /dev/null 2>&1
@@ -11,8 +12,9 @@ done
 
 for d in "${dotfiles[@]}"; do
 	if [ $d == ${dotfiles[0]} ]; then
-        ln -s $DIR/$d ~/.config/nvim > /dev/null 2>&1
+        ln -s $DIR/$d $CONF_DIR > /dev/null 2>&1
         ln -s $DIR/init.vim ~/.config/nvim/init.vim > /dev/null 2>&1
+        continue
 	fi
 	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 done
@@ -38,7 +40,7 @@ symcheck() {
 	fi
 }
 
-file=(~/.vim ~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags ~/.config/nvim ~/.config/nvim/init.vim)
+file=(~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags $CONF_DIR $CONF_DIR/init.vim)
 for f in "${file[@]}"; do
 	symcheck $f
 done
