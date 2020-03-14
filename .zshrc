@@ -115,7 +115,6 @@ alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias open='xdg-open'
 # alias colors='for i in {0..255}; do print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
-# alias vi='nvim'															# rebind
 
 alias pyenv37='pyenv activate pynvim3'
 alias pyenv38='pyenv activate pynvim38'

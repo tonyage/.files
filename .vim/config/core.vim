@@ -61,5 +61,5 @@ set cmdheight=2
 set shortmess+=c
 
 " Folding
-set foldmethod=syntax
-set foldlevelstart=99
+set foldmethod=indent
+let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))

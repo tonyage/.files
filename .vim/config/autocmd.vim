@@ -37,3 +37,12 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+
+autocmd BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
+
+augroup auto_colorize
+    autocmd!
+    autocmd BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew
+        \ *.css, *.html
+        \ ColorHighlight
+augroup END

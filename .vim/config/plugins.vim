@@ -175,11 +175,11 @@ function! BuildComposer(info)
   endif
 endfunction
 
-" colorizer
-let g:colorizer_syntax=1
-let g:colorizer_auto_filetype='css,html,vim,yaml,yml,xml'
+" rust
+let g:rustfmt_autosave=1
+let g:rust_clip_command = 'xclip -selection clipboard'
 
-let g:loaded_clipboard_provider = 1
+let g:loaded_clipboard_provider=1
 call plug#begin('~/.file/.vim/bundle')
 
     Plug 'Shougo/neco-vim'
@@ -202,6 +202,10 @@ call plug#begin('~/.file/.vim/bundle')
 
     Plug 'glts/vim-radical'
     Plug 'glts/vim-magnum'
+
+    Plug 'rust-lang/rust.vim'
+    Plug 'mattn/webapi-vim'
+    Plug 'cespare/vim-toml'
 
     Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'chrisbra/Colorizer'
