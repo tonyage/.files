@@ -8,19 +8,12 @@ if has('nvim')
     " colo neodark
     colo onedark
     let g:onedark_terminal_italics = 1
-    
+
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-
     let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
 endif
-
-" ale
-let b:ale_fixers = {
-    \ 'javascript': ['prettier', 'eslint'],
-    \ 'python': ['pylint']
-    \ }
 
 " vim-markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
@@ -45,9 +38,12 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#buffer_idx_mode=1
+let g:airline#extensions#coc#enabled=1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -153,12 +149,6 @@ endfunction
 autocmd FileType python call SemshiDark()
 autocmd ColorScheme * call SemshiDark()
 
-" better-whitespace
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-
-" echodoc
-let g:echodoc#enable_at_startup=1
 let g:semshi#active=1
 
 " gitlab
@@ -177,13 +167,17 @@ endfunction
 
 " rust
 let g:rustfmt_autosave=1
-let g:rust_clip_command = 'xclip -selection clipboard'
-
+let g:rust_clip_command='xclip -selection clipboard'
 let g:loaded_clipboard_provider=1
+
+" coc
+hi CocErrorSign ctermfg=009 guifg=#E06C75 
+hi CocWarningSign ctermfg=011 guifg=#E5C07B 
+
+
 call plug#begin('~/.file/.vim/bundle')
 
     Plug 'Shougo/neco-vim'
-    Plug 'Shougo/echodoc.vim'
 
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -214,17 +208,16 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'airblade/vim-gitgutter'
     Plug 'fatih/vim-go'
     Plug 'luochen1990/rainbow'
-    Plug 'dense-analysis/ale'
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'jiangmiao/auto-pairs'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'ntpeters/vim-better-whitespace'
     Plug 'ryanoasis/vim-devicons'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'lervag/vimtex'
     Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
     Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'majutsushi/tagbar'
 
     Plug 'joshdick/onedark.vim'
     Plug 'KeitaNakamura/neodark.vim'

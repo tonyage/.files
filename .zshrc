@@ -114,7 +114,7 @@ alias zsource='source ~/.zshrc'											# source .bashrc
 alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias open='xdg-open'
-# alias colors='for i in {0..255}; do print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
+alias pdel='pyenv deactivate'
 
 alias pyenv37='pyenv activate pynvim3'
 alias pyenv38='pyenv activate pynvim38'
@@ -143,7 +143,7 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ "$(uname -s)" = Linux  ]; then
-    export PATH="/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+    export PATH="$HOME/.pyenv/shims:/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 else
     export PATH="/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/Code/flutter/bin:/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.pub-cache/bin:$PATH"
 fi

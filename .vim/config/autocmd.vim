@@ -31,6 +31,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " rust
 autocmd BufReadPost *.rs setlocal filetype=rust
+au FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
 
 augroup VCenterCursor
   au!
