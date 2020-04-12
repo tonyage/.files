@@ -33,18 +33,28 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gf <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
 
+inoremap <A-h> <Left>
+inoremap <A-l> <Right>
+
+inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <silent> D :call <SID>show_documentation()<CR>
+
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+function! s:show_documentation()
+    if (index(['vim', 'help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
 imap <C-j> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next='<c-j>'
 let g:coc_snippet_prev='<c-k>'
-
-" semshi
-nmap <silent> <TAB> :Semshi goto name next<CR>
-nmap <silent> <S-TAB> :Semshi goto name prev<CR>
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -52,3 +62,9 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+autocmd FileType rust nmap <buffer><silent> <F1> :Crun<CR>
+autocmd FileType python nmap <buffer><silent> <F1> :vert term ipython3<CR>
+
+nnoremap <silent><TAB> :bn<CR>
+nnoremap <silent><S-TAB> :bp<CR>

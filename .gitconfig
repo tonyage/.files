@@ -10,6 +10,9 @@
     olog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	s = status -s
 	sb = status -sb
+    ra = rebase --abort
+    rc = rebase --continue
+    ma = merge --abort
 [merge]
 	tool = kdiff3
 [merge "tool"]

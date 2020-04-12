@@ -47,6 +47,7 @@ set regexpengine=1
 set list listchars=tab:\|\ ,extends:#,nbsp:.
 set encoding=utf-8
 set splitright
+set splitbelow
 set expandtab
 set tabstop=4
 set softtabstop=4

@@ -15,22 +15,22 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+au BufNewFile,BufFilePre,BufRead *.md setlocal filetype=markdown.pandoc textwidth=100
 
 augroup vagrant
 	au!
 	au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
-autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
-autocmd FileType json syntax match Comment +\/\/.\+$+
+au FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
+au FileType json syntax match Comment +\/\/.\+$+
 
 " yaml
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " rust
-autocmd BufReadPost *.rs setlocal filetype=rust
+au BufReadPost *.rs setlocal filetype=rust
 au FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
 
 augroup VCenterCursor
@@ -39,7 +39,7 @@ augroup VCenterCursor
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
 
-autocmd BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
+au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
 augroup auto_colorize
     autocmd!
@@ -47,3 +47,5 @@ augroup auto_colorize
         \ *.css, *.html
         \ ColorHighlight
 augroup END
+
+au CursorHold * silent call CocActionAsync('highlight')
