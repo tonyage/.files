@@ -12,6 +12,7 @@ if [ "$(uname)" == "Linux" ]; then
     elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
         sudo pacman -Syyu
         sudo pacman -S neovim python3-dev python3-pip curl
+    fi
 elif [[ "$(uname)" == "Darwin" ]]; then
     if [ ! -f "$(which brew)" ]; then
         brew install fish curl tmux httpie
