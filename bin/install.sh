@@ -9,6 +9,9 @@ if [ "$(uname)" == "Linux" ]; then
         sudo apt-get install -qy neovim python2-dev python3-pip \
             python-pip libffi-dev curl tmux tree
         mkdir -p ~/.local/share/fonts
+    elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
+        sudo pacman -Syyu
+        sudo pacman -S neovim python3-dev python3-pip curl
     elif [[ "$(uname)" == "Darwin" ]]; then
         if [ ! -f "$(which brew)" ]; then
             brew install fish curl tmux httpie

@@ -2,7 +2,7 @@
 
 DIR="$HOME/.file"
 CONF_DIR="$HOME/.config/nvim"
-dotfiles=(.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
+dotfiles=(.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags onedark.colorscheme)
 
 mkdir ~/.config > /dev/null 2>&1
 
@@ -15,7 +15,10 @@ for d in "${dotfiles[@]}"; do
         ln -s $DIR/$d $CONF_DIR > /dev/null 2>&1
         ln -s $DIR/init.vim ~/.config/nvim/init.vim > /dev/null 2>&1
         continue
-	fi
+    elif [ $d == ${dotfiles[7]} ]; then
+        echo $DIR/term_config/$d
+        ln -s $DIR/term_config/$d ~/.local/share/konsole/$d 
+    fi
 	ln -s $DIR/$d ~/$d > /dev/null 2>&1
 done
 

@@ -68,3 +68,4 @@ autocmd FileType python nmap <buffer><silent> <F1> :vert term ipython3<CR>
 
 nnoremap <silent><TAB> :bn<CR>
 nnoremap <silent><S-TAB> :bp<CR>
+nnoremap <silent><leader><TAB> :tn<CR>
