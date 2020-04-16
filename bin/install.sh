@@ -12,17 +12,20 @@ if [ "$(uname)" == "Linux" ]; then
     elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
         sudo pacman -Syyu
         sudo pacman -S neovim python3-dev python3-pip curl
-    elif [[ "$(uname)" == "Darwin" ]]; then
-        if [ ! -f "$(which brew)" ]; then
-            brew install fish curl tmux httpie
-        fi
+elif [[ "$(uname)" == "Darwin" ]]; then
+    if [ ! -f "$(which brew)" ]; then
+        brew install fish curl tmux httpie
     fi
 fi
 
 case $ans in
     *zsh*)
         export ZSH="$HOME/.file/oh-my-zsh"
-        sudo apt-get install zsh
+        if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+            sudo apt-get install zsh
+        else 
+            sudo pacman -S zsh
+        fi
 
         if [ ! -d "$ZSH" ]; then
             echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -32,7 +35,11 @@ case $ans in
         ;;
     *fish*)
         export FISH="$HOME/.file/oh-my-fish"
-        sudo apt-get install fish
+        if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+            sudo apt-get install fish
+        else 
+            sudo pacman -S fish 
+        fi
 
         if [ ! -d "$FISH" ]; then
             echo 'y' | curl -L https://get.oh-my.fish | fish
