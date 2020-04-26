@@ -15,7 +15,7 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-au BufNewFile,BufFilePre,BufRead *.md setlocal filetype=markdown.pandoc textwidth=100
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc textwidth=80
 
 augroup vagrant
 	au!
@@ -40,12 +40,5 @@ augroup VCenterCursor
 augroup END
 
 au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
-
-augroup auto_colorize
-    autocmd!
-    autocmd BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew
-        \ *.css, *.html
-        \ ColorHighlight
-augroup END
 
 au CursorHold * silent call CocActionAsync('highlight')

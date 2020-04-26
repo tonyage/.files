@@ -1,5 +1,9 @@
 # Personal Wiki
 
+## Android and Java Development
+
+- ![Android Build Configuration](android/configuration.md)
+
 ## Rust
 
 - ![Rust Ownership](rust/ownership.md)
@@ -12,4 +16,4 @@ program.
 ### Overview ## 
 
 - ![Introduction](ml/introduction.md) -- introduction to machine learning
-- ![Linear Regression](ml/linear_regression.md) [machine]
+- ![Linear Regression](ml/linear_regression.md)

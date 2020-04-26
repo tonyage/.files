@@ -79,7 +79,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr   = ''
 
 " vim-markdown-composer
-let g:mkdp_auto_start=0
+let g:markdown_composer_autostart=0
 
 " ctrl-p
 if executable('rg')
@@ -148,8 +148,6 @@ hi CocWarningSign ctermfg=011 guifg=#E5C07B
 let g:gitgutter_grep = 'rg --color=never'
 
 set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
-
-" let g:vimwiki_list = [{'path': '~/.file/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 
 call plug#begin('~/.file/.vim/bundle')
 

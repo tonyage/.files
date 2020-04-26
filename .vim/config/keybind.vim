@@ -64,6 +64,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 autocmd FileType rust nmap <buffer><silent> <F1> :Crun<CR>
+autocmd FileType markdown.pandoc nmap <buffer><silent> <F1> :ComposerStart<CR>
 autocmd FileType python nmap <buffer><silent> <F1> :vert term ipython3<CR>
 
 nnoremap <silent><TAB> :bn<CR>

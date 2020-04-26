@@ -95,6 +95,10 @@ else
     alias ll='ls -laH'
 fi
 
+if [ -f $(which batcat) ]; then
+    alias bat='batcat'
+fi
+
 alias ltr='ls -lhtr'													# long list by time ascending
 alias lsr='ls -lhSr'													# long list by size ascending
 alias ..='cd ../'														# go back 1 directory level
