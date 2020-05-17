@@ -115,9 +115,9 @@ alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
 alias open='xdg-open'
 alias pdel='pyenv deactivate'
+alias vi='nvim'
 
-alias pyenv37='pyenv activate pynvim3'
-alias pyenv38='pyenv activate pynvim38'
+alias pyenv38='pyenv activate py38'
 
 alias BEGINCOMMENT='if [  ]; then'
 alias ENDCOMMENT='fi'
@@ -139,6 +139,9 @@ done
 [ -f ~/.zshrc_local ] && {echo "Sourcing local zshrc"; source ~/.zshrc_local;}
 
 [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]] && source "${VIRTUAL_ENV}/bin/activate"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
