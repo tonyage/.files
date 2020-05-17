@@ -12,7 +12,7 @@ if has('nvim')
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-    let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
+    " let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
 endif
 
 " vim-markdown
@@ -128,7 +128,7 @@ let g:fugitive_gitlab_domains = ['https://git.kopismobile.org']
 " rust
 let g:rustfmt_autosave          = 1
 let g:rust_clip_command         = 'xclip -selection clipboard'
-let g:loaded_clipboard_provider = 1
+" let g:loaded_clipboard_provider = 1
 
 " vim-markdown-composer
 function! BuildComposer(info)

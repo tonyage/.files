@@ -57,7 +57,7 @@ set signcolumn=yes
 set smartindent
 set backspace=indent,eol,start
 set pastetoggle=<F9>
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set cmdheight=2
 set shortmess+=c
 
