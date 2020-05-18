@@ -72,6 +72,7 @@ source $ZSH/oh-my-zsh.sh
 
 if [ "$(uname -s)" = Linux  ]; then
 	alias grep='grep --color=auto'
+    alias open='xdg-open'
 	export TERM="xterm-256color"
     export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-amd64'
 else
@@ -113,7 +114,6 @@ alias psource='source ~/.p10k.zsh'
 alias zsource='source ~/.zshrc'											# source .bashrc
 alias rip='rm -rf'
 alias fvim='nvim -o `fzf`'												# fzf a file and open it in neovim
-alias open='xdg-open'
 alias pdel='pyenv deactivate'
 alias vi='nvim'
 

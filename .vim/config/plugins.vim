@@ -12,7 +12,7 @@ if has('nvim')
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-    let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
+    let g:python3_host_prog="/Users/tdo/.pyenv/versions/py38/bin/python"
 endif
 
 " vim-markdown
@@ -146,9 +146,9 @@ function SemshiDark()
     hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#be5046
     sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
+
 autocmd FileType python call SemshiDark()
 autocmd ColorScheme * call SemshiDark()
-
 let g:semshi#active=1
 
 " gitlab
@@ -168,7 +168,6 @@ endfunction
 " rust
 let g:rustfmt_autosave=1
 let g:rust_clip_command='xclip -selection clipboard'
-let g:loaded_clipboard_provider=1
 
 " coc
 hi CocErrorSign ctermfg=009 guifg=#E06C75 
@@ -200,6 +199,8 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'rust-lang/rust.vim'
     Plug 'mattn/webapi-vim'
     Plug 'cespare/vim-toml'
+
+    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
     Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'chrisbra/Colorizer'
