@@ -16,12 +16,17 @@ case "$os_name" in
 	*) exit 1
 esac
 
-# rust 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# pyenv and pyenv-virtualenv
-curl https://pyenv.run | bash
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+if ! [ -x $(command -v rustup) ]; then
+    # rust 
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+elif ! [ -x $(command -v pyenv) ]; then
+    # pyenv and pyenv-virtualenv
+    curl https://pyenv.run | bash
+elif [ -x $(command -v pyenv) ]; then
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+fi
+
 
 export PATH="$HOME/.cargo/bin:$PATH"
 printf "Installing defaults...$packages\n"
