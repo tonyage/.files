@@ -23,6 +23,3 @@ else
     printf("zsh plugins and/or themes directories not found.")
     exit 1
 fi
-
-# Rust 
-cargo install exa bat

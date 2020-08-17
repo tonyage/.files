@@ -1,36 +1,69 @@
 #!/bin/bash
 
 os_name=$(lsb_release -si)
-packages="build-essential curl httpie tmux ripgrep"
+if [[ "$(</proc/version)" == "[Mm]icrosoft" ]] 2>/dev/null; then
+    readonly WSL=1
+else 
+    readonly WSL=0
+fi
 
-printf "OS Detected: $os_name\n"
-case "$os_name" in
-	*Ubuntu*)
-		package_manager="apt install -qy"	
-		sudo add-apt-repository ppa:neovim-ppa/stable
-        sudo $package_manager neovim
-		;;
-	*ManjaroLinux*)
-		package_manager="pacman -S --noconfirm"
-		;;
-	*) exit 1
-esac
+install_packages() {
+    local packages=(build-essential curl httpie tmux ripgrep)
+    if (( WSL )); then
+        packages+=(dbus-x11)
+    fi
+    case "$os_name" in
+        *Ubuntu*)
+            package_manager="apt install -y"	
+            sudo apt-get update
+            sudo add-apt-repository ppa:neovim-ppa/stable
+            sudo $package_manager neovim
+            sudo $package_manager ${packages[@]}
+            sudo apt autoremove -y
+            sudo apt autoclean
+            ;;
+        *ManjaroLinux*)
+            package_manager="pacman -S --noconfirm"
+            sudo pacman -Syu
+            sudo $package_manager ${packages[@]}
+            sudo pacman -QDtq | pacman -Rs -
+            sudo pacman -Sc
+            ;;
+        *) exit 1
+    esac
+}
 
-
-if ! [ -x $(command -v rustup) ]; then
+install_rust() {
     # rust 
+    ! command -v rustup &>/dev/null || return 0
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-elif ! [ -x $(command -v pyenv) ]; then
+}
+
+install_pyenv() {
+    ! command -v pyenv &>/dev/null || return 0
     # pyenv and pyenv-virtualenv
     curl https://pyenv.run | bash
-elif [ -x $(command -v pyenv) ]; then
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-fi
+    if [ -x $(command -v pyenv) ]; then
+        git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    fi
+}
+
+fix_clock() {
+  (( !WSL )) || return 0
+  timedatectl set-local-rtc 1 --adjust-system-clock
+}
+
+printf "OS Detected: $os_name\n"
+
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
-printf "Installing defaults...$packages\n"
-sudo $package_manager $packages
+printf "Installing defaults...\n"
+
+install_packages
+install_rustup
+install_pyenv
+fix_clock
 
 read -p "Would you like to use zsh or fish? " ans
 case "$ans" in
