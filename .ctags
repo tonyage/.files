@@ -1,2 +1,5 @@
 --recurse=yes
---exclude=.git
+--exclude=*.git
+--exclude=*.pyc
+--exclude=*.pyo
+--exclude=*.md
