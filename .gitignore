@@ -15,9 +15,6 @@
 .vim/init.vim
 .vim/autoload/onedark.vim
 
-### oh-my-zsh ###
-oh-my-zsh/
-
 # Created by https://www.gitignore.io/api/tags,python
 # Edit at https://www.gitignore.io/?templates=tags,python
 

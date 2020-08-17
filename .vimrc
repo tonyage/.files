@@ -1,4 +1,4 @@
-source ~/.file/.vim/config/core.vim
-source ~/.file/.vim/config/autocmd.vim
-source ~/.file/.vim/config/plugins.vim
-source ~/.file/.vim/config/keybind.vim
+source /home/tdo/.config/.files/.vim/config/core.vim
+source /home/tdo/.config/.files/.vim/config/autocmd.vim
+source /home/tdo/.config/.files/.vim/config/plugins.vim
+source /home/tdo/.config/.files/.vim/config/keybind.vim

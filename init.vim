@@ -8,5 +8,7 @@ if exists('g:vscode')
 
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
-    source ~/.file/.vimrc
+    source $HOME/.config/.files/.vimrc
 endif
+require'nvim_lsp'.rust_analyzer.setup{}
+require'nvim_lsp'.vimls.setup{}

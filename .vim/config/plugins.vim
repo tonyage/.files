@@ -13,6 +13,7 @@ if has('nvim')
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
     " let g:python3_host_prog='/home/tdo/.pyenv/versions/pynvim3/bin/python3'
+    "
 endif
 
 " vim-markdown
@@ -142,18 +143,20 @@ function! BuildComposer(info)
 endfunction
 
 " coc
-hi CocErrorSign ctermfg=009 guifg=#E06C75 
-hi CocWarningSign ctermfg=011 guifg=#E5C07B 
+" hi CocErrorSign ctermfg=009 guifg=#E06C75 
+" hi CocWarningSign ctermfg=011 guifg=#E5C07B 
 
 let g:gitgutter_grep = 'rg --color=never'
 
-set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
+set statusline^=%{FugitiveStatusline()}
+" set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
 
-call plug#begin('~/.file/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 
-    Plug 'Shougo/neco-vim'
-    Plug 'neoclide/coc-neco'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    " Plug 'Shougo/neco-vim'
+    " Plug 'neoclide/coc-neco'
+    " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neovim/nvim-lsp'
 
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
@@ -182,7 +185,6 @@ call plug#begin('~/.file/.vim/bundle')
     Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
     Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'lervag/vimtex'
     Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'majutsushi/tagbar'
     Plug 'ap/vim-css-color'

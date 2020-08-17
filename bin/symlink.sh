@@ -1,19 +1,21 @@
 #!/bin/bash
 
-DIR="$HOME/.file"
+DIR="$HOME/.config/.files"
 CONF_DIR="$HOME/.config/nvim"
-dotfiles=(.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags onedark.colorscheme)
+dotfiles=(init.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags onedark.colorscheme)
 
-mkdir ~/.config > /dev/null 2>&1
+mkdir $CONF_DIR
 
 for r in "${dotfiles[@]}"; do
 	rm -rf $HOME/$r
 done
+rm ~/.local/share/konsole/onedark.colorscheme
 
 for d in "${dotfiles[@]}"; do
-	if [ $d == ${dotfiles[0]} ]; then
-        ln -s $DIR/$d $CONF_DIR > /dev/null 2>&1
-        ln -s $DIR/init.vim ~/.config/nvim/init.vim > /dev/null 2>&1
+    if [ $d == ${dotfiles[0]} ]; then
+        ln -s $DIR/$d $CONF_DIR/init.vim > /dev/null 2>&1
+        ln -s $DIR/.vim/autoload $CONF_DIR/autoload > /dev/null 2>&1
+        ln -s $DIR/.vim/colors $CONF_DIR/colors > /dev/null 2>&1
         continue
     elif [ $d == ${dotfiles[7]} ]; then
         echo $DIR/term_config/$d

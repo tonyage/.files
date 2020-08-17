@@ -1,62 +1,62 @@
 #!/bin/bash
 
-read -p "Would you like to use zsh or fish? " ans
+os_name=$(lsb_release -si)
+packages="curl httpie tmux ripgrep"
 
-if [ "$(uname)" == "Linux" ]; then
-    if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-        sudo apt-add-repository ppa:fish-shell/release-4
-        sudo apt-get update
-        sudo apt-get install -qy neovim python2-dev python3-pip \
-            python-pip libffi-dev curl tmux tree
-        mkdir -p ~/.local/share/fonts
-    elif [[ "$(lsb_release -si)" == "ManjaroLinux" ]]; then
-        sudo pacman -Syyu
-        sudo pacman -S neovim python3-dev python3-pip curl
-    fi
-elif [[ "$(uname)" == "Darwin" ]]; then
-    if [ ! -f "$(which brew)" ]; then
-        brew install fish curl tmux httpie
-    fi
-fi
-
-case $ans in
-    *zsh*)
-        export ZSH="$HOME/.file/oh-my-zsh"
-        if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-            sudo apt-get install zsh
-        else 
-            sudo pacman -S zsh
-        fi
-
-        if [ ! -d "$ZSH" ]; then
-            echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-            sudo chsh -s /usr/bin/zsh
-            export SHELL=/usr/bin/zsh
-        fi
-        ;;
-    *fish*)
-        export FISH="$HOME/.file/oh-my-fish"
-        if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
-            sudo apt-get install fish
-        else 
-            sudo pacman -S fish 
-        fi
-
-        if [ ! -d "$FISH" ]; then
-            echo 'y' | curl -L https://get.oh-my.fish | fish
-            echo /usr/local/bin/fish | sudo tee -a /etc/shells
-            chsh -s /usr/local/bin/fish
-            export SHELL=/usr/local/bin/fish
-        fi
-        ;;
-    *)
-        echo "Choose either zsh or fish, exiting..."
-        exit 1
-        ;;
+printf "OS Detected: $os_name\n"
+case "$os_name" in
+	*Ubuntu*)
+		package_manager="apt install -qy"	
+		sudo add-apt-repository ppa:neovim-ppa/stable
+        sudo $package_manager neovim
+		;;
+	*ManjaroLinux*)
+		package_manager="pacman -S --noconfirm"
+		;;
+	*) exit 1
 esac
 
-echo "Installing symlinks..."
+# rust 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# pyenv and pyenv-virtualenv
+curl https://pyenv.run | bash
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
+export PATH="$HOME/.cargo/bin:$PATH"
+printf "Installing defaults...$packages\n"
+sudo $package_manager $packages
+
+read -p "Would you like to use zsh or fish? " ans
+case "$ans" in
+	*zsh*)
+		rm -rf $HOME/.config/.files/oh-my-zsh
+		sudo $package_manager zsh
+		export ZSH="$HOME/.config/.files/oh-my-zsh"
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+		sudo chsh -s /bin/zsh
+		export SHELL=/bin/zsh
+		;;
+	*fish*)
+		sudo apt-add-repository ppa:fish-shell/release-3
+		sudo $package_manager fish
+		export FISH="$HOME/.config/.files/oh-my-fish"
+		echo 'y' | curl -L https://get.oh-my.fish | fish
+		echo /usr/local/bin/fish | sudo tee -a /etc/shells
+		chsh -s /usr/local/bin/fish
+		export SHELL=/usr/local/bin/fish
+		;;
+	*)
+		printf "USAGE: $0 {zsh|fish}"
+		exit 1
+		;;
+esac
+
+# Rust 
+cargo install exa bat
+
+printf "Installing symlinks and zsh custom plugins..."
 /bin/bash ./symlink.sh
 /bin/bash ./plugin.sh
-echo "Remember to set your patched font."
+printf "Remember to set patched font. MesloLGS is really good (https://github.com/romkatv/powerlevel10k#fonts)"
 exec $SHELL
