@@ -1,6 +1,7 @@
 #!/bin/bash
 
-os_name=$(lsb_release -si)
+readonly OS=$(lsb_release -si)
+readonly BIN_DIR=$HOME/.config/.files/bin
 if [[ "$(</proc/version)" == "[Mm]icrosoft" ]] 2>/dev/null; then
     readonly WSL=1
 else 
@@ -12,7 +13,7 @@ install_packages() {
     if (( WSL )); then
         packages+=(dbus-x11)
     fi
-    case "$os_name" in
+    case "$OS" in
         *Ubuntu*)
             package_manager="apt install -y"	
             sudo apt-get update
@@ -37,6 +38,7 @@ install_rust() {
     # rust 
     ! command -v rustup &>/dev/null || return 0
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    export PATH="$HOME/.cargo/bin:$PATH"
 }
 
 install_pyenv() {
@@ -54,10 +56,6 @@ fix_clock() {
 }
 
 printf "OS Detected: $os_name\n"
-
-
-
-export PATH="$HOME/.cargo/bin:$PATH"
 printf "Installing defaults...\n"
 
 install_packages
@@ -91,7 +89,7 @@ case "$ans" in
 esac
 
 printf "Installing symlinks and zsh custom plugins..."
-/bin/bash ./symlink.sh
-/bin/bash ./plugin.sh
-printf "Remember to set patched font. MesloLGS is really good (https://github.com/romkatv/powerlevel10k#fonts)"
+/bin/bash $BIN_DIR/symlink.sh
+/bin/bash $BIN_DIR/plugin.sh
+printf "Remember to set patched font. MesloLGS NF is really good (https://github.com/romkatv/powerlevel10k#fonts)"
 exec $SHELL

@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# This script can be run multiple times to relink config files
 
 readonly DIR="$HOME/.config/.files"
 readonly CONF_DIR="$HOME/.config/nvim"
@@ -21,9 +23,15 @@ link_configs() {
     done
 }
 
+# alacritty config file
+if [[ -f "$HOME/.config/alacritty/alacritty.yml" ]]; then
+    rm "$HOME/.config/alacritty/alacritty.yml"
+fi
+ln -s $DIR/term_config/alacritty.yml $HOME/.config/alacritty/alacritty.yml > /dev/null 2>&1
+
 # function to test symlink quality
 symcheck() {
-	file=$1
+	local file=$1
 	if [ -L $file ]; then
 		if [ -e $file ]; then
 			echo "${file##*/} symlink is functional"
@@ -48,7 +56,18 @@ elif [ -e $DIR/.vim/autoload/autoload ]; then
     unlink $DIR/.vim/autoload/autoload
 fi
 
-file=(~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags $CONF_DIR/autoload $CONF_DIR/colors $CONF_DIR/init.vim)
+file=(
+    ~/.vimrc
+    ~/.zshrc
+    ~/.gitconfig 
+    ~/.tmux.conf
+    ~/.p10k.zsh
+    ~/.ctags
+    $CONF_DIR/autoload
+    $CONF_DIR/colors
+    $CONF_DIR/init.vim
+    $DIR/.config/alacritty/alacritty.yml
+)
 for f in "${file[@]}"; do
 	symcheck $f
 done
