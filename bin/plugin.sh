@@ -20,6 +20,6 @@ if [ -d "$plugin_dir" ] && [ -d "$themes_dir" ]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git
     popd > /dev/null
 else 
-    printf("zsh plugins and/or themes directories not found.")
+    printf "zsh plugins and/or themes directories not found."
     exit 1
 fi
