@@ -1,30 +1,25 @@
 #!/bin/bash
 
-DIR="$HOME/.config/.files"
-CONF_DIR="$HOME/.config/nvim"
-dotfiles=(init.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
+readonly DIR="$HOME/.config/.files"
+readonly CONF_DIR="$HOME/.config/nvim"
 
-mkdir $CONF_DIR
+link_configs() {
+    local dotfiles=(init.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
+    [[ -d $CONF_DIR ]] || mkdir -p $CONF_DIR
+    for r in "${dotfiles[@]}"; do
+        rm -rf $HOME/$r
+    done
 
-for r in "${dotfiles[@]}"; do
-	rm -rf $HOME/$r
-done
-rm ~/.local/share/konsole/onedark.colorscheme
-
-for d in "${dotfiles[@]}"; do
-    if [ $d == ${dotfiles[0]} ]; then
-        ln -s $DIR/$d $CONF_DIR/init.vim > /dev/null 2>&1
-        ln -s $DIR/.vim/autoload $CONF_DIR/autoload > /dev/null 2>&1
-        ln -s $DIR/.vim/colors $CONF_DIR/colors > /dev/null 2>&1
-        continue
-    fi
-	ln -s $DIR/$d ~/$d > /dev/null 2>&1
-done
-
-# TODO: find out why .vim gets symlinked on itself
-if [ -e $DIR/.vim/.vim ]; then
-    unlink $DIR/.vim/.vim
-fi
+    for d in "${dotfiles[@]}"; do
+        if [ $d == ${dotfiles[0]} ]; then
+            ln -s $DIR/$d $CONF_DIR/init.vim > /dev/null 2>&1
+            ln -s $DIR/.vim/autoload $CONF_DIR/autoload > /dev/null 2>&1
+            ln -s $DIR/.vim/colors $CONF_DIR/colors > /dev/null 2>&1
+            continue
+        fi
+        ln -s $DIR/$d ~/$d > /dev/null 2>&1
+    done
+}
 
 # function to test symlink quality
 symcheck() {
@@ -42,7 +37,18 @@ symcheck() {
 	fi
 }
 
-file=(~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags $CONF_DIR $CONF_DIR/init.vim)
+link_configs
+
+# TODO: find out why .vim gets symlinked on itself
+if [ -e $DIR/.vim/.vim ]; then
+    printf "unlinking .vim...\n"
+    unlink $DIR/.vim/.vim
+elif [ -e $DIR/.vim/autoload/autoload ]; then
+    printf "unlinking .vim/autoload...\n"
+    unlink $DIR/.vim/autoload/autoload
+fi
+
+file=(~/.vimrc ~/.zshrc ~/.gitconfig ~/.tmux.conf ~/.p10k.zsh ~/.ctags $CONF_DIR/autoload $CONF_DIR/colors $CONF_DIR/init.vim)
 for f in "${file[@]}"; do
 	symcheck $f
 done

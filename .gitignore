@@ -13,7 +13,6 @@
 .vim/.netrwhist
 .vim/sessions/
 .vim/init.vim
-.vim/autoload/onedark.vim
 
 # Created by https://www.gitignore.io/api/tags,python
 # Edit at https://www.gitignore.io/?templates=tags,python
