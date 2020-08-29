@@ -41,4 +41,4 @@ augroup END
 
 au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
-" au CursorHold * silent call CocActionAsync('highlight')
+au CursorHold * silent call CocActionAsync('highlight')
