@@ -50,6 +50,15 @@ install_pyenv() {
     fi
 }
 
+install_zsh() {
+    rm -rf $HOME/.config/.files/oh-my-zsh
+    sudo $package_manager zsh
+    export ZSH="$HOME/.config/.files/oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sudo chsh -s /bin/zsh
+    export SHELL=/bin/zsh
+}
+
 fix_clock() {
   (( !WSL )) || return 0
   timedatectl set-local-rtc 1 --adjust-system-clock
@@ -61,32 +70,9 @@ printf "Installing defaults...\n"
 install_packages
 install_rustup
 install_pyenv
+install_zsh
 fix_clock
 
-read -p "Would you like to use zsh or fish? " ans
-case "$ans" in
-	*zsh*)
-		rm -rf $HOME/.config/.files/oh-my-zsh
-		sudo $package_manager zsh
-		export ZSH="$HOME/.config/.files/oh-my-zsh"
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-		sudo chsh -s /bin/zsh
-		export SHELL=/bin/zsh
-		;;
-	*fish*)
-		sudo apt-add-repository ppa:fish-shell/release-3
-		sudo $package_manager fish
-		export FISH="$HOME/.config/.files/oh-my-fish"
-		echo 'y' | curl -L https://get.oh-my.fish | fish
-		echo /usr/local/bin/fish | sudo tee -a /etc/shells
-		chsh -s /usr/local/bin/fish
-		export SHELL=/usr/local/bin/fish
-		;;
-	*)
-		printf "USAGE: $0 {zsh|fish}"
-		exit 1
-		;;
-esac
 
 printf "Installing symlinks and zsh custom plugins..."
 /bin/bash $BIN_DIR/symlink.sh

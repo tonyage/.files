@@ -22,8 +22,8 @@ augroup vagrant
 	au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
-au FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
-au FileType json syntax match Comment +\/\/.\+$+
+au FileType *.json,*.lsd,*.lsr autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
+au FileType *.json,*.lsd,*.lsr syntax match Comment +\/\/.\+$+
 
 " yaml
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
