@@ -24,10 +24,12 @@ link_configs() {
 }
 
 # alacritty config file
-if [[ -f "$HOME/.config/alacritty/alacritty.yml" ]]; then
-    rm "$HOME/.config/alacritty/alacritty.yml"
-fi
-ln -s $DIR/term_config/alacritty.yml $HOME/.config/alacritty/alacritty.yml > /dev/null 2>&1
+link_alacritty() {
+    if [[ -f "$HOME/.config/alacritty/alacritty.yml" ]]; then
+        rm "$HOME/.config/alacritty/alacritty.yml"
+    fi
+    ln -s $DIR/term_config/alacritty.yml $HOME/.config/alacritty/alacritty.yml > /dev/null 2>&1
+}
 
 # function to test symlink quality
 symcheck() {
@@ -46,6 +48,7 @@ symcheck() {
 }
 
 link_configs
+link_alacritty
 
 # TODO: find out why .vim gets symlinked on itself
 if [ -e $DIR/.vim/.vim ]; then
@@ -66,7 +69,7 @@ file=(
     $CONF_DIR/autoload
     $CONF_DIR/colors
     $CONF_DIR/init.vim
-    $DIR/.config/alacritty/alacritty.yml
+    ~/.config/alacritty/alacritty.yml
 )
 for f in "${file[@]}"; do
 	symcheck $f

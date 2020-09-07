@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly OS=$(lsb_release -si)
-readonly BIN_DIR=$HOME/.config/.files/bin
+readonly BIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 if [[ "$(</proc/version)" == "[Mm]icrosoft" ]] 2>/dev/null; then
     readonly WSL=1
 else 
