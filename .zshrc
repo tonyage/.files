@@ -51,7 +51,6 @@ plugins=(
 	zsh-256color
 	zsh-autopair
 	zsh-autosuggestions
-    zsh-interactive-cd
 	zsh-syntax-highlighting
 	history-substring-search
 )
