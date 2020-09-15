@@ -161,6 +161,4 @@ cscope.out
 cscope.in.out
 cscope.po.out
 
-*.jar
-
 # End of https://www.gitignore.io/api/tags,python
