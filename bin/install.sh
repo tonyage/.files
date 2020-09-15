@@ -9,7 +9,7 @@ else
 fi
 
 install_packages() {
-    local packages=(build-essential curl httpie tmux ripgrep)
+    local packages=(build-essential curl httpie tmux ripgrep neovim nodejs yarn)
     if (( WSL )); then
         packages+=(dbus-x11)
     fi
@@ -38,6 +38,7 @@ install_rust() {
     # rust 
     ! command -v rustup &>/dev/null || return 0
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    sudo $package_manager bat exa
     export PATH="$HOME/.cargo/bin:$PATH"
 }
 

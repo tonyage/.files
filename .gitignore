@@ -5,7 +5,7 @@
 .vagrant
 
 ### ohmyzsh ###
-./oh-my-zsh/
+oh-my-zsh/
 
 ### vim-plugins ###
 .vim/bundle/*

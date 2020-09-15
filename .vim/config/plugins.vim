@@ -133,7 +133,7 @@ call plug#begin('~/.config/nvim/bundle')
     " Plug 'Shougo/neco-vim'
     " Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    Plug 'neovim/nvim-lsp'
+    " Plug 'neovim/nvim-lsp'
     Plug 'nvim-lua/completion-nvim'
 
     Plug 'tpope/vim-fugitive'
