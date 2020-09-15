@@ -14,16 +14,16 @@
     rc = rebase --continue
     ma = merge --abort
 [merge]
-	tool = kdiff3
+	tool = nvim 
 [merge "tool"]
-	path = /bin/kdiff3
+	path = /bin/nvim
 [user]
 	name = Tony Do
 	email = tonyttdo@gmail.com
 [core]
 	editor = nvim
 [credential]
-	helper = store
+	helper = cache
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
