@@ -4,14 +4,15 @@
 ### vagrant ###
 .vagrant
 
+### ohmyzsh ###
+oh-my-zsh/
+
 ### vim-plugins ###
 .vim/bundle/*
 .vim/colors/
 .vim/.netrwhist
 .vim/sessions/
-
-### oh-my-zsh ###
-oh-my-zsh/
+.vim/init.vim
 
 # Created by https://www.gitignore.io/api/tags,python
 # Edit at https://www.gitignore.io/?templates=tags,python
@@ -159,6 +160,5 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-
 
 # End of https://www.gitignore.io/api/tags,python

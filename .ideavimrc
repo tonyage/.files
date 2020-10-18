@@ -1,5 +1,5 @@
-if filereadable(glob('~/.file/.vimrc'))
-	source ~/.file/.vimrc
+if filereadable(glob('~/.vimrc'))
+	source ~/.vimrc
 endif
 
 " Commands: ys, cs, ds, S

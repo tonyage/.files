@@ -15,22 +15,30 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc textwidth=80
 
 augroup vagrant
 	au!
 	au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
 
-autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
-autocmd FileType json syntax match Comment +\/\/.\+$+
+au FileType *.json,*.lsd,*.lsr autocmd BufWritePre <buffer> %!python -m json.tool 2>/dev/null
+au FileType *.json,*.lsd,*.lsr syntax match Comment +\/\/.\+$+
 
 " yaml
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" rust
+au BufReadPost *.rs setlocal filetype=rust
+au FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
 
 augroup VCenterCursor
   au!
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+
+au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
+
+au CursorHold * silent call CocActionAsync('highlight')

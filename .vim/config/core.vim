@@ -1,5 +1,3 @@
-execute pathogen#infect()
-execute pathogen#helptags()
 let mapleader=","
 
 filetype plugin indent on
@@ -42,13 +40,11 @@ set virtualedit=block
 set lazyredraw
 set regexpengine=1
 
-set lazyredraw
-set regexpengine=1
-
 " indents/formats
 set list listchars=tab:\|\ ,extends:#,nbsp:.
 set encoding=utf-8
 set splitright
+set splitbelow
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -63,5 +59,8 @@ set cmdheight=2
 set shortmess+=c
 
 " Folding
-set foldmethod=syntax
+" set foldmethod=indent
+" let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
+set nofoldenable
+set foldmethod=manual
 set foldlevelstart=99

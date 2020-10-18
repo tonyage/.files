@@ -7,17 +7,25 @@
 	ui = auto
 [alias]
 	vis = !gitk --all
-	
+    olog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	s = status -s
 	sb = status -sb
+    ra = rebase --abort
+    rc = rebase --continue
+    ma = merge --abort
 [merge]
-	tool = kdiff3
+	tool = nvim 
 [merge "tool"]
-	path = /bin/kdiff3
+	path = /bin/nvim
 [user]
 	name = Tony Do
-	email = tdo@kopismobile.com
+	email = tonyttdo@gmail.com
 [core]
 	editor = nvim
 [credential]
 	helper = store
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
