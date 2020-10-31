@@ -56,11 +56,12 @@ set backspace=indent,eol,start
 set pastetoggle=<F9>
 set clipboard+=unnamedplus
 set cmdheight=2
+
+" completion options
+set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 " Folding
-" set foldmethod=indent
-" let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
 set nofoldenable
 set foldmethod=manual
 set foldlevelstart=99

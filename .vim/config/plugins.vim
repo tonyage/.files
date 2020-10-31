@@ -3,16 +3,13 @@ syntax enable
 
 if has('nvim')
     let g:airline_theme='onedark'
-    " colo space-vim-dark
-    " let g:neodark#background = '#1a1a1a'
-    " colo neodark
     colo onedark
     let g:onedark_terminal_italics = 1
 
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-    let g:python3_host_prog='/home/tdo/.pyenv/versions/py38/bin/python3'
+    let g:python3_host_prog='/home/tdo/.pyenv/versions/py39/bin/python3'
 endif
 
 " vim-markdown
@@ -106,7 +103,6 @@ let g:fugitive_gitlab_domains = ['https://git.kopismobile.org']
 " rust
 let g:rustfmt_autosave          = 1
 let g:rust_clip_command         = 'xclip -selection clipboard'
-let g:loaded_clipboard_provider = 1
 
 " vim-markdown-composer
 function! BuildComposer(info)
@@ -119,21 +115,14 @@ function! BuildComposer(info)
   endif
 endfunction
 
-" coc
-hi CocErrorSign ctermfg=009 guifg=#E06C75 
-hi CocWarningSign ctermfg=011 guifg=#E5C07B 
-
 let g:gitgutter_grep = 'rg --color=never'
 
-" set statusline^=%{FugitiveStatusline()}
-set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
+set statusline^=%{FugitiveStatusline()}
 
 call plug#begin('~/.config/nvim/bundle')
 
-    " Plug 'Shougo/neco-vim'
-    " Plug 'neoclide/coc-neco'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    " Plug 'neovim/nvim-lsp'
+    Plug 'neovim/nvim-lsp'
+    Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
 
     Plug 'tpope/vim-fugitive'
@@ -175,19 +164,13 @@ call plug#begin('~/.config/nvim/bundle')
 
 call plug#end()
 
-" lua << EOF
-"     local nvim_lsp = require'nvim_lsp'
-"     nvim_lsp.rust_analyzer.setup{}
-"     nvim_lsp.vimls.setup{}
-"     nvim_lsp.bashls.setup{}
-"     nvim_lsp.gopls.setup{}
-" EOF
-
-" " disable doc preview window
-" set completeopt-=preview
-
-" autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
-" autocmd FileType py setlocal omnifunc=v:lua.vim.lsp.omnifunc
-" autocmd FileType rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-" autocmd FileType vim setlocal omnifunc=v:lua.vim.lsp.omnifunc
-" autocmd FileType sh,zsh setlocal omnifunc=v:lua.vim.lsp.omnifunc
+:lua << EOF
+    local nvim_lsp = require'nvim_lsp'
+    nvim_lsp.pyls.setup{}
+    nvim_lsp.rust_analyzer.setup{}
+    nvim_lsp.sqlls.setup{}
+    nvim_lsp.vimls.setup{}
+    nvim_lsp.bashls.setup{}
+    nvim_lsp.jsonls.setup{}
+    nvim_lsp.yamlls.setup{}
+EOF

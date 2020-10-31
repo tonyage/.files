@@ -41,4 +41,13 @@ augroup END
 
 au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
-au CursorHold * silent call CocActionAsync('highlight')
+" nvim-lsp
+autocmd BufEnter * lua require'completion'.on_attach()
+
+autocmd FileType py,pyx,pxd setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType rs setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType vim setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType sql setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType json setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType yaml setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd FileType sh,zsh setlocal omnifunc=v:lua.vim.lsp.omnifunc

@@ -19,43 +19,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
 nmap <leader>t :TagbarToggle<CR>
-
-" coc tab mapping
-nnoremap <silent> <space>c :<C-u>CocList diagnostics<CR>
-
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>":
-			\ <SID>check_back_space() ? "\<TAB>":
-            \ coc#refresh()
-inoremap <expr><S-TAB> 
-            \ pumvisible() ? "\<C-p>":
-            \ "\<C-h>"
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gk :call <SID>show_documentation()<CR>
-nmap <silent> gn <Plug>(coc-rename)
 
 inoremap <A-h> <Left>
 inoremap <A-l> <Right>
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-function! s:show_documentation()
-    if (index(['vim', 'help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-imap <C-j> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next='<c-j>'
-let g:coc_snippet_prev='<c-k>'
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -78,10 +45,15 @@ nnoremap <silent><S-TAB> :bp<CR>
 nnoremap <silent><leader><TAB> :tn<CR>
 
 " nvim-lsp bindings
-" nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
-" nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent> gj <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent> gn <cmd>lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<CR>
-" nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> gt <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> <c-space> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gj <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gn <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gtd <cmd>lua vim.lsp.buf.type_definition()<CR>
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+imap <silent> <C-p> <Plug>(completion_trigger)
