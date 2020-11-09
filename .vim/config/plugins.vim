@@ -12,7 +12,7 @@ if has('nvim')
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-    let g:python3_host_prog='/home/tdo/.pyenv/versions/py38/bin/python3'
+    let g:python3_host_prog='/home/tdo/.pyenv/versions/py37/bin/python3'
 endif
 
 " vim-markdown
@@ -106,7 +106,7 @@ let g:fugitive_gitlab_domains = ['https://git.kopismobile.org']
 " rust
 let g:rustfmt_autosave          = 1
 let g:rust_clip_command         = 'xclip -selection clipboard'
-let g:loaded_clipboard_provider = 1
+" let g:loaded_clipboard_provider = 1
 
 " vim-markdown-composer
 function! BuildComposer(info)
@@ -125,16 +125,37 @@ hi CocWarningSign ctermfg=011 guifg=#E5C07B
 
 let g:gitgutter_grep = 'rg --color=never'
 
+function SemshiDark()
+    hi semshiLocal           ctermfg=209 guifg=#ff875f
+    hi semshiGlobal          ctermfg=215 guifg=#E5C07B
+    hi semshiImported        ctermfg=214 guifg=#E5C07B cterm=bold gui=bold
+    hi semshiParameter       ctermfg=75  guifg=#61AFEF cterm=italic gui=italic
+    hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+    hi semshiFree            ctermfg=218 guifg=#c678dd
+    hi semshiBuiltin         ctermfg=207 guifg=#c678dd
+    hi semshiAttribute       ctermfg=49  guifg=#56B6C2
+    hi semshiSelf            ctermfg=249 guifg=#E5C07B cterm=bold gui=bold
+    hi semshiUnresolved      ctermfg=226 guifg=#D19A66 cterm=underline gui=underline
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#be5046
+    hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#be5046
+    hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#be5046
+    sign define semshiError text=E> texthl=semshiErrorSign
+endfunction
+
+autocmd FileType python call SemshiDark()
+autocmd ColorScheme * call SemshiDark()
+" let g:semshi#active=1
+
 " set statusline^=%{FugitiveStatusline()}
 set statusline^=%{FugitiveStatusline()},%{coc#status()},%{get(b:,'coc_current_function','')}
 
 call plug#begin('~/.config/nvim/bundle')
 
-    " Plug 'Shougo/neco-vim'
-    " Plug 'neoclide/coc-neco'
+    Plug 'Shougo/neco-vim'
+    Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     " Plug 'neovim/nvim-lsp'
-    Plug 'nvim-lua/completion-nvim'
+    " Plug 'nvim-lua/completion-nvim'
 
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
@@ -165,13 +186,15 @@ call plug#begin('~/.config/nvim/bundle')
     Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'majutsushi/tagbar'
     Plug 'ap/vim-css-color'
+    Plug 'preservim/nerdtree'
     Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer')}
-
     Plug 'joshdick/onedark.vim'
     Plug 'KeitaNakamura/neodark.vim'
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 

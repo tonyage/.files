@@ -21,6 +21,7 @@ nnoremap <C-H> <C-W><C-H>
 
 
 nmap <leader>t :TagbarToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " coc tab mapping
 nnoremap <silent> <space>c :<C-u>CocList diagnostics<CR>
@@ -38,7 +39,8 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gk :call <SID>show_documentation()<CR>
-nmap <silent> gn <Plug>(coc-rename)
+" nmap <silent> gn <Plug>(coc-rename)
+nmap <silent> gn :Semshi rename<CR>
 
 inoremap <A-h> <Left>
 inoremap <A-l> <Right>
