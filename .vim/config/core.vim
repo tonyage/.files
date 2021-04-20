@@ -64,4 +64,5 @@ set shortmess+=c
 " Folding
 set nofoldenable
 set foldmethod=manual
+set foldtext=gitgutter#fold#foldtext()
 set foldlevelstart=99

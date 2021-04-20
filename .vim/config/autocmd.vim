@@ -39,7 +39,7 @@ augroup VCenterCursor
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
 
-au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
+" au BufWinEnter * let &foldlevel=max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
 " nvim-lsp
 autocmd BufEnter * lua require'completion'.on_attach()

@@ -44,15 +44,18 @@ nnoremap <silent><TAB> :bn<CR>
 nnoremap <silent><S-TAB> :bp<CR>
 nnoremap <silent><leader><TAB> :tn<CR>
 
-" nvim-lsp bindings
-nnoremap <silent> <c-space> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gj <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gn <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gtd <cmd>lua vim.lsp.buf.type_definition()<CR>
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fs <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+nnoremap <leader>fg <cmd>Telescope git_files<CR>
+
+
+" GitGutter and Fugitive bindings
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
