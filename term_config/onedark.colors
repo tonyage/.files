@@ -103,8 +103,8 @@ ForegroundPositive=37,201,146
 ForegroundVisited=0,188,212
 
 [General]
-ColorScheme=Total Black
-Name=Total Black
+ColorScheme=Onedark
+Name=Onedark
 shadeSortColumn=true
 
 [KDE]
