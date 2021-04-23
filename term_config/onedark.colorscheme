@@ -1,17 +1,17 @@
 [Background]
-Color=29,31,33
+Color=26,26,26
 MaxRandomHue=0
 MaxRandomSaturation=0
 MaxRandomValue=0
 
 [BackgroundFaint]
-Color=29,31,33
+Color=26,26,26
 
 [BackgroundIntense]
-Color=29,31,33
+Color=26,26,26
 
 [Color0]
-Color=29,31,33
+Color=26,26,26
 
 [Color0Faint]
 Color=92,99,112
