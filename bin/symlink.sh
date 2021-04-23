@@ -33,8 +33,8 @@ link_alacritty() {
 
 link_colorschemes() {
     [[ -f "$HOME/.local/share/konsole/onedark.colorscheme" ]] && rm "$HOME/.local/share/konsole/onedark.colorscheme"
-    [[ -f "$HOME/.kde4/share/apps/color-schemes/TotalBlack.colors" ]] && rm "$HOME/.kde4/share/apps/color-schemes/TotalBlack.colors"
-    ln -s $DIR/term_config/TotalBlack.colors $HOME/.kde4/share/apps/color-schemes/TotalBlack.colors > /dev/null 2>&1
+    [[ -f "$HOME/.kde4/share/apps/color-schemes/Onedark.colors" ]] && rm "$HOME/.kde4/share/apps/color-schemes/Onedark.colors"
+    ln -s $DIR/term_config/Onedark.colors $HOME/.kde4/share/apps/color-schemes/Onedark.colors > /dev/null 2>&1
     ln -s $DIR/term_config/onedark.colorscheme $HOME/.local/share/konsole/onedark.colorscheme > /dev/null 2>&1
 }
 
@@ -79,7 +79,7 @@ file=(
     $CONF_DIR/init.vim
     ~/.config/alacritty/alacritty.yml
     ~/.local/share/konsole/onedark.colorscheme
-    ~/.kde4/share/apps/color-schemes/TotalBlack.colors
+    ~/.kde4/share/apps/color-schemes/Onedark.colors
 )
 for f in "${file[@]}"; do
 	symcheck $f
