@@ -222,8 +222,9 @@ colors:
     #  foreground: '#1d1f21'
 
   # Normal colors
+  # black main: #1a1a1a, alt: #1d1f21
   normal:
-    black:   '#1d1f21'
+    black:   '#1a1a1a'
     red:     '#e06c75'
     green:   '#98c370'
     yellow:  '#e5c07b'

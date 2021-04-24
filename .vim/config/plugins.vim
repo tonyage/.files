@@ -2,33 +2,16 @@ syntax on
 syntax enable
 
 if has('nvim')
-    let g:airline_theme='onedark'
     colo onedark
+    let g:airline_theme='onedark'
     let g:onedark_terminal_italics = 1
 
     " syntax highlighting font style
     hi Comment cterm=italic gui=italic guifg=#5C6370 ctermfg=59
     hi String cterm=italic gui=italic
-    let g:python3_host_prog='/home/tdo/.pyenv/versions/py39/bin/python3'
+    let g:python3_host_prog='/usr/bin/python3'
+    " let g:python3_host_prog='/home/tdo/.pyenv/versions/py39/bin/python3'
 endif
-
-" vim-markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-
-" vim-go
-let g:go_highlight_structs                = 1
-let g:go_highlight_methods                = 1
-let g:go_highlight_operators              = 1
-let g:go_highlight_build_constraints      = 1
-let g:go_highlight_extra_types            = 1
-let g:go_highlight_functions              = 1
-let g:go_highlight_function_calls         = 1
-let g:go_highlight_function_parameters    = 1
-let g:go_highlight_types                  = 1
-let g:go_highlight_generate_tags          = 1
-let g:go_highlight_variable_declarations  = 1
-let g:go_highlight_variable_assignments   = 1
-let g:go_fold_enable                      = ['block', 'import', 'varconst', 'package_comment']
 
 " vim-airline
 let g:airline#extensions#tabline#enabled          = 1
@@ -39,7 +22,7 @@ let g:airline#extensions#coc#enabled              = 1
 let g:airline#extensions#tabline#formatter        = 'default'
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 
 " unicode symbols - defaults to this for non patched fonts
@@ -75,9 +58,9 @@ let g:markdown_composer_autostart=0
 
 " ctrl-p
 if executable('rg')
-	set grepprg=rg\ --color=never
-	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-	let g:ctrlp_use_caching  = 0
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching  = 0
 endif
 
 " rainbow
@@ -145,6 +128,8 @@ call plug#begin('~/.config/nvim/bundle')
     Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'ap/vim-css-color'
     Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer')}
+    Plug 'preservim/nerdtree'
+    Plug 'simrat39/symbols-outline.nvim'
 
     Plug 'joshdick/onedark.vim'
     Plug 'KeitaNakamura/neodark.vim'
@@ -158,66 +143,3 @@ call plug#begin('~/.config/nvim/bundle')
 
 call plug#end()
 
-:lua << EOF
-    local nvim_lsp = require'lspconfig'
-
-    local opts = {noremap=true, silent=true}
-    
-    local on_attach = function(client, bufnr) 
-        require('completion').on_attach()
-
-        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-        buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-        buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-        buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-        buf_set_keymap('n', 'gk', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-        buf_set_keymap('n', 'gj', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-        buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-        buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-        buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-        buf_set_keymap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-        buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-        buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-        buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        elseif client.resolved_capabilities.document_range_formatting then
-            buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        end
-
-        if client.resolved_capabilities.document_highlight then
-            vim.api.nvim_exec([[
-
-              hi LspReferenceRead cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
-              hi LspReferenceText cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
-              hi LspReferenceWrite cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
-
-              augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-              augroup END
-            ]], false)
-        end
-    end
-
-    local servers = {'rust_analyzer', 'sqlls', 'bashls', 'jsonls', 'yamlls', 'vimls', 'pyright'}
-    for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup{on_attach=on_attach}
-    end
-
-    local treesitter = require'nvim-treesitter.configs'.setup {
-        ensured_installed = "maintained",
-        highlight = {
-            enable = true,
-        },
-    }
-EOF
