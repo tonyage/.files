@@ -19,14 +19,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nmap <leader>t :TagbarToggle<CR>
-
 inoremap <A-h> <Left>
 inoremap <A-l> <Right>
 
 function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 nnoremap <A-j> :m .+1<CR>==
@@ -51,7 +49,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fg <cmd>Telescope git_files<CR>
 
-
 " GitGutter and Fugitive bindings
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
@@ -60,3 +57,6 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <silent> <C-p> <Plug>(completion_trigger)
+
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>

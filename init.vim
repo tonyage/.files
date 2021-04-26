@@ -14,7 +14,7 @@ endif
     local nvim_lsp = require'lspconfig'
 
     local opts = {noremap=true, silent=true}
-    
+
     local on_attach = function(client, bufnr) 
         require('completion').on_attach()
 
@@ -48,9 +48,9 @@ endif
         if client.resolved_capabilities.document_highlight then
             vim.api.nvim_exec([[
 
-              hi LspReferenceRead cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
-              hi LspReferenceText cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
-              hi LspReferenceWrite cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1d1f21
+              hi LspReferenceRead cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1a1a1a
+              hi LspReferenceText cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1a1a1a
+              hi LspReferenceWrite cterm=bold ctermbg=red guibg=#c5c8c6 guifg=#1a1a1a
 
               augroup lsp_document_highlight
                 autocmd! * <buffer>

@@ -113,16 +113,16 @@ call plug#begin('~/.config/nvim/bundle')
     Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-eunuch'
 
-    Plug 'glts/vim-radical' " number converter, gA, crd, crx, cro, crb - decimal, hex, octa, binary respectively
-
     Plug 'rust-lang/rust.vim'
     Plug 'mattn/webapi-vim'
     Plug 'cespare/vim-toml'
 
+    Plug 'glts/vim-radical' " number converter, gA, crd, crx, cro, crb - decimal, hex, octa, binary respectively
     Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'godlygeek/tabular'
     Plug 'airblade/vim-gitgutter'
     Plug 'luochen1990/rainbow'
+    Plug 'jiangmiao/auto-pairs'
     Plug 'ryanoasis/vim-devicons'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'Glench/Vim-Jinja2-Syntax'
@@ -142,4 +142,3 @@ call plug#begin('~/.config/nvim/bundle')
     Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
-

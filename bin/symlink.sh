@@ -6,7 +6,7 @@ readonly DIR="$HOME/.config/.files"
 readonly CONF_DIR="$HOME/.config/nvim"
 
 link_configs() {
-    local dotfiles=(init.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh .ctags)
+    local dotfiles=(init.vim .vimrc .zshrc .gitconfig .tmux.conf .p10k.zsh)
     [[ -d $CONF_DIR ]] || mkdir -p $CONF_DIR
     for r in "${dotfiles[@]}"; do
         rm -rf $HOME/$r
@@ -40,18 +40,18 @@ link_colorschemes() {
 
 # function to test symlink quality
 symcheck() {
-	local file=$1
-	if [ -L $file ]; then
-		if [ -e $file ]; then
-			echo "${file##*/} symlink is functional"
-		else
-			echo "${file##*/} link broken"
-		fi
-	elif [ -e $file ]; then
-		echo "Not a valid symlink"
-	else
-		echo "${file##*/} is missing"
-	fi
+    local file=$1
+    if [ -L $file ]; then
+        if [ -e $file ]; then
+            echo "${file##*/} symlink is functional"
+        else
+            echo "${file##*/} link broken"
+        fi
+    elif [ -e $file ]; then
+        echo "Not a valid symlink"
+    else
+        echo "${file##*/} is missing"
+    fi
 }
 
 link_configs
@@ -73,7 +73,6 @@ file=(
     ~/.gitconfig 
     ~/.tmux.conf
     ~/.p10k.zsh
-    ~/.ctags
     $CONF_DIR/autoload
     $CONF_DIR/colors
     $CONF_DIR/init.vim
@@ -81,6 +80,7 @@ file=(
     ~/.local/share/konsole/onedark.colorscheme
     ~/.kde4/share/apps/color-schemes/Onedark.colors
 )
+
 for f in "${file[@]}"; do
 	symcheck $f
 done
