@@ -44,6 +44,8 @@ augroup END
 " nvim-lsp
 autocmd BufEnter * lua require'completion'.on_attach()
 
+autocmd VimEnter * NERDTree | wincmd p
+
 autocmd FileType py,pyx,pxd setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd FileType rs setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd FileType vim setlocal omnifunc=v:lua.vim.lsp.omnifunc

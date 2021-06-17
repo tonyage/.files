@@ -19,9 +19,10 @@
 	path = /bin/nvim
 [user]
 	name = Tony Do
-	email = tonyttdo@gmail.com
+	email = tdo@kopismobile.com
 [core]
 	editor = nvim
+    sshCommand = "ssh -i ~/.ssh/id_ed25519"
 [credential]
 	helper = store
 [filter "lfs"]
@@ -29,3 +30,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[includeIf "gitdir:~/Code/work"]
+    path = ~/.gitconfig_work

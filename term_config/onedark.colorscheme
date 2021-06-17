@@ -3,12 +3,18 @@ Color=26,26,26
 MaxRandomHue=0
 MaxRandomSaturation=0
 MaxRandomValue=0
+RandomHueRange=360
+RandomSaturationRange=100
 
 [BackgroundFaint]
 Color=26,26,26
+RandomHueRange=360
+RandomSaturationRange=100
 
 [BackgroundIntense]
 Color=26,26,26
+RandomHueRange=360
+RandomSaturationRange=100
 
 [Color0]
 Color=26,26,26
@@ -84,12 +90,18 @@ Color=220,223,228
 
 [Foreground]
 Color=171,178,191
+RandomHueRange=360
+RandomSaturationRange=100
 
 [ForegroundFaint]
-Color=92,99,112
+Color=102,106,114
+RandomHueRange=360
+RandomSaturationRange=100
 
 [ForegroundIntense]
-Color=130,137,151
+Color=204,208,216
+RandomHueRange=360
+RandomSaturationRange=100
 
 [General]
 Blur=false

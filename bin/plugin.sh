@@ -6,6 +6,7 @@ urls=("https://github.com/zsh-users/zsh-syntax-highlighting.git"
       "https://github.com/chrissicool/zsh-256color"
       "https://github.com/zsh-users/zsh-autosuggestions"
       "https://github.com/hlissner/zsh-autopair"
+      "https://github.com/jeffreytse/zsh-vi-mode"
       "https://github.com/zsh-users/zsh-history-substring-search.git")
 
 if [ -d "$plugin_dir" ] && [ -d "$themes_dir" ]; then

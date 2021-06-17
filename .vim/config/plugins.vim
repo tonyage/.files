@@ -53,9 +53,6 @@ let g:airline_symbols.branch   = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr   = ''
 
-" vim-markdown-composer
-let g:markdown_composer_autostart=0
-
 " ctrl-p
 if executable('rg')
     set grepprg=rg\ --color=never
@@ -79,8 +76,8 @@ endif
 let g:fugitive_gitlab_domains = ['https://git.kopismobile.org']
 
 " rust
-let g:rustfmt_autosave          = 1
-let g:rust_clip_command         = 'xclip -selection clipboard'
+let g:rustfmt_autosave = 1
+let g:rust_clip_command = 'xclip -selection clipboard'
 
 " vim-markdown-composer
 function! BuildComposer(info)
@@ -194,7 +191,7 @@ call plug#end()
         end
     end
 
-    local servers = {'rust_analyzer', 'sqlls', 'bashls', 'jsonls', 'yamlls', 'vimls', 'jedi_language_server'}
+    local servers = {'rust_analyzer', 'sqlls', 'bashls', 'jsonls', 'yamlls', 'vimls', 'jedi_language_server', 'ccls'}
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup{on_attach=on_attach}
     end
