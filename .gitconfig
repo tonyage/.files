@@ -19,7 +19,7 @@
 	path = /bin/nvim
 [user]
 	name = Tony Do
-	email = tdo@kopismobile.com
+	email = tonyttdo@gmail.com
 [core]
 	editor = nvim
     sshCommand = "ssh -i ~/.ssh/id_ed25519"
